@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101322">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="ศูนย์ช่วยเหลือ PARTY STUDIO และ PARTYGAME — วิธีแก้ปัญหาเบื้องต้น คำถามที่พบบ่อย และช่องทางแจ้งปัญหา">
+  <title>ศูนย์ช่วยเหลือ | PARTY STUDIO</title>
+  <style>
+    :root{--bg:#101322;--surface:#171b2c;--surface2:#21263c;--ink:#f8f7f5;--muted:#c1c7d7;--pink:#ff607b;--gold:#ffca64;--line:rgba(255,255,255,.15);--max:1080px}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:95px}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .wrap{width:min(var(--max),calc(100% - 36px));margin-inline:auto}
+    .skip{position:absolute;top:-80px;left:15px;background:var(--gold);color:#171927;padding:8px 12px;border-radius:8px;z-index:999}
+    .skip:focus{top:10px}
+    header{position:sticky;top:0;z-index:50;background:rgba(16,19,34,.93);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px}
+    .brand{font-weight:900;letter-spacing:.065em;font-size:18px}.brand em{color:var(--gold);font-style:normal}
+    nav{display:flex;align-items:center;gap:20px;font-size:14px;font-weight:700}
+    nav a:hover,.footerlinks a:hover{color:var(--gold)}
+    .nav-play{padding:8px 14px;border-radius:99px;background:var(--gold);color:#161827!important}
+    .hero{position:relative;isolation:isolate;padding:84px 0 72px;overflow:hidden}
+    .hero::before{content:"";position:absolute;z-index:-1;inset:-50% -15% -50% 35%;background:radial-gradient(ellipse,rgba(255,96,123,.20),transparent 60%);pointer-events:none}
+    .eyebrow{display:inline-block;color:var(--gold);font-size:12px;letter-spacing:.15em;font-weight:900;text-transform:uppercase}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(42px,8vw,75px);line-height:1.1;letter-spacing:-.045em;margin:18px 0}
+    h1 span{color:var(--gold)}
+    .lead{font-size:17px;color:var(--muted);max-width:710px}
+    .actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:25px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 17px;font-weight:850;border-radius:12px;border:1px solid var(--line);cursor:pointer;transition:background .16s}
+    .btn-primary{background:var(--pink);border-color:var(--pink);color:#151524}
+    .btn-primary:hover{background:#ff8297}
+    .btn-ghost{background:rgba(255,255,255,.045);color:var(--ink)}
+    .btn-ghost:hover{background:rgba(255,255,255,.11)}
+    .section{padding:65px 0}.alt{background:var(--surface)}
+    .section-title{font-size:clamp(27px,4vw,39px);letter-spacing:-.025em;line-height:1.2;margin:8px 0 14px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:25px}
+    .tip{border:1px solid var(--line);background:var(--surface2);border-radius:20px;padding:23px}
+    .tip-number{display:inline-grid;place-items:center;width:39px;height:39px;border-radius:12px;background:rgba(255,202,100,.13);color:var(--gold);font-weight:900;margin-bottom:15px}
+    .tip h3{font-size:18px;margin-bottom:8px}.tip p{color:var(--muted);margin:0;font-size:14px}
+    .faq{max-width:840px;margin-top:24px;display:grid;gap:11px}
+    details{border:1px solid var(--line);background:#22283a;border-radius:14px;padding:0 19px}
+    summary{cursor:pointer;padding:17px 28px 17px 0;font-weight:800;list-style-position:inside}
+    details p{color:var(--muted);padding:0 3px 18px;margin:0}
+    .report{display:grid;grid-template-columns:.9fr 1.1fr;gap:35px;align-items:start}
+    .report-info{position:sticky;top:100px}
+    .contact-mail{display:inline-block;color:var(--gold);font-weight:800;overflow-wrap:anywhere}
+    .formpanel{border:1px solid var(--line);border-radius:22px;padding:27px;background:#24293d;box-shadow:0 20px 50px rgba(0,0,0,.12)}
+    label{display:block;font-weight:700;margin-bottom:8px}
+    .field{margin-bottom:18px}
+    select,textarea{width:100%;border:1px solid #5a6277;border-radius:11px;background:#15192a;color:var(--ink);padding:12px 14px;min-height:46px}
+    textarea{min-height:138px;resize:vertical}
+    select option{background:#171b2c;color:white}
+    .hint{color:#bfc6d7;font-size:13px;margin:7px 0 0}
+    .notice{color:#d8dce7;font-size:13px;border-left:3px solid var(--gold);padding:10px 14px;background:rgba(255,202,100,.065);border-radius:0 9px 9px 0;margin-bottom:18px}
+    .status{min-height:20px;font-size:13px;color:var(--gold);margin:12px 0 0}
+    footer{border-top:1px solid var(--line);padding:24px 0;font-size:13px;color:#b6bfd0}
+    .footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .footerlinks{display:flex;gap:17px;flex-wrap:wrap}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.report{grid-template-columns:1fr}.report-info{position:static}.hero{padding:58px 0 52px}.section{padding:52px 0}}
+    @media(max-width:530px){.top{align-items:flex-start;flex-direction:column;justify-content:center;padding:13px 0;gap:8px}.brand{font-size:16px}nav{flex-wrap:wrap;gap:14px;font-size:12px}.formpanel{padding:18px}.actions .btn{flex:1}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
+  <header>
+    <div class="wrap top">
+      <a class="brand" href="./studio.html" aria-label="กลับหน้า PARTY STUDIO">PARTY <em>STUDIO</em></a>
+      <nav aria-label="เมนูหลัก">
+        <a href="./studio.html">หน้าสตูดิโอ</a>
+        <a href="#faq">คำถามที่พบบ่อย</a>
+        <a href="#report">แจ้งปัญหา</a>
+        <a class="nav-play" href="./">เข้าเกม PARTYGAME ↗</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="wrap">
+        <span class="eyebrow">PARTY STUDIO / SUPPORT CENTER</span>
+        <h1 id="page-title">ศูนย์<span>ช่วยเหลือ</span></h1>
+        <p class="lead">พบปัญหาการเล่น PARTYGAME หรือมีข้อเสนอแนะ? ลองวิธีแก้ไขเบื้องต้น หรือส่งรายละเอียดให้ PARTY STUDIO ผ่านอีเมลได้จากหน้านี้</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#report">แจ้งปัญหา</a>
+          <a class="btn btn-ghost" href="#tips">ดูวิธีแก้ปัญหา</a>
+        </div>
+      </div>
+    </section>
+    <section id="tips" class="section alt" aria-labelledby="tips-title">
+      <div class="wrap">
+        <span class="eyebrow">QUICK FIX</span>
+        <h2 class="section-title" id="tips-title">ลองแก้ปัญหาเบื้องต้น</h2>
+        <p class="muted">หากเกมเปิดไม่ขึ้น ค้าง หรือแสดงผลไม่ถูกต้อง ให้ลองตามลำดับนี้ก่อน</p>
+        <div class="grid">
+          <article class="tip"><span class="tip-number">01</span><h3>โหลดหน้าเกมอีกครั้ง</h3><p>รีเฟรชหน้าเว็บหนึ่งครั้ง แล้วรอให้โหลดเสร็จก่อนเริ่มเล่น</p></article>
+          <article class="tip"><span class="tip-number">02</span><h3>ตรวจสอบการเชื่อมต่อ</h3><p>ลองสลับ Wi-Fi หรือเครือข่ายมือถือ แล้วเปิดเกมใหม่อีกครั้ง</p></article>
+          <article class="tip"><span class="tip-number">03</span><h3>ลองเบราว์เซอร์อื่น</h3><p>อัปเดตเบราว์เซอร์ที่ใช้ หรือลองเปิดด้วยเบราว์เซอร์เวอร์ชันล่าสุด</p></article>
+        </div>
+      </div>
+    </section>
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="wrap">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-title" id="faq-title">คำถามที่พบบ่อย</h2>
+        <div class="faq">
+          <details><summary>PARTYGAME ต้องติดตั้งแอปหรือไม่?</summary><p>ไม่ต้องติดตั้งแอป สามารถเข้าเล่นผ่านเว็บเบราว์เซอร์ได้จาก <a class="contact-mail" href="./">หน้า PARTYGAME</a></p></details>
+          <details><summary>เกมเปิดไม่ได้หรือค้าง ต้องทำอย่างไร?</summary><p>เริ่มจากรีเฟรชหน้าเกม ตรวจสอบอินเทอร์เน็ต และลองเบราว์เซอร์อื่น หากยังพบปัญหาให้ส่งรายละเอียดผ่านส่วนแจ้งปัญหาด้านล่าง</p></details>
+          <details><summary>จะรายงานข้อผิดพลาดหรือเสนอไอเดียได้ที่ไหน?</summary><p>กรอกหัวข้อและรายละเอียดในแบบฟอร์มด้านล่าง ระบบจะเปิดแอปอีเมลของอุปกรณ์เพื่อให้คุณตรวจสอบและกดส่งด้วยตนเอง</p></details>
+          <details><summary>ส่งรายงานแล้วจะได้รับการตอบกลับทันทีหรือไม่?</summary><p>ไม่ใช่ระบบแชตสดและไม่มีการออกเลขติดตามโดยอัตโนมัติ การตอบกลับขึ้นอยู่กับการตรวจสอบของสตูดิโอ</p></details>
+        </div>
+      </div>
+    </section>
+    <section id="report" class="section alt" aria-labelledby="report-title">
+      <div class="wrap report">
+        <div class="report-info">
+          <span class="eyebrow">REPORT AN ISSUE</span>
+          <h2 class="section-title" id="report-title">แจ้งปัญหา / ส่งข้อเสนอแนะ</h2>
+          <p class="muted">อธิบายว่าเกิดอะไรขึ้น เกมหรือหน้าที่มีปัญหาคือหน้าไหน และลองแก้ไขอะไรไปแล้วบ้าง เพื่อให้ตรวจสอบได้ตรงจุด</p>
+          <p class="muted">หรือส่งอีเมลโดยตรงที่<br><a class="contact-mail" href="mailto:partystudio2026@gmail.com?subject=PARTYGAME%20Support">partystudio2026@gmail.com</a></p>
+        </div>
+        <form id="supportForm" class="formpanel">
+          <div class="notice">แบบฟอร์มนี้ใช้แอปอีเมลของอุปกรณ์ในการส่ง ไม่ได้บันทึกข้อมูลลงเซิร์ฟเวอร์ของหน้าเว็บนี้โดยตรง</div>
+          <div class="field">
+            <label for="category">ประเภทปัญหา</label>
+            <select id="category" name="category" required>
+              <option value="เข้าเกมไม่ได้">เข้าเกมไม่ได้</option>
+              <option value="เกมค้างหรือโหลดช้า">เกมค้างหรือโหลดช้า</option>
+              <option value="ปัญหาภาพ เสียง หรือการควบคุม">ปัญหาภาพ เสียง หรือการควบคุม</option>
+              <option value="รายงานบั๊กอื่น ๆ">รายงานบั๊กอื่น ๆ</option>
+              <option value="ข้อเสนอแนะ">ข้อเสนอแนะ</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="details">รายละเอียด <span aria-hidden="true">*</span></label>
+            <textarea id="details" name="details" maxlength="2000" minlength="10" required placeholder="ตัวอย่าง: เปิดเกมจากโทรศัพท์แล้วหน้าจอค้างหลังจากกดเริ่มเล่น..." aria-describedby="details-help"></textarea>
+            <p id="details-help" class="hint">อย่างน้อย 10 ตัวอักษร และไม่เกิน 2,000 ตัวอักษร</p>
+          </div>
+          <p class="hint" style="margin-bottom:17px">อย่าใส่รหัสผ่าน ข้อมูลการเงิน ชื่อจริง ที่อยู่ หรือข้อมูลส่วนตัวที่ไม่จำเป็น</p>
+          <button type="submit" class="btn btn-primary">เปิดอีเมลเพื่อส่งรายงาน ↗</button>
+          <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year">2026</span> PARTY STUDIO · Support Center</span>
+      <div class="footerlinks"><a href="./studio.html">PARTY STUDIO</a><a href="./">PARTYGAME</a><a href="./privacy.html">นโยบายความเป็นส่วนตัว</a></div>
+    </div>
+  </footer>
+  <script>
+    (function(){
+      document.getElementById('year').textContent = String(new Date().getFullYear());
+      var form = document.getElementById('supportForm');
+      var status = document.getElementById('formStatus');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if(!form.reportValidity()) return;
+        var category = document.getElementById('category').value;
+        var details = document.getElementById('details').value.trim();
+        if(details.length < 10){status.textContent='กรุณากรอกรายละเอียดอย่างน้อย 10 ตัวอักษร';return;}
+        var subject = 'PARTYGAME Support - ' + category;
+        var body = 'ประเภท: ' + category + '\n\nรายละเอียด:\n' + details + '\n\n---\nส่งจากหน้า Support ของ PARTY STUDIO';
+        var emailUrl = 'mailto:partystudio2026@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        status.textContent = 'กำลังเปิดแอปอีเมล โปรดตรวจสอบข้อความและกดส่งในแอปอีเมลอีกครั้ง';
+        window.location.href = emailUrl;
+      });
+    })();
+  </script>
+</body>
+</html>
