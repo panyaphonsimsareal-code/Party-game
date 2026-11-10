@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#101729">
+  <meta name="description" content="ศูนย์ช่วยเหลือ PARTYGAME จาก PARTY STUDIO — คำถามที่พบบ่อยและช่องทางแจ้งปัญหา">
+  <title>ศูนย์ช่วยเหลือ PARTYGAME | PARTY STUDIO</title>
+  <style>
+    :root{--bg:#0a1020;--surface:#131c30;--card:#19243a;--line:#34415b;--text:#f4f7fd;--muted:#b8c4d9;--gold:#ffd77d;--pink:#ff739b;--cyan:#8bdef5;--ok:#abf0d2}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(ellipse 800px 480px at 78% -4%,#3c294a 0%,transparent 69%),radial-gradient(ellipse 850px 650px at -24% 40%,#182e4c 0%,transparent 67%),var(--bg);font:16px/1.7 system-ui,-apple-system,'Noto Sans Thai',Tahoma,sans-serif}
+    a{color:var(--cyan);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}
+    .wrap{width:min(1080px,calc(100% - 36px));margin:auto}.top{border-bottom:1px solid #ffffff1c;background:#11192bdf}.nav{min-height:72px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:12px 0}
+    .brand{text-decoration:none;display:flex;align-items:center;gap:11px;color:var(--text);font-weight:850;letter-spacing:.02em}.mark{display:block;width:42px;height:42px;border-radius:50%;object-fit:cover;background:white}.toplinks{display:flex;gap:clamp(12px,2vw,24px);flex-wrap:wrap}.toplinks a{color:var(--muted);font-size:.91rem;text-decoration:none}.toplinks a:hover{color:var(--text)}
+    main{padding-bottom:56px}.hero{padding:clamp(42px,7vw,84px) 0 28px}.eyebrow{display:inline-block;font-weight:750;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-size:.77rem}.hero h1{font-size:clamp(2rem,5.2vw,3.85rem);line-height:1.19;margin:12px 0 12px;letter-spacing:-.045em}.hero p{max-width:720px;color:var(--muted);margin:0;font-size:clamp(1rem,2vw,1.12rem)}
+    .layout{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);align-items:start;gap:22px;margin-top:30px}.card{background:linear-gradient(150deg,#1b2940,#141c30);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3.3vw,30px);box-shadow:0 16px 45px #00000017}.card h2{font-size:1.32rem;letter-spacing:-.02em;line-height:1.4;margin:0 0 5px}.desc{color:var(--muted);font-size:.92rem;margin:0 0 22px}.field{display:block;margin-bottom:17px}.field>span{display:block;font-size:.92rem;font-weight:720;margin-bottom:7px}.optional{font-weight:400;color:var(--muted)}select,textarea,input{width:100%;border:1px solid #56637b;border-radius:11px;background:#0e1728;color:var(--text);font:inherit;padding:12px 14px;outline:0}input::placeholder,textarea::placeholder{color:#a0afc6}select:focus,textarea:focus,input:focus{border-color:var(--gold);box-shadow:0 0 0 3px #ffd77d28}textarea{resize:vertical;min-height:130px}select{appearance:auto}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:11px;font:inherit;font-size:.95rem;font-weight:800;line-height:1.4;min-height:46px;padding:11px 16px;cursor:pointer;border:1px solid transparent;text-decoration:none;text-align:center}.primary{background:var(--gold);color:#1c1722}.primary:hover{background:#ffe4a6}.secondary{background:#293853;color:white;border-color:#50617f}.secondary:hover{background:#354969}.btn:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+    .fine{font-size:.83rem;line-height:1.7;color:var(--muted);margin-top:14px}.note{background:#1d2b40;border-left:3px solid var(--gold);padding:13px 15px;border-radius:0 10px 10px 0;margin:20px 0 0;color:#e4e9f3;font-size:.88rem}.chip{display:inline-block;border:1px solid #527d6c;color:var(--ok);border-radius:99px;padding:2px 10px;font-weight:750;font-size:.76rem;margin-bottom:12px}
+    .sidebar .card+.card{margin-top:20px}.faq details{border-top:1px solid var(--line);padding:13px 0}.faq details:first-of-type{margin-top:12px}.faq summary{cursor:pointer;font-weight:720;line-height:1.45;padding-right:12px}.faq details p{color:var(--muted);margin:7px 0 0;font-size:.91rem}.links{display:flex;flex-direction:column;gap:12px;margin-top:14px}.links a{display:flex;gap:8px;align-items:center;text-decoration:none;color:var(--text);font-weight:700;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#121d31}.links a:hover{border-color:var(--gold)}.links a span{margin-left:auto;color:var(--gold)}
+    footer{border-top:1px solid #ffffff1a;padding:24px 0 34px;color:var(--muted);font-size:.84rem}.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}#notice{margin-top:13px;min-height:1.4em;color:var(--ok);font-size:.9rem}
+    @media(max-width:760px){.layout{grid-template-columns:1fr}.nav{align-items:flex-start}.hero{padding-top:48px}.toplinks{gap:16px}.card{padding:21px}.btn{flex:1 1 100%}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <a class="brand" href="./studio.html" aria-label="PARTY STUDIO"><img class="mark" alt="" src="data:image/webp;base64,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"> PARTY STUDIO</a>
+  <nav class="toplinks" aria-label="ทางลัด"><a href="./">เข้าเกม</a><a href="./studio.html">รู้จักสตูดิโอ</a><a href="./privacy.html">ความเป็นส่วนตัว</a></nav>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow">PARTYGAME • Player Support</span>
+    <h1>ศูนย์ช่วยเหลือ<br><span style="color:var(--gold)">PARTYGAME</span></h1>
+    <p>หากเข้าเกมไม่ได้ เล่นออนไลน์มีปัญหา หรือพบข้อผิดพลาด สามารถส่งรายละเอียดให้ PARTY STUDIO ตรวจสอบได้โดยตรง</p>
+  </section>
+  <div class="layout">
+    <section class="card" aria-labelledby="form-heading">
+      <span class="chip">ไม่ต้องล็อกอิน • ไม่มีการส่งข้อมูลอัตโนมัติ</span>
+      <h2 id="form-heading">แจ้งปัญหาการเล่น</h2>
+      <p class="desc">กรอกข้อมูลเท่าที่จำเป็น ระบบจะสร้างร่างอีเมลให้คุณตรวจทานก่อนกดส่งด้วยตนเอง</p>
+      <form id="reportForm">
+        <label class="field"><span>ประเภทปัญหา</span>
+          <select id="type" required>
+            <option value="">เลือกประเภทปัญหา</option>
+            <option>เข้าเกมไม่ได้ / หน้าเว็บขาว</option><option>หน้าโหลดค้าง / เกมช้า</option>
+            <option>สร้างห้อง / เข้าห้องออนไลน์ไม่ได้</option><option>เกมหลุด / หลุดจากห้อง</option>
+            <option>ข้อผิดพลาดระหว่างมินิเกม</option><option>เสียงหรือภาพผิดปกติ</option>
+            <option>ข้อเสนอแนะ</option><option>อื่น ๆ</option>
+          </select>
+        </label>
+        <label class="field"><span>เกิดปัญหาที่ส่วนใด <span class="optional">(ไม่บังคับ)</span></span>
+          <input id="area" maxlength="60" placeholder="เช่น หน้าแรก / เกมการ์ด / ห้องออนไลน์">
+        </label>
+        <label class="field"><span>อธิบายปัญหา</span>
+          <textarea id="detail" maxlength="900" required placeholder="เช่น กดเข้าห้องแล้วขึ้นหน้าเดิม ลอง 2 ครั้งยังไม่ได้"></textarea>
+        </label>
+        <label class="field"><span>อุปกรณ์หรือเบราว์เซอร์ <span class="optional">(ไม่บังคับ)</span></span>
+          <input id="device" maxlength="80" placeholder="เช่น Android / Chrome (ไม่ต้องระบุรุ่นเครื่อง)">
+        </label>
+        <div class="actions">
+          <button type="submit" class="btn primary">เปิดอีเมลเพื่อส่งรายงาน</button>
+          <button type="button" id="copyButton" class="btn secondary">คัดลอกรายงาน</button>
+        </div>
+        <p id="notice" role="status" aria-live="polite"></p>
+      </form>
+      <p class="fine">อีเมลปลายทาง: <a href="mailto:partystudio2026@gmail.com">partystudio2026@gmail.com</a></p>
+      <div class="note">เพื่อความเป็นส่วนตัว โปรดอย่าใส่ชื่อจริง เบอร์โทร รหัสผ่าน อีเมลส่วนตัว หรือข้อมูลของผู้อื่นในรายละเอียดปัญหา เว็บไซต์หน้านี้ไม่บันทึกข้อความของคุณ</div>
+    </section>
+    <aside class="sidebar">
+      <section class="card faq" aria-labelledby="faq-heading">
+        <h2 id="faq-heading">คำถามที่พบบ่อย</h2>
+        <details><summary>PARTYGAME ต้องติดตั้งแอปไหม?</summary><p>ไม่จำเป็น สามารถเปิดเล่นผ่านเว็บเบราว์เซอร์ได้โดยตรง</p></details>
+        <details><summary>ต้องเชื่อมบัญชี Google หรือไม่?</summary><p>ไม่บังคับตามข้อมูลเกมที่สตูดิโอแจ้งไว้</p></details>
+        <details><summary>เข้าห้องออนไลน์กับเพื่อนไม่ได้ ทำอย่างไร?</summary><p>ลองรีโหลดหน้าเว็บและเช็กการเชื่อมต่อ หากยังไม่สำเร็จ ให้ส่งรายงานพร้อมระบุว่าใช้ Wi‑Fi หรือเน็ตมือถือ (ไม่ต้องส่ง IP หรือข้อมูลเครือข่ายส่วนตัว) การเชื่อมต่อบางเครือข่ายอาจยังไม่รองรับ</p></details>
+        <details><summary>เปิดเกมแล้วหน้าขาวหรือโหลดค้าง?</summary><p>ลองเปิดใหม่ใน Chrome หรือเบราว์เซอร์ที่อัปเดตแล้ว หากยังเกิดปัญหา ให้แจ้งเวลาคร่าว ๆ และสิ่งที่เห็นก่อนหน้าเว็บค้าง</p></details>
+        <details><summary>ระบบนี้รับรายงานอย่างไร?</summary><p>ปุ่มจะเปิดแอปอีเมลพร้อมร่างข้อความ คุณต้องตรวจทานและกดส่งเอง หากเครื่องไม่มีแอปอีเมล ให้ใช้ปุ่มคัดลอกรายงานแทน</p></details>
+      </section>
+      <section class="card" aria-labelledby="links-heading">
+        <h2 id="links-heading">ลิงก์ที่เกี่ยวข้อง</h2>
+        <div class="links">
+          <a href="./"><span>เปิด PARTYGAME</span><span aria-hidden="true">↗</span></a>
+          <a href="./studio.html"><span>เว็บไซต์ PARTY STUDIO</span><span aria-hidden="true">↗</span></a>
+          <a href="./privacy.html"><span>นโยบายความเป็นส่วนตัว</span><span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="fine">หน้านี้ไม่ใช่ระบบตรวจสอบสถานะเซิร์ฟเวอร์แบบเรียลไทม์ หากระบบใช้งานผิดปกติ ให้แจ้งผ่านช่องทางด้านซ้าย</p>
+      </section>
+    </aside>
+  </div>
+</main>
+<footer><div class="wrap footer-inner"><span>© PARTY STUDIO • PARTYGAME Support</span><span>สร้างเพื่อช่วยเหลือผู้เล่น • ไม่เก็บข้อมูลผ่านหน้าเว็บนี้</span></div></footer>
+<script>
+(function(){
+  "use strict";
+  const byId = id => document.getElementById(id);
+  const notice = byId("notice");
+  function report(){
+    const type=byId("type").value.trim(), detail=byId("detail").value.trim();
+    if(!type || !detail){byId("reportForm").reportValidity(); return null;}
+    const clean=v=>v.replace(/[\u0000-\u001f\u007f]/g," ").trim();
+    const area=clean(byId("area").value), device=clean(byId("device").value);
+    return "แจ้งปัญหา PARTYGAME\n\nประเภท: "+clean(type)+"\nส่วนของเกม: "+(area||"ไม่ระบุ")+"\nรายละเอียด:\n"+clean(detail)+"\n\nอุปกรณ์/เบราว์เซอร์: "+(device||"ไม่ระบุ")+"\n\n(โปรดตรวจทานก่อนส่ง และลบข้อมูลส่วนตัวหากมี)";
+  }
+  byId("reportForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    const message=report();if(!message)return;
+    notice.textContent="กำลังเปิดแอปอีเมล หากไม่เปิด ให้ใช้ปุ่มคัดลอกรายงานแทน — ข้อความจะไม่ถูกส่งจนกว่าคุณจะกดส่งเอง";
+    window.location.href="mailto:partystudio2026@gmail.com?subject="+encodeURIComponent("แจ้งปัญหา PARTYGAME")+"&body="+encodeURIComponent(message);
+  });
+  byId("copyButton").addEventListener("click",async function(){
+    const message=report();if(!message)return;
+    try{
+      if(!navigator.clipboard || !navigator.clipboard.writeText) throw new Error("clipboard unavailable");
+      await navigator.clipboard.writeText(message);
+      notice.textContent="คัดลอกรายงานแล้ว คุณสามารถนำไปวางในอีเมลสตูดิโอด้วยตนเอง";
+    }catch(e){
+      const tmp=document.createElement("textarea");tmp.value=message;tmp.setAttribute("aria-hidden","true");tmp.style.position="fixed";tmp.style.opacity="0";document.body.appendChild(tmp);tmp.focus();tmp.select();
+      const ok=document.execCommand("copy");tmp.remove();
+      notice.textContent=ok?"คัดลอกรายงานแล้ว":"ไม่สามารถคัดลอกอัตโนมัติได้ โปรดใช้ปุ่มเปิดอีเมลแทน";
+    }
+  });
+})();
+</script>
+</body>
+</html>
