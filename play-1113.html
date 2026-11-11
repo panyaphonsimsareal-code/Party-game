@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded",function(){ try{
   function netCheck(){ try{ var e=document.querySelector("#game .net-err"), t=e?e.textContent:""; if(t===lastNet) return; lastNet=t; if(!t) return;
     for(var i=0;i<NET.length;i++) if(NET[i][0].test(t)){ PG.note(NET[i][1]); return; } }catch(x){} }
   var g=document.getElementById("game"); if(g&&window.MutationObserver) new MutationObserver(function(){ clearTimeout(netT); netT=setTimeout(netCheck,250); }).observe(g,{childList:true,subtree:true,characterData:true});
-  PG.config({ ver:"10 พ.ย.", getGame:function(){ var el=document.elementFromPoint(innerWidth/2,innerHeight/2); return !el||el.closest(".wrap")?"menu":cur; } });
+  PG.config({ ver:"11 พ.ย.", getGame:function(){ var el=document.elementFromPoint(innerWidth/2,innerHeight/2); return !el||el.closest(".wrap")?"menu":cur; } });
 }catch(x){} });</script>
 <script>/* ปิดปรับปรุงชั่วคราว: the whole site stays closed until OPEN_AT, then opens by itself.
    The time comes from the web server (so changing the phone's clock doesn't open it early); the file opened from the computer is never closed (for testing). */
@@ -4719,6 +4719,40 @@ html.lnd .btable:not(#_) .b-tray{grid-area:tray; height:auto; grid-template-colu
 .mx-res.hell .mx-why{background:#3A1018; color:#FFB3B3} .mx-res.hell .mx-why.ok{background:#0F3A22; color:#9FF0C0} .mx-res.hell .mx-b .mx-go{background:#E8305E; box-shadow:0 4px 0 #9E1238} .mx-res.hell .mx-b .mx-tool{background:#3A1018; color:#FFD0D0}
 .mx-b button:focus-visible{outline:3px solid #1E2757; outline-offset:2px} .mx-res.hell .mx-b button:focus-visible{outline-color:#FFE3E3}
 @media (max-height:460px){ .mx-card{padding:12px 14px} .mx-meme{font-size:16px; margin-bottom:8px} .mx-b{flex-direction:row; flex-wrap:wrap} .mx-b button{flex:1 1 30%; height:44px; font-size:15px} }
+</style><style>
+.pl-go .pl-cf{grid-column:1/-1; min-height:60px; padding:8px 12px; gap:10px; justify-content:flex-start; text-align:left; position:relative; background:linear-gradient(90deg,#24123F,#5B1E6E 55%,#C2338F); color:#fff; box-shadow:inset 0 0 0 2px rgba(255,255,255,.15),0 4px 0 #170A28}
+.pl-go .pl-cf .ti{width:42px; height:42px; border-radius:14px; background:#FFC15E; color:#0B0910; display:flex; align-items:center; justify-content:center; flex:none} .pl-go .pl-cf .ti svg{width:32px; height:32px}
+.pl-go .pl-cf b{display:block; font-size:17px; color:#fff} .pl-go .pl-cf small{display:block; font-size:12px; color:#FFD9EC}
+.pl-go .pl-cf em{position:absolute; right:10px; top:-8px; padding:2px 8px; border-radius:99px; background:#FFC15E; color:#3B1F00; font:800 11px/1.4 var(--display); font-style:normal}
+.cfg{background:#1A0E2E}
+.cf-hud{position:absolute; z-index:3; top:max(8px,env(safe-area-inset-top)); left:50%; transform:translateX(-50%); width:min(760px,calc(100vw - 150px)); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px; pointer-events:none}
+.cf-hud[hidden]{display:none}
+.cf-side{display:flex; flex-direction:column; gap:3px; min-width:0} .cf-side.k1{align-items:flex-end}
+.cf-side b{font:800 14px/1.1 var(--display); color:#fff; text-shadow:0 2px 0 rgba(0,0,0,.35); max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.cf-bar{position:relative; display:block; width:100%; height:14px; border-radius:8px; background:rgba(0,0,0,.45); box-shadow:inset 0 0 0 2px rgba(255,255,255,.55); overflow:hidden}
+.cf-bar i{position:absolute; top:2px; bottom:2px; left:2px; border-radius:6px; max-width:calc(100% - 4px)} .cf-bar .tr{background:#FFE58F} .cf-side.k0 .hp{background:linear-gradient(90deg,#FF7A8E,#FF3B5C)} .cf-side.k1 .hp{background:linear-gradient(90deg,#7CC4FF,#3BA0FF)}
+.cf-side.k1 .cf-bar i{left:auto; right:2px}
+.cf-side em{display:flex; gap:4px} .cf-side em u{width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,.3); box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)} .cf-side em u.on{background:#FFE58F}
+.cf-time{min-width:52px; text-align:center; font:800 26px/1 var(--display); color:#fff; text-shadow:0 3px 0 rgba(0,0,0,.35)} .cf-time small{display:block; margin-top:2px; font-size:11px; font-weight:700; opacity:.85}
+.cf-combo{position:absolute; z-index:3; left:0; right:0; top:calc(max(8px,env(safe-area-inset-top)) + 58px); text-align:center; pointer-events:none; opacity:0}
+.cf-combo b{display:block; font:800 clamp(24px,6vh,40px)/1.1 var(--display); color:#FFE58F; text-shadow:0 3px 0 #5B1E6E,0 6px 18px rgba(0,0,0,.4)} .cf-combo.k1 b{color:#BFE3FF; text-shadow:0 3px 0 #12305E,0 6px 18px rgba(0,0,0,.4)}
+.cf-combo small{display:inline-block; margin-top:4px; padding:2px 10px; border-radius:99px; background:rgba(0,0,0,.45); font:800 14px/1.4 var(--display); color:#fff}
+.cf-combo.in{animation:cfPop .9s ease-out forwards} @keyframes cfPop{0%{opacity:0; transform:scale(.6)} 15%{opacity:1; transform:scale(1.12)} 30%{transform:scale(1)} 80%{opacity:1} 100%{opacity:0; transform:translateY(-10px)}}
+.cf-msg.go{font-size:clamp(56px,18vh,100px); color:#FFE58F} .cf-msg.win b{color:#FFE58F} .cf-msg.lose b{color:#BFE3FF}
+.cf-pads{position:absolute; left:0; right:0; bottom:0; z-index:2; display:flex; justify-content:space-between; align-items:flex-end; padding:0 max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); pointer-events:none}
+.cf-pads[hidden]{display:none}
+.cf-l,.cf-r{display:grid; gap:8px; align-items:end} .cf-l{grid-template-columns:auto auto; grid-template-areas:"up up" "lf rt"} .cf-r{grid-template-columns:auto auto; grid-template-areas:". hv" "blk at"}
+.cf-b.up{grid-area:up; justify-self:center} .cf-b.lf{grid-area:lf} .cf-b.rt{grid-area:rt} .cf-b.hv{grid-area:hv; justify-self:center} .cf-b.blk{grid-area:blk} .cf-b.at{grid-area:at}
+.cf-b{pointer-events:auto; touch-action:none; width:clamp(58px,15vw,78px); height:clamp(58px,15vw,78px); border-radius:50%; border:0; background:rgba(255,255,255,.18); color:#fff; font:800 clamp(16px,4.2vw,20px)/1 var(--display); box-shadow:inset 0 0 0 2px rgba(255,255,255,.45),0 5px 0 rgba(0,0,0,.35); -webkit-user-select:none; user-select:none}
+.cf-b.on{transform:translateY(3px); background:rgba(255,255,255,.34); box-shadow:inset 0 0 0 2px rgba(255,255,255,.7),0 2px 0 rgba(0,0,0,.35)}
+.cf-b.at{width:clamp(72px,19vw,96px); height:clamp(72px,19vw,96px); background:#E8305E; font-size:clamp(20px,5vw,26px)} .cf-b.hv{background:#FF7A3D} .cf-b.blk{background:#2F6FD8}
+@media (orientation:landscape) and (max-height:430px){ .cf-b{width:58px; height:58px; font-size:15px} .cf-b.at{width:74px; height:74px; font-size:20px} }
+.cf-b{white-space:nowrap}
+.cf-panel .cf-list{list-style:none; margin:0 0 4px; padding:0; display:grid; gap:4px}
+.cf-panel .cf-list li{display:flex; justify-content:space-between; align-items:center; gap:8px; padding:6px 10px; border-radius:12px; background:#F4F6FC; font:600 12.5px/1.3 var(--display); color:#3A4170}
+.cf-panel .cf-list b{font:800 13.5px/1.2 var(--display); color:#5B1E6E; white-space:nowrap} .cf-panel .cf-list i{font-style:normal; color:#98A1BF}
+.cf-panel kbd{display:inline-block; padding:1px 7px; border-radius:7px; background:#1E2757; color:#fff; font:700 12px/1.5 var(--display)}
+@media (orientation:portrait){ .cf-hud{width:calc(100vw - 110px); right:10px; left:auto; transform:none; gap:6px} .cf-time{font-size:20px; min-width:40px} }
 </style></head>
 <body>
 <div id="kpClosed" role="dialog" aria-label="ปิดปรับปรุงชั่วคราว">
@@ -7242,6 +7276,304 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
   function duClose(){ mxQuit("duel");
     duClear(); DU.on=false; window.__duOn=false; DU.ph="lobby"; duMusic(false);
     wipe(()=>{ const d=$("duel"); if(d) d.hidden=true; if($("grp")&&!$("grp").hidden) document.body.style.overflow="hidden"; else document.body.style.overflow=""; try{ if(musOn()) musStart(); }catch(e){} }); }
+
+  /* =========================================================
+     ตีหมอน · โหมดคอมโบ (สู้แบบเงา): one against one, seen from the side. Black shadow fighters on a bright evening sky.
+     Buttons pressed in a row make special moves (combos). Best of 3 rounds, 60 s each, against the bot (ง่าย / กลาง / ยาก).
+     A game of its own on top of the ตีหมอน page: it does not touch the normal pillow fight.
+     ========================================================= */
+  const CF_LV=[{n:"ง่าย",d:"บอตช้า กันไม่ค่อยทัน ต่อคอมโบไม่ค่อยเป็น",rt:.5,blk:.15,agg:.45,cmb:.2,slam:0,gap:.9,ctr:.1,ant:.1},
+               {n:"กลาง",d:"บอตกันได้บ้าง ต่อคอมโบเป็น",rt:.26,blk:.55,agg:.75,cmb:.5,slam:.06,gap:.38,ctr:.55,ant:1.3},
+               {n:"ยาก",d:"บอตไว กันเก่ง ชอบต่อคอมโบ",rt:.15,blk:.78,agg:.9,cmb:.75,slam:.12,gap:.2,ctr:.85,ant:2.6}];
+  const CF_KEY="party-cf-opt", CF_HP=100, CF_TIME=60, CF_WIN=2, CF_EDGE=7.4, CF_GRAV=34;
+  // a move: hits between a and e seconds after it starts, lasts d, reaches r (body widths), damage, push back, stun
+  const CF_MV={
+    jab:{n:"ตี",a:.09,e:.17,d:.3,r:1.95,dmg:6,kb:1.6,st:.3},
+    jab2:{n:"ตีซ้ำ",a:.08,e:.16,d:.3,r:2.0,dmg:7,kb:1.8,st:.32},
+    rush:{n:"หมอนรัว",a:.1,e:.4,d:.6,r:2.15,dmg:4,kb:1.2,st:.3,multi:3,last:{dmg:6,kb:5.5,st:.55},combo:1},
+    spin:{n:"หมุนตัวฟาด",a:.16,e:.34,d:.64,r:2.5,dmg:17,kb:7.5,st:.7,combo:1},
+    heavy:{n:"ตีแรง",a:.24,e:.34,d:.62,r:2.3,dmg:12,kb:5,st:.55},
+    dash:{n:"พุ่งฟาด",a:.05,e:.3,d:.56,r:2.1,dmg:14,kb:6.5,st:.6,move:10,combo:1},
+    air:{n:"ตีกลางอากาศ",a:.05,e:.18,d:.3,r:2.0,dmg:7,kb:2,st:.32},
+    slam:{n:"ทุบลงพื้น",a:0,e:.12,d:.48,r:2.8,dmg:16,kb:3.5,st:.8,combo:1},
+    counter:{n:"สวนกลับ",a:.05,e:.16,d:.42,r:2.25,dmg:15,kb:6,st:.65,combo:1}};
+  const CF_LIST=[["ตี ตี ตี","หมอนรัว"],["ตี ตี ตีแรง","หมุนตัวฟาด"],["▶▶ (แตะเดินหน้า 2 ที) แล้ว ตี","พุ่งฟาด"],["กระโดด แล้ว ตีแรง","ทุบลงพื้น"],["กันได้ แล้ว ตีแรง ทันที","สวนกลับ"]];
+  const CF={on:false,ph:"lobby",opt:{lv:1},f:[],round:0,wins:[0,0],left:CF_TIME,timers:[],raf:0,last:0,cv:null,x:null,bg:null,W:0,H:0,dpr:1,s:40,gy:0,fx:[],shake:0,slowT:0,done:false,now:0};
+  try{ const o=JSON.parse(localStorage.getItem(CF_KEY)||"null"); if(o&&o.lv>=0&&o.lv<=2) CF.opt.lv=o.lv|0; }catch(e){}
+  const cfSave=()=>{ try{ localStorage.setItem(CF_KEY,JSON.stringify(CF.opt)); }catch(e){} };
+  const cfRM=()=>{ try{ return matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } };
+  const cfNames=()=>[myName()||"เรา","บอต"], CF_COL=["#FF3B5C","#3BA0FF"];
+  const cfAt=(f,ms)=>{ const t=setTimeout(f,ms); CF.timers.push(t); return t; };
+  const cfClear=()=>{ CF.timers.forEach(clearTimeout); CF.timers=[]; };
+  function cfNew(k){ return {k,x:k?2.6:-2.6,y:0,vx:0,vy:0,dir:k?-1:1,hp:CF_HP,show:CF_HP,st:"idle",t:0,mv:null,hits:0,stun:0,blk:false,blkT:-9,blkHit:-9,
+    hold:{L:0,R:0,B:0},chain:[],chainT:-9,tapF:-9,run:-9,air:false,slam:false,buf:null,combo:0,comboT:-9,walk:0,ai:{q:[],next:0,guardFor:"",guard:false,guardAt:0,lastBlk:-9}}; }
+  /* ---------- the moves ---------- */
+  function cfBegin(F,id){ F.mv=id; F.st="atk"; F.t=0; F.hits=0; F.buf=null; const M=CF_MV[id];
+    if(M.move) F.vx=F.dir*M.move;
+    if(F.k===0) sfx("k_jump",1,()=>beep(420,.05,"triangle",.03)); else beep(360,.04,"triangle",.02); }
+  // what a button does now (ตี = A, ตีแรง = H)
+  function cfAttack(F,key){
+    if(F.st==="ko"||F.st==="hurt"||CF.ph!=="fight") return;
+    if(F.st==="atk"){ const M=CF_MV[F.mv]; if(F.t<M.e){ F.buf=key; return; } if(F.t<M.d-.04&&!["jab","jab2"].includes(F.mv)) { F.buf=key; return; } }
+    const now=CF.now;
+    if(F.air){ if(key==="H"&&!F.slam){ F.slam=true; F.vy=-17; F.mv="slam"; F.st="atk"; F.t=0; F.hits=0; } else if(key==="A"&&F.st!=="atk") cfBegin(F,"air"); return; }
+    if(key==="H"&&now-F.blkHit<.45){ F.blk=false; F.chain=[]; return cfBegin(F,"counter"); }
+    if(F.blk) return;
+    if(key==="A"&&now-F.run<.55){ F.run=-9; F.chain=[]; return cfBegin(F,"dash"); }
+    const live=now-F.chainT<.42||F.st==="atk"; if(!live) F.chain=[];
+    const c=F.chain;
+    let id;
+    if(key==="A") id=c.length===0?"jab":c.length===1?"jab2":"rush";
+    else id=c.length>=2?"spin":"heavy";
+    if(id==="rush"||id==="spin"||id==="heavy") F.chain=[]; else c.push(key);
+    cfBegin(F,id); }
+  function cfJump(F){ if(F.air||CF.ph!=="fight"||F.st==="ko"||F.st==="hurt"||F.st==="atk"||F.blk) return; F.air=true; F.vy=11.5; F.st="jump"; F.t=0; beep(520,.06,"sine",.03); }
+  // left / right taps: two quick taps toward the other one = run (the next ตี is พุ่งฟาด)
+  function cfTap(F,d){ const fwd=d===F.dir, now=CF.now; if(fwd&&now-F.tapF<.3) F.run=now; if(fwd) F.tapF=now; }
+  function cfHit(A,D,M,last){
+    const dmg=last?M.last.dmg:M.dmg, kb=last?M.last.kb:M.kb, st=last?M.last.st:M.st, now=CF.now;
+    const front=Math.sign(A.x-D.x)===D.dir;
+    const cx=(A.x+D.x)/2, cy=Math.max(A.y,D.y)+1.25;
+    if(D.blk&&front&&!D.air&&D.st!=="atk"){
+      D.hp-=Math.round(dmg*.15); D.vx=A.dir*kb*.35; D.blkHit=now; cfFx("block",cx,cy,A.k);
+      sfx("k_thud",.9,()=>beep(180,.08,"square",.04)); return; }
+    D.hp-=dmg; D.st="hurt"; D.t=0; D.stun=st; D.mv=null; D.buf=null; D.chain=[]; D.blk=false; D.vx=A.dir*kb; if(kb>=5&&!D.air){ D.air=true; D.vy=4.5; }
+    if(D.slam){ D.slam=false; }
+    A.combo=now-A.comboT<1.1?A.combo+1:1; A.comboT=now; D.combo=0;
+    cfFx("hit",cx,cy,A.k,dmg); CF.shake=Math.max(CF.shake,dmg>=15?.32:.14);
+    sfx("smash",dmg>=15?1:.75,()=>beep(dmg>=15?110:160,.16,"sine",.08));
+    try{ if(D.k===0&&navigator.vibrate&&VIBE) navigator.vibrate(dmg>=15?70:35); }catch(e){}
+    if(M.combo||A.combo>=2) cfCombo(A.k,M.combo?M.n:"",A.combo);
+    if(D.hp<=0){ D.hp=0; D.st="ko"; D.t=0; D.air=true; D.vy=6; D.vx=A.dir*6; CF.slowT=now+.9; cfRoundEnd(A.k,"ko"); } }
+  function cfStep(F,O,dt){
+    const now=CF.now, M=F.mv&&CF_MV[F.mv];
+    F.t+=dt;
+    if(F.k===0) F.blk=!!F.hold.B&&!F.air&&(F.st==="idle"||F.st==="walk");
+    if(F.st==="hurt"&&F.t>=F.stun&&!F.air){ F.st="idle"; F.t=0; }
+    // walking
+    const want=(F.hold.R?1:0)-(F.hold.L?1:0);
+    if(CF.ph==="fight"&&(F.st==="idle"||F.st==="walk")&&!F.air){
+      if(F.blk){ F.vx*=.8; F.st="idle"; }
+      else if(want){ const run=now-F.run<.55&&want===F.dir; F.vx=want*(run?7.5:4.3); F.st="walk"; F.walk+=dt*(run?2:1.2)*Math.abs(F.vx)/4.3; }
+      else { F.vx*=.7; F.st="idle"; } }
+    else if(F.st==="atk"&&M&&!M.move&&!F.air) F.vx*=.82;
+    else if(!F.air) F.vx*=.86;
+    if(F.st==="atk"&&M&&M.move&&F.t>M.e) F.vx*=.8;
+    // in the air
+    if(F.air){ F.vy-=CF_GRAV*dt; F.y+=F.vy*dt;
+      if(F.y<=0){ F.y=0; F.air=false; F.vy=0;
+        if(F.slam){ F.slam=false; F.t=0; F.st="atk"; F.mv="slam"; cfFx("dust",F.x,0,F.k); CF.shake=Math.max(CF.shake,.2); sfx("smash",.9,()=>beep(90,.2,"sine",.08));
+          if(Math.abs(O.x-F.x)<=CF_MV.slam.r&&O.y<.6&&O.st!=="ko") cfHit(F,O,CF_MV.slam); }
+        else if(F.st==="jump"||F.st==="atk"&&F.mv==="air"){ F.st="idle"; F.t=0; F.mv=null; }
+        if(F.st==="ko") F.vx*=.4; } }
+    F.x+=F.vx*dt; F.x=Math.max(-CF_EDGE,Math.min(CF_EDGE,F.x));
+    // the move hits
+    if(F.st==="atk"&&M&&F.mv!=="slam"){
+      const n=M.multi||1, span=(M.e-M.a)/n;
+      if(F.hits<n&&F.t>=M.a+span*F.hits&&F.t<=M.e+.02){ const dx=O.x-F.x;
+        if(Math.sign(dx)===F.dir&&Math.abs(dx)<=M.r&&Math.abs(O.y-F.y)<1.7&&O.st!=="ko"){ F.hits++; cfHit(F,O,M,M.last&&F.hits===n); }
+        else if(F.t>M.a+span*(F.hits+1)) F.hits++; }
+      if(F.t>=M.d){ F.st="idle"; F.t=0; F.chainT=now; const b=F.buf; F.mv=null; F.buf=null; if(b) cfAttack(F,b); } }
+    else if(F.st==="atk"&&F.mv==="slam"&&!F.air&&F.t>=CF_MV.slam.d){ F.st="idle"; F.t=0; F.mv=null; }
+    if(F.st!=="atk"&&F.st!=="ko"&&F.st!=="hurt") F.dir=O.x>=F.x?1:-1;
+    F.show+=(F.hp-F.show)*Math.min(1,dt*3); }
+  // keep them apart
+  function cfPush(){ const [a,b]=CF.f; const d=b.x-a.x, min=1.3; if(Math.abs(d)<min&&Math.abs(a.y-b.y)<1.4){ const p=(min-Math.abs(d))/2*(d>=0?1:-1); a.x-=p; b.x+=p; a.x=Math.max(-CF_EDGE,Math.min(CF_EDGE,a.x)); b.x=Math.max(-CF_EDGE,Math.min(CF_EDGE,b.x)); } }
+  /* ---------- the bot ---------- */
+  function cfBot(B,P,dt){
+    const L=CF_LV[CF.opt.lv]||CF_LV[1], ai=B.ai, now=CF.now;
+    if(CF.ph!=="fight"||B.st==="ko"){ B.hold.L=B.hold.R=0; B.blk=false; return; }
+    while(ai.q.length&&ai.q[0].at<=now){ const a=ai.q.shift();
+      if(a.k==="A"||a.k==="H") cfAttack(B,a.k); else if(a.k==="U") cfJump(B); else if(a.k==="tap") cfTap(B,B.dir); }
+    const d=Math.abs(P.x-B.x);
+    // guard: when the player starts a move close by, maybe hold the guard until the player's string is over
+    const key=P.mv+"|"+P.chainT;
+    if(P.st==="atk"&&P.t<.15&&d<3.0&&ai.guardFor!==key&&B.st!=="atk"&&!B.air){ ai.guardFor=key; if(!ai.guard&&Math.random()<L.blk){ ai.guard=true; ai.guardAt=now+L.rt*.45; ai.q=[]; } }
+    if(ai.guard){ B.hold.L=B.hold.R=0; if(now>=ai.guardAt) B.blk=B.st!=="hurt"&&B.st!=="atk"&&!B.air;
+      if(P.st!=="atk"&&now-ai.guardAt>.3||now-ai.guardAt>2.2){ ai.guard=false; B.blk=false; } }
+    // a hit blocked: strike back (สวนกลับ)
+    if(B.blkHit!==ai.lastBlk&&now-B.blkHit<.1){ ai.lastBlk=B.blkHit; if(Math.random()<L.ctr){ ai.q.push({at:now+.03+L.rt*.3,k:"H"}); ai.guard=false; B.blk=false; } }
+    // the player walks into reach: hit first (ยาก does this a lot)
+    if(!ai.q.length&&!ai.guard&&B.st!=="atk"&&B.st!=="hurt"&&!B.air&&(P.st==="walk"||P.st==="idle")&&d<1.95&&Math.random()<L.ant*dt*8) cfAttack(B,"A");
+    // the player is slow to recover from a big move, close by: hit now
+    if(!ai.q.length&&!ai.guard&&B.st!=="atk"&&B.st!=="hurt"&&!B.air&&P.st==="atk"&&P.mv&&P.t>CF_MV[P.mv].e&&CF_MV[P.mv].d-P.t>.15&&d<2.05&&Math.random()<L.agg*.5*dt*20) ai.q.push({at:now+L.rt*.5,k:"A"});
+    if(ai.guard||ai.q.length||now<ai.next||B.st==="atk"||B.st==="hurt"){ if(B.st==="hurt") B.hold.L=B.hold.R=0; return; }
+    const toward=P.x>B.x?"R":"L"; B.hold.L=B.hold.R=0; B.blk=false;
+    if(d>1.8){ B.hold[toward]=1;
+      if(d>2.9&&d<4.9&&Math.random()<L.agg*.35*dt*10){ B.hold[toward]=0; ai.q.push({at:now+.02,k:"tap"},{at:now+.12,k:"tap"},{at:now+.2,k:"A"}); }
+      ai.next=now+.08; return; }
+    if(Math.random()>L.agg){ B.hold[toward==="R"?"L":"R"]=1; ai.next=now+.2+Math.random()*.25; return; }   // step back a little
+    const r=Math.random(), t=now+L.rt*.6;
+    if(r<L.slam) ai.q.push({at:t,k:"U"},{at:t+.28,k:"H"});
+    else if(r<L.slam+L.cmb){ const end=Math.random()<.5?"A":"H"; ai.q.push({at:t,k:"A"},{at:t+.24,k:"A"},{at:t+.48,k:end}); }
+    else ai.q.push({at:t,k:Math.random()<.65?"A":"H"});
+    ai.next=t+L.gap+Math.random()*.3; }
+  /* ---------- rounds ---------- */
+  function cfMsg(h,cls=""){ const m=$("cfMsg"); if(!m) return; m.innerHTML=h; m.className="cf-msg "+cls; }
+  function cfCombo(k,name,n){ const e=$("cfCombo"); if(!e) return; e.className="cf-combo k"+k; e.innerHTML=(name?`<b>${esc(name)}!</b>`:"")+(n>=2?`<small>${n} ฮิต</small>`:"");
+    void e.offsetWidth; e.classList.add("in"); clearTimeout(cfCombo.t); cfCombo.t=setTimeout(()=>e.classList.remove("in"),900);
+    if(name&&k===0) [660,880,1175].forEach((f,i)=>setTimeout(()=>beep(f,.07,"triangle",.045),i*55)); }
+  function cfHud(){ const h=$("cfHud"); if(!h) return; const N=cfNames(), F=CF.f;
+    const bar=k=>`<div class="cf-side k${k}"><b>${esc(N[k])}</b><span class="cf-bar"><i class="tr" style="width:${Math.max(0,F[k]?F[k].show:100)}%"></i><i class="hp" style="width:${Math.max(0,F[k]?F[k].hp:100)}%"></i></span><em>${[0,1].map(i=>`<u class="${i<CF.wins[k]?"on":""}"></u>`).join("")}</em></div>`;
+    h.innerHTML=`${bar(0)}<div class="cf-time">${Math.ceil(Math.max(0,CF.left))}<small>รอบ ${CF.round}</small></div>${bar(1)}`; }
+  function cfStart(){ cfClear(); CF.wins=[0,0]; CF.round=0; CF.done=false; $("cfPanel").hidden=true; $("cfPads").hidden=false; $("cfHud").hidden=false;
+    try{ pcHit("pillow"); }catch(e){} cfRound(); }
+  function cfRound(){ cfClear(); CF.round++; CF.f=[cfNew(0),cfNew(1)]; CF.left=CF_TIME; CF.fx=[]; CF.ph="ready"; cfHud();
+    cfMsg(`รอบที่ ${CF.round}`,"rd"); sfx("k_count",1,()=>beep(660,.08,"triangle",.05));
+    cfAt(()=>{ cfMsg("สู้!","go"); sfx("k_go",1,()=>beep(990,.12,"triangle",.06)); CF.ph="fight"; },1300);
+    cfAt(()=>{ if(CF.ph==="fight") cfMsg(""); },2100); }
+  function cfRoundEnd(w,why){ if(CF.ph!=="fight") return; CF.ph="over"; const N=cfNames();
+    if(w>=0) CF.wins[w]++;
+    cfAt(()=>{ cfMsg(w<0?"<b>เสมอรอบนี้!</b>":`<b>${w===0?"เราชนะรอบนี้!":"บอตชนะรอบนี้"}</b><small>${why==="ko"?"น็อก!":"หมดเวลา · หัวใจเหลือมากกว่า"}</small>`,w===0?"win":w===1?"lose":"rd");
+      if(w===0) beep(880,.1,"triangle",.05); cfHud(); },why==="ko"?700:150);
+    cfAt(()=>{ cfMsg(""); if(CF.wins[0]>=CF_WIN||CF.wins[1]>=CF_WIN||CF.round>=5) cfEnd(); else cfRound(); },why==="ko"?2900:2400); }
+  function cfEnd(){ cfClear(); CF.ph="end"; const w=CF.wins[0]>CF.wins[1]?0:CF.wins[1]>CF.wins[0]?1:-1, N=cfNames();
+    if(!CF.done){ CF.done=true; const nm=myName(); if(nm) try{ PartyScores.addPlay([{name:nm,won:w===0}],"pillow",false); }catch(e){}
+      if(w===0){ try{ confetti(); }catch(e){} winSound(); } else loseSound(); }
+    $("cfPads").hidden=true;
+    const P=$("cfPanel"); P.hidden=false; P.className="du-panel du-res cf-panel";
+    P.innerHTML=`<h2>${w===0?"เราชนะ!":w===1?"บอตชนะ ลองใหม่นะ!":"เสมอ!"}</h2>
+      <div class="du-score"><span style="--c:${CF_COL[0]}">${esc(N[0])}<b>${CF.wins[0]}</b><small>รอบที่ชนะ</small></span><i>–</i><span style="--c:${CF_COL[1]}">${esc(N[1])}<b>${CF.wins[1]}</b><small>รอบที่ชนะ</small></span></div>
+      <button type="button" class="go du-go" data-cf="go">สู้อีกครั้ง</button><button type="button" class="tool du-lb" data-cf="lobby">เปลี่ยนระดับ / ดูท่า</button>`; }
+  function cfLobby(){ cfClear(); CF.ph="lobby"; CF.f=[cfNew(0),cfNew(1)]; CF.wins=[0,0]; CF.round=0; $("cfPads").hidden=true; $("cfHud").hidden=true; cfMsg("");
+    const o=CF.opt, P=$("cfPanel"); P.hidden=false; P.className="du-panel du-lob cf-panel";
+    P.innerHTML=`<h2>ตีหมอน · โหมดคอมโบ</h2><p class="du-sub">สู้ตัวต่อตัวกับบอตแบบเงา · ชนะ 2 ใน 3 รอบ · กดปุ่มต่อกันเป็นท่าพิเศษ</p>
+      <p class="s-opt-k">ระดับบอต</p><div class="s-seg du-seg">${CF_LV.map((l,i)=>`<button type="button" class="s-segb ${i===o.lv?"on":""}" data-cf="lv" data-v="${i}">${l.n}</button>`).join("")}</div><p class="s-desc">${CF_LV[o.lv].d}</p>
+      <p class="s-opt-k">ท่าคอมโบ</p><ul class="cf-list">${CF_LIST.map(([k,n])=>`<li><span>${k.split(" ").map(x=>x==="แล้ว"?"<i>→</i>":/^(ตี|ตีแรง|กัน|กระโดด|กันได้)$/.test(x)?`<kbd>${x}</kbd>`:esc(x)).join(" ")}</span><b>${n}</b></li>`).join("")}</ul>
+      <button type="button" class="go du-go" data-cf="go">เริ่มสู้!</button>`; }
+  /* ---------- the picture ---------- */
+  function cfFit(){ const cv=CF.cv; if(!cv) return; const z=ZM(), dpr=Math.min(2,devicePixelRatio||1)*(LITE?.75:1)*z, W=innerWidth/z, H=innerHeight/z;
+    CF.W=W; CF.H=H; CF.dpr=dpr; cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); cv.style.width=W+"px"; cv.style.height=H+"px";
+    const land=W>H; CF.view=land?12:8; CF.s=Math.min(W/CF.view,H/(land?7.2:9.5)); CF.gy=land?H-Math.max(80,H*.24):H*.62; CF.bg=null; CF.cam=CF.cam||0; }
+  // the camera follows the middle of the two fighters (the arena is wider than the screen)
+  const cfX=ux=>CF.W/2+(ux-CF.cam)*CF.s;
+  function cfBg(){ const W=CF.W, H=CF.H, gy=CF.gy, c=document.createElement("canvas"); c.width=Math.round(W*CF.dpr); c.height=Math.round(H*CF.dpr); const x=c.getContext("2d"); x.scale(CF.dpr,CF.dpr);
+    const sky=x.createLinearGradient(0,0,0,gy); sky.addColorStop(0,"#3B1F8E"); sky.addColorStop(.42,"#C2338F"); sky.addColorStop(.75,"#FF6A4D"); sky.addColorStop(1,"#FFC15E"); x.fillStyle=sky; x.fillRect(0,0,W,gy+2);
+    const sr=Math.min(W,H)*.2, sg=x.createRadialGradient(W*.5,gy-sr*.55,sr*.2,W*.5,gy-sr*.55,sr*2.4); sg.addColorStop(0,"rgba(255,236,150,.95)"); sg.addColorStop(.35,"rgba(255,200,110,.35)"); sg.addColorStop(1,"rgba(255,170,90,0)");
+    x.fillStyle=sg; x.fillRect(0,0,W,gy); x.fillStyle="#FFE58F"; x.beginPath(); x.arc(W*.5,gy-sr*.55,sr,0,Math.PI*2); x.fill();
+    // far hills, near hills (shades of purple), then the black ground the fighters stand on
+    const hill=(base,amp,col,seed)=>{ x.fillStyle=col; x.beginPath(); x.moveTo(0,gy); for(let i=0;i<=40;i++){ const X=i/40*W; x.lineTo(X,base-amp*(.55+.45*Math.sin(i*.55+seed)*Math.cos(i*.21+seed*2))); } x.lineTo(W,gy); x.closePath(); x.fill(); };
+    hill(gy-H*.05,H*.16,"rgba(110,40,140,.55)",1.3); hill(gy-H*.01,H*.1,"rgba(60,18,90,.8)",4.1);
+    x.fillStyle="#0D0912"; x.fillRect(0,gy,W,H-gy);
+    // trees and posts at the sides, grass on the edge
+    const tree=(X,h)=>{ x.fillStyle="#0D0912"; x.fillRect(X-h*.04,gy-h*.55,h*.08,h*.56); [[0,-.62,.3],[-.18,-.5,.22],[.2,-.5,.24],[0,-.8,.2]].forEach(([dx,dy,r])=>{ x.beginPath(); x.arc(X+dx*h,gy+dy*h,r*h,0,Math.PI*2); x.fill(); }); };
+    const th=Math.min(W,H); tree(W*.06,th*.5); tree(W*.95,th*.42); tree(W*.86,th*.28);
+    x.fillRect(W*.17,gy-H*.2,Math.max(3,W*.006),H*.2); x.beginPath(); x.arc(W*.17+Math.max(3,W*.006)/2,gy-H*.2,Math.max(5,H*.016),0,Math.PI*2); x.fill();
+    for(let i=0;i<W;i+=7){ const h=3+((i*37)%9); x.beginPath(); x.moveTo(i,gy+1); x.lineTo(i+2,gy-h); x.lineTo(i+4,gy+1); x.fill(); }
+    return c; }
+  // a shadow stickman holding the game's own pillow: the same body, legs, swings and pillow as ตีหมอน, drawn black (the pillow stays white).
+  // Sizes are the pillow game's (a fighter is about 62 px tall there), scaled to the arena.
+  function cfDraw(x,F){
+    const k=CF.s*2.55/62, X=cfX(F.x), Y=CF.gy-F.y*CF.s, f=F.dir, now=CF.now*1000, D=Math.PI/180, M=F.mv&&CF_MV[F.mv], c=CF_COL[F.k], ink="#0B0910";
+    const air=F.air, stun=F.st==="hurt", ko=F.st==="ko", atk=F.st==="atk"&&M;
+    const mv=air?0:Math.min(1,Math.abs(F.vx)/4.3), ph=F.walk*9;
+    const rise=air&&F.vy>0, fall=air&&!rise;
+    // which beat of the pillow swing, and how far along (the same three beats as ตีหมอน)
+    let cm=0, prog=-1;
+    if(atk){ const u=Math.min(1,F.t/Math.max(.05,M.e));
+      if(F.mv==="jab2"||F.mv==="counter"){ cm=1; prog=u; }
+      else if(F.mv==="heavy"||F.mv==="spin"){ cm=2; prog=u; }
+      else if(F.mv==="rush"){ const n=M.multi, span=(M.e-M.a*.5)/n, tt=Math.max(0,F.t-M.a*.5), i=Math.min(n-1,Math.floor(tt/span)); cm=i%2; prog=Math.min(1,(tt-i*span)/span); }
+      else if(F.mv==="slam"){ if(!F.air){ cm=0; prog=Math.min(1,.5+F.t/.14); } }
+      else { cm=0; prog=u; } }
+    x.save(); x.translate(X,Y); x.scale(k,k); x.lineCap="round"; x.lineJoin="round";
+    x.fillStyle="rgba(0,0,0,.35)"; x.beginPath(); x.ellipse(0,(F.y*CF.s)/k+1,16*(1-Math.min(.6,F.y*.12)),3.6,0,0,7); x.fill();
+    if(ko){ const u=Math.min(1,F.t*3); x.translate(-f*12*u,0); x.rotate(-f*u*Math.PI/2); }
+    if(atk&&F.mv==="spin"&&F.t>M.a*.6){ const u=Math.min(1,(F.t-M.a*.6)/(M.e-M.a*.6)), cz=Math.cos(u*Math.PI*2); x.scale(Math.abs(cz)<.15?(cz<0?-.15:.15):cz,1); }   // turns round on the spot
+    const bob=air?0:mv?mv*(1.6-2*Math.abs(Math.cos(ph))):Math.sin(now/430)*.6;
+    let lean=f*(mv*.13)-f*(stun?.3:0)+(fall?f*.06:0)-(F.blk?f*.08:0);
+    if(prog>=0&&!stun) lean+=cm===2?f*(-.18*Math.max(0,1-prog/.45)+.32*Math.max(0,(prog-.45)/.55)):cm===1?-f*.14*Math.sin(prog*Math.PI):f*.06*Math.sin(prog*Math.PI);
+    if(atk&&F.mv==="dash") lean+=f*.32;
+    const hx=0, hy=-20+bob+(F.blk?2:0), sx=hx+Math.sin(lean)*20, sy=hy-Math.cos(lean)*20;
+    const line=(pts,w)=>{ x.beginPath(); x.moveTo(pts[0][0],pts[0][1]); for(let i=1;i<pts.length;i++) x.lineTo(pts[i][0],pts[i][1]); x.strokeStyle=ink; x.lineWidth=w; x.stroke(); };
+    const leg=s2=>{ let a,bend;
+      if(rise){ a=s2>0?.9:-.15; bend=s2>0?1.5:.55; } else if(fall){ a=s2>0?.35:-.3; bend=s2>0?.35:.2; } else if(stun){ a=s2>0?-.15:.25; bend=.45; }
+      else if(F.blk){ a=s2>0?.35:-.3; bend=.5; }
+      else { const q=ph+(s2>0?0:Math.PI), sw=Math.max(0,Math.cos(q+.35)); a=(Math.sin(q)*.5+sw*.14)*mv+(s2>0?.2:-.2)*(1-mv); bend=(.1+.72*sw*Math.sqrt(sw))*mv+.06; }
+      const kx=hx+f*Math.sin(a)*10.5, ky=hy+Math.cos(a)*10.5, a2=a-bend, fx=kx+f*Math.sin(a2)*10.5, fy=Math.min(0,ky+Math.cos(a2)*10.5);
+      line([[hx,hy],[kx,ky],[fx,fy]],SM.lw*1.2); };
+    leg(-1); leg(1);
+    line([[hx,hy],[sx,sy]],SM.tw*1.25);
+    const ax=sx+Math.sin(lean)*-4, ay=sy+4;
+    const ba=(stun?(-150+Math.sin(now/55)*25):rise?-35:fall?-120:F.blk?40:(112+Math.sin(ph+Math.PI)*30*mv+Math.sin(now/430)*3))*D;
+    line([[ax,ay],[ax+Math.cos(ba)*13*f,ay+Math.sin(ba)*13]],SM.lw*1.2);
+    const swA0=cm===1?70:cm===2?-215:-160, swDeg=cm===1?70-prog*230:cm===2?(prog<.3?-160-prog/.3*55:-215+Math.pow((prog-.3)/.7,.8)*290):-160+prog*210;
+    const ang=(prog<0?(F.blk?-8:stun?-20:F.slam&&air?-100:rise?-95:-62+Math.sin(ph)*7*mv):swDeg)*D;
+    const hx2=ax+Math.cos(ang)*18*f, hy2=ay+Math.sin(ang)*18;
+    line([[ax,ay],[hx2,hy2]],SM.lw*1.2);
+    if(prog>=0&&prog<.95&&!(cm===2&&prog<.3)&&!LITE) pSwingFx(x,ax,ay,ang,cm===2?(prog-.3)/.7:prog,f,c,now,swA0,cm===2?1.3:1);
+    // the pillow, exactly as in ตีหมอน: white, pink edge, a heart in the fighter's colour
+    x.save(); x.translate(hx2+Math.cos(ang)*14*f,hy2+Math.sin(ang)*14); x.rotate(f>0?ang:Math.PI-ang); if(F.blk) x.rotate(Math.PI/2); if(cm===2&&prog>=0) x.scale(1.3,1.3);
+    x.fillStyle="#fff"; x.strokeStyle="#F2A7C0"; x.lineWidth=2; pRound(x,-14,-9,28,18,7); x.fill(); x.stroke(); x.fillStyle=c; pHeart(x,0,0,5); x.fill(); x.restore();
+    // head, the headband in the fighter's colour with its tail flying behind, two small eyes
+    const gx=sx+Math.sin(lean)*10+f, gy=sy-Math.cos(lean)*10, r=SM.hr;
+    x.fillStyle=ink; x.beginPath(); x.arc(gx,gy,r,0,7); x.fill();
+    x.strokeStyle=c; x.lineWidth=3.2; x.beginPath(); x.moveTo(gx-r*.98*f,gy-3.5); x.lineTo(gx+r*.98*f,gy-3.5); x.stroke();
+    const fl=Math.sin(now/90+F.k*2)*3; x.lineWidth=2.6; x.beginPath(); x.moveTo(gx-r*.9*f,gy-3.5); x.quadraticCurveTo(gx-f*(r+8),gy-2+fl,gx-f*(r+17),gy+1+fl*1.6); x.stroke();
+    x.fillStyle="#FFF4D6"; if(stun||ko){ x.strokeStyle="#FFF4D6"; x.lineWidth=1.6; x.beginPath(); x.moveTo(gx+f*3,gy-1.5); x.lineTo(gx+f*7,gy+2.5); x.moveTo(gx+f*7,gy-1.5); x.lineTo(gx+f*3,gy+2.5); x.stroke(); }
+    else { x.beginPath(); x.ellipse(gx+f*4.5,gy+.5,1.5,2.4,0,0,7); x.fill(); }
+    x.restore(); }
+  function cfFx(kind,ux,uy,k,dmg){ if(cfRM()&&kind!=="hit") return; const now=CF.now, n=kind==="hit"?(dmg>=15?16:9):kind==="dust"?10:5;
+    for(let i=0;i<n;i++){ const a=Math.random()*Math.PI*2, v=kind==="dust"?2+Math.random()*3:3+Math.random()*5;
+      CF.fx.push({kind,x:ux,y:uy,vx:Math.cos(a)*v,vy:kind==="dust"?Math.abs(Math.sin(a))*v*.5:Math.sin(a)*v+2,r:Math.random()*6,start:now,end:now+.6+Math.random()*.6,k}); }
+    if(kind!=="dust") CF.fx.push({kind:"ring",x:ux,y:uy,start:now,end:now+.28,k,big:dmg>=15}); }
+  function cfFrame(ms){ CF.raf=0; if(!CF.on) return; CF.raf=requestAnimationFrame(cfFrame);
+    const real=Math.min(.05,CF.last?(ms-CF.last)/1000:0); CF.last=ms; const slow=CF.now<CF.slowT?.35:1, dt=real*slow; CF.now+=dt;
+    if(CF.f.length===2&&(CF.ph==="fight"||CF.ph==="over"||CF.ph==="ready")){
+      const [P,B]=CF.f; cfBot(B,P,dt);
+      const step=1/120; let left=dt; while(left>0){ const h=Math.min(step,left); left-=h; cfStep(P,B,h); cfStep(B,P,h); cfPush(); }
+      if(CF.ph==="fight"){ CF.left-=dt; if(CF.left<=0){ CF.left=0; cfRoundEnd(P.hp>B.hp?0:B.hp>P.hp?1:-1,"time"); } }
+      if(!cfFrame.h||ms-cfFrame.h>100){ cfFrame.h=ms; cfHud(); } }
+    const x=CF.x, W=CF.W, H=CF.H; if(!x) return;
+    { const lim=Math.max(0,CF_EDGE+.8-CF.view/2), mid=CF.f.length===2?(CF.f[0].x+CF.f[1].x)/2:0, want=Math.max(-lim,Math.min(lim,mid)); CF.cam+=(want-CF.cam)*Math.min(1,real*5); }
+    x.setTransform(CF.dpr,0,0,CF.dpr,0,0);
+    if(!CF.bg) CF.bg=cfBg();
+    const sh=CF.shake>0&&!cfRM()?CF.shake*CF.s*.25:0; CF.shake=Math.max(0,CF.shake-real);
+    x.save(); if(sh) x.translate((Math.random()-.5)*sh,(Math.random()-.5)*sh);
+    x.drawImage(CF.bg,0,0,W,H);
+    (CF.f.length===2?CF.f:[cfNew(0),cfNew(1)]).slice().sort((a,b)=>(a.st==="atk")-(b.st==="atk")).forEach(F=>cfDraw(x,F));
+    const s=CF.s, now=CF.now;
+    CF.fx=CF.fx.filter(p=>now<p.end); CF.fx.forEach(p=>{ const u=(now-p.start)/(p.end-p.start), X=cfX(p.x+p.vx*(now-p.start)), Y=CF.gy-(p.y+p.vy*(now-p.start)-6*(now-p.start)**2)*s;
+      if(p.kind==="ring"){ x.strokeStyle=`rgba(255,255,255,${1-u})`; x.lineWidth=3; x.beginPath(); for(let i=0;i<10;i++){ const a=i/10*Math.PI*2, r1=s*(p.big?.5:.3)*(.5+u), r2=s*(p.big?1.2:.8)*(.5+u); x.moveTo(cfX(p.x)+Math.cos(a)*r1,CF.gy-p.y*s+Math.sin(a)*r1); x.lineTo(cfX(p.x)+Math.cos(a)*r2,CF.gy-p.y*s+Math.sin(a)*r2); } x.stroke(); return; }
+      if(p.kind==="dust"){ x.fillStyle=`rgba(40,30,50,${.6*(1-u)})`; x.beginPath(); x.arc(X,CF.gy-(p.y+p.vy*(now-p.start))*s,s*.12*(1+u),0,Math.PI*2); x.fill(); return; }
+      x.save(); x.translate(X,Y); x.rotate(p.r+u*4); x.fillStyle=p.kind==="block"?`rgba(150,210,255,${1-u})`:`rgba(255,255,255,${1-u})`; x.beginPath(); x.ellipse(0,0,s*.16,s*.06,0,0,Math.PI*2); x.fill(); x.restore(); });
+    x.restore(); }
+  function cfEl(){ let d=$("cfg"); if(d) return d;
+    d=document.createElement("div"); d.className="duel cfg"; d.id="cfg"; d.hidden=true;
+    const pb=(k,t,cls)=>`<button type="button" class="cf-b ${cls||""}" data-k="${k}" aria-label="${t}">${t}</button>`;
+    d.innerHTML=`<canvas class="du-cv" aria-label="ตีหมอน โหมดคอมโบ"></canvas>
+      <button class="gexit du-exit" type="button" data-cf="exit">ออก</button>
+      <div class="cf-hud" id="cfHud" hidden></div><div class="cf-combo" id="cfCombo" aria-live="polite"></div>
+      <div class="du-msg cf-msg" id="cfMsg" aria-live="assertive"></div>
+      <div class="cf-pads" id="cfPads" hidden><div class="cf-l">${pb("U","▲","up")}${pb("L","◀","lf")}${pb("R","▶","rt")}</div><div class="cf-r">${pb("H","ตีแรง","hv")}${pb("B","กัน","blk")}${pb("A","ตี","at")}</div></div>
+      <div class="du-panel" id="cfPanel"></div>`;
+    document.body.appendChild(d);
+    CF.cv=d.querySelector("canvas"); CF.x=CF.cv.getContext("2d");
+    d.addEventListener("click",e=>{ const b=e.target.closest("[data-cf]"); if(!b) return; const a=b.dataset.cf;
+      if(a==="exit") return cfClose();
+      if(a==="lv"){ CF.opt.lv=+b.dataset.v; cfSave(); cfLobby(); beep(720,.04,"triangle",.03); }
+      if(a==="go") cfStart();
+      if(a==="lobby") cfLobby(); });
+    // the pads: hold ◀ ▶ กัน, tap ▲ ตี ตีแรง
+    const press=(k,on)=>{ const P=CF.f[0]; if(!P||CF.ph!=="fight") return;
+      if(k==="L"||k==="R"){ if(on&&!P.hold[k]) cfTap(P,k==="R"?1:-1); P.hold[k]=on?1:0; }
+      else if(k==="B"){ P.blk=on&&!P.air&&P.st!=="atk"&&P.st!=="hurt"; P.hold.B=on?1:0; }
+      else if(on&&k==="U") cfJump(P);
+      else if(on&&(k==="A"||k==="H")) cfAttack(P,k); };
+    const ptr=new Map();
+    d.querySelector("#cfPads").addEventListener("pointerdown",e=>{ const b=e.target.closest(".cf-b"); if(!b) return; e.preventDefault(); try{ b.setPointerCapture(e.pointerId); }catch(x){} ptr.set(e.pointerId,b); b.classList.add("on"); press(b.dataset.k,true); });
+    const up=e=>{ const b=ptr.get(e.pointerId); if(!b) return; ptr.delete(e.pointerId); b.classList.remove("on"); press(b.dataset.k,false); };
+    ["pointerup","pointercancel","lostpointercapture"].forEach(t=>d.querySelector("#cfPads").addEventListener(t,up));
+    d.querySelector("#cfPads").addEventListener("contextmenu",e=>e.preventDefault());
+    const KEYS={ArrowLeft:"L",KeyA:"L",ArrowRight:"R",KeyD:"R",ArrowUp:"U",KeyW:"U",Space:"U",KeyJ:"A",KeyK:"H",KeyL:"B",KeyS:"B",ArrowDown:"B"};
+    addEventListener("keydown",e=>{ if(!CF.on) return; if(e.key==="Escape") return cfClose(); const k=KEYS[e.code]; if(!k) return; e.preventDefault(); if(e.repeat) return; press(k,true); });
+    addEventListener("keyup",e=>{ if(!CF.on) return; const k=KEYS[e.code]; if(k) press(k,false); });
+    addEventListener("resize",()=>{ if(CF.on) cfFit(); });
+    return d; }
+  function cfOpen(){ const d=cfEl(); CF.on=true; d.hidden=false; document.body.style.overflow="hidden"; cfFit(); cfLobby(); CF.last=0; if(!CF.raf) CF.raf=requestAnimationFrame(cfFrame); }
+  function cfClose(){ cfClear(); CF.on=false; CF.ph="lobby";
+    wipe(()=>{ const d=$("cfg"); if(d) d.hidden=true; document.body.style.overflow=$("game")&&!$("game").hidden||$("grp")&&!$("grp").hidden?"hidden":""; }); }
+  window.__cf={get:()=>CF, open:cfOpen, attack:(k,key)=>cfAttack(CF.f[k],key), lv:CF_LV, mv:CF_MV};   // for the self-test
 
   /* =========================================================
      ตึกโยกเยก — falling blocks (4 squares each) that land and become real physics: build your tower up to the finish line
@@ -10722,6 +11054,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     if(id==="pbJoin"){ BOSS.on=true; joinRoom(); return; }
     if(id==="pbSolo"){ BOSS.on=true; const nm=readName(); if(!nm) return; pLandAsk(); wipe(()=>pBegin(nm,false)); return; }
     if(id==="pbBack"){ BOSS.on=false; wipe(()=>{ leaveRoom(); showOnlineEntry(); }); return; }
+    if(t.closest("#oCombo")){ wipe(cfOpen); return; }
     if(t.closest("#oQuick")) quickMatch();
     else if(id==="oCreate") createRoom();
     else if(id==="oJoin") joinRoom();
@@ -11839,6 +12172,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
         <div class="pl-go">
           <button class="bd1-tile t-find pl-bots" id="oBots" type="button"><span class="ti">${BOT_AVATAR}</span><span class="tt"><b>เล่นกับบอต</b><small id="plSum">${plSum()}</small></span></button>
           <button class="bd1-tile pl-find" id="oQuick" type="button" ${IN_CLAUDE?"disabled":""}><span class="ti">${BD1_IC.find}</span><b>หาคนเล่นด้วย</b></button>
+          ${GAME==="pillow"?`<button class="bd1-tile pl-cf" id="oCombo" type="button"><span class="ti" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="9" r="5" fill="currentColor"/><path d="M20 14v12M20 26l-6 10M20 26l6 10M20 17l-8 6M20 17l7-5" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" fill="none"/><rect x="25" y="4" width="11" height="7" rx="3.5" fill="currentColor" transform="rotate(-25 30 8)"/></svg></span><span class="tt"><b>โหมดคอมโบ</b><small>สู้ตัวต่อตัวแบบเงา · กดต่อกันเป็นท่า</small></span><em>ใหม่!</em></button>`:""}
         </div>
       </div>
       <div class="pl-more" id="plMore">
