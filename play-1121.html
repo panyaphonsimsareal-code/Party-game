@@ -4752,7 +4752,50 @@ html.lnd .btable:not(#_) .b-tray{grid-area:tray; height:auto; grid-template-colu
 .cf-panel .cf-list li{display:flex; justify-content:space-between; align-items:center; gap:8px; padding:6px 10px; border-radius:12px; background:#F4F6FC; font:600 12.5px/1.3 var(--display); color:#3A4170}
 .cf-panel .cf-list b{font:800 13.5px/1.2 var(--display); color:#5B1E6E; white-space:nowrap} .cf-panel .cf-list i{font-style:normal; color:#98A1BF}
 .cf-panel kbd{display:inline-block; padding:1px 7px; border-radius:7px; background:#1E2757; color:#fff; font:700 12px/1.5 var(--display)}
-@media (orientation:portrait){ .cf-hud{width:calc(100vw - 110px); right:10px; left:auto; transform:none; gap:6px} .cf-time{font-size:20px; min-width:40px} }
+.cf-train{position:absolute; z-index:3; top:max(10px,env(safe-area-inset-top)); left:50%; transform:translateX(-50%); width:min(440px,calc(100vw - 120px)); padding:8px 12px 10px; border-radius:18px; background:rgba(20,10,35,.82); box-shadow:inset 0 0 0 2px rgba(255,255,255,.2); text-align:center; color:#fff}
+.cf-train[hidden]{display:none} .cf-train small{display:block; font:700 12px/1.3 var(--display); opacity:.8} .cf-train b{display:block; font:800 22px/1.2 var(--display); color:#FFE58F}
+.cf-train span{display:flex; justify-content:center; align-items:center; gap:6px; margin:6px 0 2px} .cf-train kbd{padding:3px 10px; border-radius:9px; background:#fff; color:#1E2757; font:800 15px/1.3 var(--display)} .cf-train i{font-style:normal; opacity:.7}
+.cf-train em{display:block; font:600 12.5px/1.35 var(--display); font-style:normal; color:#FFD9EC}
+.cf-train button{margin-top:6px; padding:4px 12px; border:0; border-radius:99px; background:rgba(255,255,255,.18); color:#fff; font:700 12px/1.4 var(--display); cursor:pointer}
+.cf-train.done{box-shadow:inset 0 0 0 3px #4ADE80} .cf-train.done b::after{content:" ✓ ผ่าน!"; color:#4ADE80}
+@media (prefers-reduced-motion: no-preference){ .cf-b.hint{animation:cfHint 1s ease-in-out infinite} }
+.cf-b.hint{box-shadow:inset 0 0 0 3px #FFE58F,0 0 0 4px rgba(255,229,143,.45),0 5px 0 rgba(0,0,0,.35)}
+@keyframes cfHint{0%,100%{transform:none} 50%{transform:scale(1.08)}}
+.cf-go2{display:flex; gap:8px; align-items:stretch} .cf-go2 .go{flex:1.4} .cf-go2 .tool{flex:1; margin-top:6px; justify-content:center; text-align:center}
+.cf-pads.two .cf-g{display:grid; grid-template-columns:repeat(3,auto); gap:6px; padding:6px; border-radius:20px; background:rgba(0,0,0,.25); box-shadow:inset 0 0 0 2px var(--pc)}
+.cf-pads.two .cf-b{width:clamp(48px,7vw,60px); height:clamp(48px,7vw,60px); font-size:14px; grid-area:auto; margin:0}
+.cf-pads.two .cf-b.at{background:#E8305E} .cf-pads.two .cf-b.hv{background:#FF7A3D} .cf-pads.two .cf-b.blk{background:#2F6FD8}
+.cf-net{display:flex; flex-direction:column; gap:8px; margin-top:4px} .cf-join{display:flex; gap:8px} .cf-join input{flex:1; min-width:0; font-size:20px; text-align:center; letter-spacing:.2em} .cf-join .go{margin-top:0; flex:none; padding:10px 16px}
+.cf-code{margin:6px 0; font:800 54px/1 var(--display); letter-spacing:.18em; text-align:center; color:#5B1E6E}
+/* the result card stands above the แชร์ชัยชนะ pill (that pill sits at the bottom middle) */
+html .cfg .cf-panel.du-res{top:auto; bottom:calc(76px + env(safe-area-inset-bottom)); transform:none; max-height:calc(100% - 96px)}
+@media (orientation:portrait){ .cf-train{width:calc(100vw - 110px); right:10px; left:auto; transform:none} .cf-hud{width:calc(100vw - 110px); right:10px; left:auto; transform:none; gap:6px} .cf-time{font-size:20px; min-width:40px} }
+</style><style>
+.hv2-skip{margin-left:auto; margin-right:6px; background:rgba(255,255,255,.28)}
+.section-title .sr-btn{margin-left:6px; background:linear-gradient(180deg,#7C4DEB,#5B2FC9); box-shadow:0 3px 0 #3E1E94} .section-title .sr-btn:active{box-shadow:0 1px 0 #3E1E94}
+.section-title .sr-btn svg{animation:none!important}
+.sr .rl-card{width:min(380px,100%)} .sr-lv button.on{background:#7C4DEB!important; color:#fff}
+.sr-pick{list-style:none; margin:4px 0 8px; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
+.sr-pick li{position:relative; display:flex; flex-direction:column; align-items:center; gap:4px; padding:8px 4px; border-radius:16px; background:#F1F4FB}
+.sr-pick li i{position:absolute; top:4px; left:6px; width:20px; height:20px; border-radius:50%; background:#7C4DEB; color:#fff; font:800 12px/20px var(--display,inherit); font-style:normal}
+.sr-pick .rl-art{width:64px; height:64px; border-radius:14px} .sr-pick b{font:800 13px/1.2 var(--display,inherit); color:#1E2757; text-align:center}
+.sr-row{list-style:none; margin:4px 0 10px; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:6px}
+.sr-row li{padding:6px 4px; border-radius:12px; background:#F1F4FB; display:flex; flex-direction:column; gap:2px; align-items:center}
+.sr-row b{font:800 12.5px/1.2 var(--display,inherit); color:#1E2757; text-align:center} .sr-row small{font:700 12px/1.2 var(--display,inherit); color:#6A7299}
+.sr-row li.w{background:#E7F8EE} .sr-row li.w small{color:#167A42} .sr-row li.l{background:#FFEDF1} .sr-row li.l small{color:#B4173F} .sr-row li.nx{box-shadow:inset 0 0 0 2px #FF7A3D}
+.hl-btn{position:fixed; z-index:9250; right:max(10px,env(safe-area-inset-right)); top:calc(max(8px,env(safe-area-inset-top)) + 58px); display:flex; align-items:center; gap:6px; height:40px; padding:0 12px 0 10px; border:0; border-radius:99px; background:rgba(20,10,35,.72); color:#fff; font:800 13px/1 var(--display,inherit); box-shadow:inset 0 0 0 2px rgba(255,255,255,.35); cursor:pointer}
+.hl-btn[hidden]{display:none} .hl-btn i{width:14px; height:14px; border-radius:50%; background:#FF3B5C; box-shadow:0 0 0 2px #fff}
+.hl-btn.on{background:#E8305E} .hl-btn.on i{border-radius:3px; background:#fff; box-shadow:none}
+@media (prefers-reduced-motion: no-preference){ .hl-btn.on{animation:hlBlink 1s steps(2) infinite} } @keyframes hlBlink{50%{box-shadow:inset 0 0 0 2px #fff}}
+.hl-pop{position:fixed; inset:0; z-index:9700; display:flex; align-items:center; justify-content:center; padding:16px; background:rgba(14,22,52,.6)} .hl-pop[hidden]{display:none}
+.hl-card{width:min(420px,100%); max-height:100%; overflow:auto; background:#fff; border-radius:24px; padding:16px; text-align:center}
+.hl-card h2{margin:0 0 8px; font:800 22px/1.2 var(--display,inherit); color:#1E2757} .hl-card video{width:100%; max-height:52vh; border-radius:14px; background:#000}
+.hl-card p{margin:6px 0 10px; font:600 12.5px/1.4 var(--display,inherit); color:#6A7299}
+.hl-lim{list-style:none; margin:8px 0 10px; padding:0; display:grid; gap:4px; text-align:left} .hl-lim li{padding:5px 10px; border-radius:10px; background:#F1F4FB; font:600 12.5px/1.35 var(--display,inherit); color:#3A4275}
+.hl-lim li:first-child{background:#FFF4E5; color:#9A5B00} .hl-lim li.ok{background:#E7F8EE; color:#167A42}
+.hl-card .hl-st{min-height:18px; margin:0 0 8px; font:700 13px/1.4 var(--display,inherit); color:#3A4275} .hl-card .hl-st.ok{color:#167A42} .hl-card .hl-st.warn{color:#B4173F} .hl-b .tool.warn{background:#FFEDF1; color:#B4173F; border-color:#FFC7D4}
+.hl-tip{position:fixed; z-index:9250; right:max(10px,env(safe-area-inset-right)); top:calc(max(8px,env(safe-area-inset-top)) + 104px); width:min(260px,70vw); padding:8px 12px; border-radius:14px; background:rgba(20,10,35,.88); color:#fff; font:600 12px/1.45 var(--display,inherit); box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.hl-tip[hidden]{display:none} .hl-tip b{display:block; font-size:13.5px; color:#FFD24A} .hl-b{display:flex; gap:8px} .hl-b .go{flex:1.4} .hl-b .tool{flex:1; justify-content:center}
 </style></head>
 <body>
 <div id="kpClosed" role="dialog" aria-label="ปิดปรับปรุงชั่วคราว">
@@ -4913,6 +4956,7 @@ window.__xSnow=function(host,fixed){ var cv=document.createElement("canvas"); cv
   <div class="section-title">
     <h2>กลุ่มเกม</h2>
     <button class="rl-btn" id="rlBtn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="currentColor"/><g fill="#fff"><circle cx="8.2" cy="8.2" r="1.7"/><circle cx="15.8" cy="8.2" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="8.2" cy="15.8" r="1.7"/><circle cx="15.8" cy="15.8" r="1.7"/></g></svg>สุ่มเกม</button>
+    <button class="rl-btn sr-btn" id="srBtn" type="button" aria-label="แข่ง 3 เกม"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 3h10v2h3v3a4 4 0 0 1-4 4h-.3A5 5 0 0 1 13 14.9V17h3v3H8v-3h3v-2.1A5 5 0 0 1 8.3 12H8a4 4 0 0 1-4-4V5h3zm-1 4v1a2 2 0 0 0 1.2 1.8A5 5 0 0 1 7 8.6V7zm12 0h-1v1.6a5 5 0 0 1-.2 1.2A2 2 0 0 0 18 8z"/></svg>3 เกม</button>
     <p id="gameCount"></p>
   </div>
   <div class="grid" id="grid"></div>
@@ -5085,7 +5129,7 @@ window.__xSnow=function(host,fixed){ var cv=document.createElement("canvas"); cv
   </div>
 </div>
 <div class="hv2" id="hvPop" role="dialog" aria-modal="true" aria-label="วิดีโอวิธีเล่น" hidden>
-  <div class="hv2-top"><b id="hvT">วิธีเล่น</b><button class="hv2-x" id="hvX" type="button" hidden>ปิด ✕</button></div>
+  <div class="hv2-top"><b id="hvT">วิธีเล่น</b><button class="hv2-x hv2-skip" id="hvSkip" type="button" hidden>ข้ามวิดีโอ ⏭</button><button class="hv2-x" id="hvX" type="button" hidden>ปิด ✕</button></div>
   <div class="hv2-box"><video id="hvV" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture></video><button class="hv2-tap" id="hvTap" type="button">▶ แตะเพื่อเล่นวิดีโอ</button><div class="hv2-btns" id="hvBtns" hidden><button class="hv2-again" id="hvAgain" type="button">ดูอีกครั้ง</button><button class="hv2-go" id="hvGo" type="button">เข้าเกมเลย!</button></div><div class="hv2-bar"><i id="hvBar"></i></div></div>
   <section class="hv2-rules" aria-labelledby="hvRT"><h3 id="hvRT">กติกา</h3><ol id="hvR"></ol></section>
 </div>
@@ -6110,6 +6154,20 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     <text class="la-z" x="128" y="70" font-family="Mitr,sans-serif" font-weight="700" font-size="16" fill="#C9D4FF">z</text><text class="la-z" style="animation-delay:.6s" x="138" y="56" font-family="Mitr,sans-serif" font-weight="700" font-size="12" fill="#C9D4FF">z</text></svg>`;
   const resArt=k=>k==="lose"?LOSE_ART:WIN_ART;
   const RES_LOSE="แพ้แล้ว ไม่เป็นไรนะ";
+  const LOSE_LINES=["บอตชนะไปก่อน รอบหน้าเอาคืน!","เกือบแล้ว! อีกนิดเดียวจริง ๆ","บอตแอบดีใจ แต่ยังไม่กล้าฉลอง","แพ้รอบนี้ ได้ประสบการณ์มาเต็มกระเป๋า",
+    "พักหายใจแป๊บ แล้วไปต่อ!","บอตบอกว่า รอบหน้าเบามือหน่อยนะ","ไม่เป็นไร แชมป์ทุกคนเคยแพ้มาก่อน","นิ้วเพิ่งวอร์มเสร็จ เกมก็จบซะแล้ว",
+    "บอตเก่งขึ้นนิดนึง เราก็เก่งขึ้นได้!","รอบนี้ซ้อมมือ รอบหน้าของจริง","บอตขอเก็บชัยชนะนี้ไว้ดูต่างหน้า","แพ้แบบมีสไตล์ ให้ 10 คะแนนเต็ม",
+    "ยังไม่จบ! กดเล่นอีกครั้งเลย","บอตยังสั่นอยู่เลย ทั้งที่ชนะ","ห่างกันนิดเดียว เหมือนเส้นผมบัง","วันนี้บอตกินข้าวเยอะ เลยมีแรง",
+    "แพ้ได้ แต่ห้ามหยุดสนุก!","บอตกำลังจดสูตรของเราอยู่ ระวังนะ","รอบหน้าบอตต้องเหนื่อยแน่","หายใจเข้าลึก ๆ แล้วกดเล่นอีกครั้ง",
+    "ตั้งใจเต็มร้อย ผลลัพธ์ขอไว้รอบหน้า","บอตชนะ แต่เราน่ารักกว่า","เกมนี้ให้บอตไปก่อน เกมหน้าค่อยว่ากัน","แพ้วันนี้ ชนะวันหน้า ปาร์ตี้ยังไม่จบ!"];
+  const LOSE_KEY="party-lose-bag"; let loseLast={key:null,line:""};
+  // key: the same round asking twice (the screen drawn again) gets the same line
+  function loseLine(key){ if(key!=null&&loseLast.key===key) return loseLast.line;
+    let st={}; try{ st=JSON.parse(localStorage.getItem(LOSE_KEY)||"{}")||{}; }catch(e){ st={}; }
+    let bag=Array.isArray(st.bag)?st.bag.filter(i=>Number.isInteger(i)&&i>=0&&i<LOSE_LINES.length):[];
+    if(!bag.length){ bag=LOSE_LINES.map((_,i)=>i); for(let i=bag.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [bag[i],bag[j]]=[bag[j],bag[i]]; } if(bag.length>1&&bag[0]===st.last) bag.push(bag.shift()); }
+    const i=bag.shift(); try{ localStorage.setItem(LOSE_KEY,JSON.stringify({bag,last:i})); }catch(e){}
+    const line=LOSE_LINES[i]||RES_LOSE; loseLast={key:key==null?null:key,line}; return line; }
   function resShow(kind,html){ showStage(html); const g=stage.firstElementChild; if(g) g.classList.add("res","res-"+kind);
     const ga=g&&g.querySelector(".gp-actions"); if(ga&&BDAY&&!N.demo) ga.insertAdjacentHTML("beforeend",`<button class="tool fb-res" type="button" data-fbopen="1">บอกความคิดเห็น</button>`); }
   document.addEventListener("click",e=>{ if(e.target.closest("[data-fbopen]")) fbOpen(); });
@@ -6447,6 +6505,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
   }catch(e){} }
   const MX_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/></svg>';
   function mxProg(){ const M=MX, d=M.d; let p="";
+    if(d.series) return `เกม ${M.res.length+1}/${M.list.length} · ชนะแล้ว ${M.wins}`;
     if((M.g==="pillow"||M.g==="tower")&&d.hurt) p=`เสียหัวใจ ${M.hurt}/${d.hurt}`;
     else if(M.g==="blocks") p=`แถว ${Math.min(M.lines,d.lines)}/${d.lines}`;
     else if(M.g==="partycard"&&d.lost) p=`เสียการ์ด ${M.lost}/${d.lost}`;
@@ -6465,6 +6524,8 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
   function mxHudOff(){ clearTimeout(mxHudT); mxHudLast=""; const h=$("mxHud"); if(h) h.hidden=true; }
   // the games call this. true = the mission just ended here (the game should stop going on)
   function mxEv(g,type,x,y){ const M=MX; if(!M||M.done||M.ended||M.g!==g) return false; const d=M.d; let fail="", ok=false;
+    if(d.series){ if(type!=="end") return false; M.ended=true; const won=!!x; M.res.push(won); if(won) M.wins++;
+      if(M.res.length>=M.list.length){ M.done=true; mxShow("sfinal"); } else mxShow("snext"); return true; }
     try{ switch(g){
       case "pillow":
         if(type==="hurt"){ M.hurt++; if(d.hurt!=null&&M.hurt>d.hurt) fail=d.hurt?`เสียหัวใจไป ${M.hurt} ดวง (ได้ไม่เกิน ${d.hurt})`:"โดนหมอนไป 1 ที"; else if(d.hurt) mxSnd("warn"); }
@@ -6479,7 +6540,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       case "tower":
         if(type==="fall"){ M.fell++; if(d.fall) fail="มีบล็อกตกจากตึก"; }
         else if(type==="hurt"){ M.hurt++; if(d.hurt!=null&&M.hurt>d.hurt) fail=d.hurt?`เสียหัวใจไป ${M.hurt} ดวง (ได้ไม่เกิน ${d.hurt})`:"เสียหัวใจไป 1 ดวง"; else if(d.hurt) mxSnd("warn"); }
-        else if(type==="end"){ if(x) ok=true; else fail=y==="heart"?"หัวใจหมด":"บอตต่อตึกถึงเส้นชัยก่อน"; } break;
+        else if(type==="end"){ if(x) ok=true; else fail=y==="heart"?"หัวใจหมด":y==="afk"?"ไม่ได้ขยับบล็อกนาน 20 วินาที":"บอตต่อตึกถึงเส้นชัยก่อน"; } break;
       case "cards":
         if(type==="draw"){ M.draws++; if(d.nodraw) fail="กดจั่วไพ่เพิ่ม"; }
         else if(type==="end"){ if(!x) fail="บอตลงไพ่หมดก่อน"; else if(d.empty&&!y) fail="ชนะ แต่ไม่ได้ลงไพ่จนหมดมือ"; else ok=true; } break;
@@ -6502,7 +6563,17 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     if(ok) return mxWon();
     mxHud(); return false; }
   function mxWon(){ const M=MX; M.ended=true; M.wins++; if(M.d.streak&&M.wins<M.d.streak){ mxShow("pass"); return true; } M.done=true; mxShow("win"); return true; }
-  function mxFail(why,quit){ const M=MX; M.ended=true; M.done=true; M.why=why; mxShow(quit?"quit":"fail"); }
+  function mxFail(why,quit){ const M=MX; M.ended=true; M.done=true; M.why=why; M.meme=mxMeme(M); mxShow(quit?"quit":"fail"); }
+  // the mission's own meme comes first; after that, the other memes of the same game and the lose lines, shuffled, none twice in a row
+  const MX_MK="party-mx-memes";
+  function mxMeme(M){ try{ const own=M.d.f, other=Object.values(MXD[M.g]||{}).map(x=>x.f).filter(f=>f&&f!==own), pool=[own,...other,...LOSE_LINES], key=M.g+"-"+M.lv;
+      let all={}; try{ all=JSON.parse(localStorage.getItem(MX_MK)||"{}")||{}; }catch(e){ all={}; }
+      let st=all[key]; const fresh=!st;
+      let bag=st&&Array.isArray(st.bag)?st.bag.filter(i=>Number.isInteger(i)&&i>=0&&i<pool.length):[];
+      if(!bag.length){ bag=pool.map((_,i)=>i).slice(fresh?1:0); for(let i=bag.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [bag[i],bag[j]]=[bag[j],bag[i]]; }
+        if(fresh) bag.unshift(0); else if(bag.length>1&&st&&bag[0]===st.last) bag.push(bag.shift()); }
+      const i=bag.shift(); all[key]={bag,last:i}; try{ localStorage.setItem(MX_MK,JSON.stringify(all)); }catch(e){}
+      return pool[i]||own; }catch(e){ return M.d.f; } }
   // leaving a game while its mission is on = lose
   function mxQuit(g,why){ const M=MX; if(!M||M.done||M.ended||MX_CLOSING||M.g!==g) return false; mxFail(why||"ออกจากเกมกลางคัน",true); return true; }
   function mxCloseGame(){ MX_CLOSING=true; try{
@@ -6513,25 +6584,44 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     if(!el){ el=document.createElement("div"); el.id="mxRes"; el.setAttribute("role","dialog"); el.setAttribute("aria-modal","true"); document.body.appendChild(el); el.addEventListener("click",mxResClick); }
     el.className="mx-res wait"+(M.lv==="hell"?" hell":""); el.dataset.k=kind; el.innerHTML=""; el.hidden=false;   // blocks taps at once; the card comes after the moment is seen
     clearTimeout(mxT); mxT=setTimeout(()=>{ if(MX!==M) return; mxCloseGame(); el.classList.remove("wait"); el.innerHTML=mxCard(kind);
-      mxSnd(kind==="win"?"win":kind==="pass"?"pass":kind==="quit"?"quit":"fail"); if(kind==="win"){ try{ confetti(); }catch(e){} }
+      const champ=kind==="sfinal"&&M.wins*2>M.list.length, good=kind==="win"||champ||kind==="snext"&&M.res[M.res.length-1];
+      mxSnd(champ||kind==="win"?"win":kind==="pass"||kind==="snext"&&good?"pass":kind==="quit"?"quit":"fail"); if(kind==="win"||champ){ try{ confetti(); }catch(e){} }
       try{ el.querySelector("button").focus({preventScroll:true}); }catch(e){} },kind==="quit"?300:kind==="fail"?1000:1500); }
   function mxCard(kind){ const M=MX, d=M.d, g=GAMES.find(x=>x.id===M.g), b=(a,t,c)=>`<button type="button" class="${c}" data-mx="${a}">${t}</button>`;
+    if(d.series){ const nm=id=>{ const G=GAMES.find(x=>x.id===id); return G?G.name:id; }, LV=["ง่าย","กลาง","ยาก"][d.bot]||"";
+      const row=`<ol class="sr-row">${M.list.map((id,i)=>`<li class="${i<M.res.length?(M.res[i]?"w":"l"):i===M.res.length&&kind==="snext"?"nx":""}"><b>${esc(nm(id))}</b><small>${i<M.res.length?(M.res[i]?"ชนะ":"แพ้"):"รอเล่น"}</small></li>`).join("")}</ol>`;
+      if(kind==="snext"){ const last=M.res[M.res.length-1];
+        return `<div class="mx-card ${last?"pass":"fail"}"><p class="mx-k">แข่ง 3 เกม · บอต${LV}</p><h2>เกม ${M.res.length}/${M.list.length}: ${last?"ชนะ!":"แพ้"}</h2>${last?"":`<p class="mx-meme">“${esc(loseLine())}”</p>`}${row}
+          <div class="mx-b">${b("next","เกมต่อไป: "+esc(nm(M.list[M.res.length])),"mx-go")}${b("out","ออก (= แพ้)","mx-tool")}</div></div>`; }
+      if(kind==="quit") return `<div class="mx-card quit"><p class="mx-k">แข่ง 3 เกม · บอต${LV}</p><h2>ออกกลางคัน = แพ้!</h2><p class="mx-meme">“${esc(loseLine())}”</p>${row}<div class="mx-b">${b("retry","เล่นอีกครั้ง","mx-go")}${b("menu","กลับเมนู","mx-tool")}</div></div>`;
+      const champ=M.wins*2>M.list.length;
+      return `<div class="mx-card ${champ?"win":"fail"}"><p class="mx-k">แข่ง 3 เกม · บอต${LV}</p><h2>${champ?"แชมป์!":"แพ้การแข่งขัน"}</h2><p class="mx-n">ชนะ ${M.wins} จาก ${M.list.length} เกม</p>${champ?"":`<p class="mx-meme">“${esc(loseLine())}”</p>`}${row}
+        <div class="mx-b">${b("retry","เล่นอีกครั้ง","mx-go")}${b("menu","กลับเมนู","mx-tool")}</div></div>`; }
     const head={win:"ภารกิจสำเร็จ!",fail:"ภารกิจล้มเหลว = แพ้!",quit:"ออกกลางคัน = แพ้!",pass:`ผ่าน ${M.wins}/${d.streak}!`}[kind];
     let body;
     if(kind==="pass") body=`<p class="mx-why ok">อีก ${d.streak-M.wins} รอบ · ${esc(d.c)}</p><div class="mx-b">${b("next","รอบต่อไป","mx-go")}${b("out","ออก (= แพ้)","mx-tool")}</div>`;
-    else if(kind==="win") body=`<p class="mx-why ok">✓ ${esc(d.c)}</p><div class="mx-b">${b("roll","สุ่มภารกิจใหม่","mx-go")}${b("retry","เล่นภารกิจนี้อีก","mx-tool")}${b("menu","กลับเมนู","mx-tool")}</div>`;
-    else body=`<p class="mx-why">${esc(M.why||"")}</p><p class="mx-meme">“${esc(d.f)}”</p><div class="mx-b">${b("retry","ลองใหม่","mx-go")}${b("roll","สุ่มภารกิจใหม่","mx-tool")}${b("menu","กลับเมนู","mx-tool")}</div>`;
+    else if(kind==="win") body=`<p class="mx-why ok">✓ ${esc(d.c)}</p><div class="mx-b">${b("retry","เล่นอีกครั้ง","mx-go")}${b("roll","สุ่มภารกิจใหม่","mx-tool")}${b("menu","กลับเมนู","mx-tool")}</div>`;
+    else body=`<p class="mx-why">${esc(M.why||"")}</p><p class="mx-meme">“${esc(M.meme||d.f)}”</p><div class="mx-b">${b("retry","เล่นอีกครั้ง","mx-go")}${b("roll","สุ่มภารกิจใหม่","mx-tool")}${b("menu","กลับเมนู","mx-tool")}</div>`;
     return `<div class="mx-card ${kind}"><p class="mx-k">${esc(g?g.name:"")} · ระดับ ${MX_LVN[M.lv]}</p><h2>${head}</h2><p class="mx-n">“${esc(d.n)}”</p>${body}</div>`; }
   function mxEnd(){ clearTimeout(mxT); if(MX) mxRestore(MX.keep); MX=null; mxHudOff(); const el=$("mxRes"); if(el){ el.hidden=true; el.innerHTML=""; } }
   function mxResClick(e){ const b=e.target.closest("[data-mx]"); if(!b) return; const a=b.dataset.mx, M=MX; if(!M) return;
     try{ if(typeof sfx==="function") sfx("k_tap",1,()=>beep(820,.05,"triangle",.04)); }catch(x){}
+    if(a==="next"&&M.d.series){ $("mxRes").hidden=true; M.g=M.list[M.res.length]; mxRound(); MXL.launch&&MXL.launch(M.g,M.lv); return; }
+    if(a==="out"&&M.d.series){ M.done=true; const el=$("mxRes"); el.dataset.k="quit"; el.innerHTML=mxCard("quit"); mxSnd("quit"); return; }
+    if(a==="retry"&&M.d.series){ const bot=M.d.bot; mxEnd(); mxSeries(bot); return; }
     if(a==="next"){ $("mxRes").hidden=true; mxRound(); MXL.launch&&MXL.launch(M.g,M.lv); return; }
-    if(a==="out"){ M.done=true; M.why="ออกก่อนครบ "+M.d.streak+" รอบ"; const el=$("mxRes"); el.dataset.k="quit"; el.innerHTML=mxCard("quit"); mxSnd("quit"); return; }
+    if(a==="out"){ M.done=true; M.why="ออกก่อนครบ "+M.d.streak+" รอบ"; M.meme=mxMeme(M); const el=$("mxRes"); el.dataset.k="quit"; el.innerHTML=mxCard("quit"); mxSnd("quit"); return; }
     const g=M.g, lv=M.lv; mxEnd();
     if(a==="retry"){ mxStart(g,lv); mxSnd("go"); MXL.launch&&MXL.launch(g,lv); }
     else if(a==="roll"){ try{ grpClose(); }catch(x){} MXL.roll&&MXL.roll(); }
     else { try{ grpClose(); }catch(x){} } }
-  window.__mx={get:()=>MX, def:mxDef, all:MXD, ev:mxEv, start:(g,lv)=>{ mxStart(g,lv); MXL.launch&&MXL.launch(g,lv); }};   // for the self-test
+  // แข่ง 3 เกม: 3 different games (all with a winner) picked at random; the bot level the player chose; same as the Challenge start
+  const SR_POOL=["pillow","duel","blocks","tower","cards","partycard","xo","quiz"];
+  function srPick(){ const P=SR_POOL.filter(id=>MENU.some(g=>g.id===id)).slice(); for(let i=P.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [P[i],P[j]]=[P[j],P[i]]; } return P.slice(0,3); }
+  function mxSeries(bot,list){ if(MX) mxRestore(MX.keep); list=list||srPick();
+    MX={g:list[0],lv:"series",d:{series:true,n:"แข่ง 3 เกม",c:"ชนะ 2 ใน 3 เกม = แชมป์",bot:bot|0,to:3,goal:12,pk:5,v:"classic",f:""},list,res:[],wins:0,done:false,keep:mxKeep()};
+    mxRound(); mxSnd("go"); MXL.launch&&MXL.launch(list[0],"series"); }
+  window.__mx={series:(bot,list)=>mxSeries(bot,list), get:()=>MX, def:mxDef, all:MXD, ev:mxEv, start:(g,lv)=>{ mxStart(g,lv); MXL.launch&&MXL.launch(g,lv); }};   // for the self-test
   /* สุ่มเกม: rolls through the games like a slot machine, slows down, stops on one; the kid chooses to play it or roll again */
   (function(){ try{
     const btn=$("rlBtn"); if(!btn) return;
@@ -6581,7 +6671,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       const go=()=>{ if(document.body.classList.contains("wiping")&&++n<40) return setTimeout(go,120); launch(g,lvl); }; go(); };
     const launch=(g,lv)=>{
       // open it exactly like tapping its tile: open the group first, then tap the game's tile there
-      const d=mxDef(g.id,lv), L=d&&d.bot!=null?d.bot:lv==="easy"?0:lv==="normal"?1:2; mxApply(g.id,d||{});
+      const d=MX&&MX.d.series?MX.d:mxDef(g.id,lv), L=d&&d.bot!=null?d.bot:lv==="easy"?0:lv==="normal"?1:2; mxApply(g.id,d||{});
       // the buttons each game's lobby has, pressed in order (L = bot level 0/1/2, always 1 bot)
       const STEPS={
         cards:['[data-plv="'+L+'"]','[data-pbot="1"]','#oBots','[data-kmode="classic"]','[data-lv="'+L+'"]','[data-bots="1"]','#kBotGo'],
@@ -6596,7 +6686,8 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       const steps=(STEPS[g.id]||[]).slice(); if(g.id==="quiz") window.__qzNb=1;
       const cover=document.createElement("div"); cover.className="rl-cover"+(lv==="hell"?" hell":"");
       const st=MX&&MX.d.streak?` · รอบ ${MX.wins+1}/${MX.d.streak}`:"";
-      cover.innerHTML=`<div><b>${esc(g.name)}</b><span>ระดับ ${LVN[lv]}${g.id==="kuan"?"":" · บอต"+MX_BOTN[L]+" 1 ตัว"}${st}</span>${d?`<em>“${esc(d.n)}”</em><small>${MX_ICON}${esc(d.c)}</small>`:""}<i></i></div>`; document.body.appendChild(cover);
+      cover.innerHTML=d&&d.series?`<div><b>${esc(g.name)}</b><span>แข่ง 3 เกม · เกม ${MX.res.length+1}/${MX.list.length} · บอต${MX_BOTN[L]} 1 ตัว</span><em>ชนะแล้ว ${MX.wins} เกม</em><i></i></div>`
+        :`<div><b>${esc(g.name)}</b><span>ระดับ ${LVN[lv]}${g.id==="kuan"?"":" · บอต"+MX_BOTN[L]+" 1 ตัว"}${st}</span>${d?`<em>“${esc(d.n)}”</em><small>${MX_ICON}${esc(d.c)}</small>`:""}<i></i></div>`; document.body.appendChild(cover);
       const t00=Date.now(); let gone=false;
       const done=()=>{ if(gone) return; const w=1500-(Date.now()-t00); if(w>0) return setTimeout(done,w); gone=true; cover.classList.add("out"); setTimeout(()=>cover.remove(),350); mxHudLast=""; mxHud(4000); };
       let tries=0;
@@ -6610,6 +6701,94 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       if(g.grp&&GROUPS[g.grp]){ grpOpen(g.grp); setTimeout(()=>{ const t=document.querySelector('#grpGrid .card[data-id="'+g.id+'"]'); if(t){ t.click(); t0(); } else done(); },60); }
       else { const t=document.querySelector('#grid .card[data-id="'+g.id+'"]'); if(t) t.click(); } };
   }catch(e){} })();
+  (function(){ try{
+    const btn=$("srBtn"); if(!btn) return;
+    const box=document.createElement("div"); box.className="rl sr"; box.hidden=true; box.setAttribute("role","dialog"); box.setAttribute("aria-modal","true"); box.setAttribute("aria-label","แข่ง 3 เกม");
+    let lv=1, list=[]; try{ const v=+localStorage.getItem("party-series-lv"); if(v>=0&&v<=2) lv=v; }catch(e){}
+    const art=id=>{ try{ return (typeof GRP_ART!=="undefined"&&GRP_ART[id]?GRP_ART[id]():(typeof ART[id]==="function"?ART[id]():ART[id]))||""; }catch(e){ return ""; } };
+    const draw=()=>{ box.innerHTML=`<div class="rl-card"><button class="rl-x" type="button" aria-label="ปิด">×</button><p class="rl-k">แข่ง 3 เกม</p>
+      <div class="rl-lv sr-lv" role="radiogroup" aria-label="ระดับบอต">${["ง่าย","กลาง","ยาก"].map((n,i)=>`<button type="button" data-sl="${i}" role="radio" aria-checked="${i===lv}" class="${i===lv?"on":""}">บอต${n}</button>`).join("")}</div>
+      <ol class="sr-pick">${list.map((id,i)=>{ const G=GAMES.find(x=>x.id===id)||{}; return `<li><i>${i+1}</i><span class="rl-art" style="--c:${G.color||"#4F97F5"}">${art(id)}</span><b>${esc(G.name||id)}</b></li>`; }).join("")}</ol>
+      <p class="rl-msg">เล่นกับบอต 1 ตัว 3 เกมติด · ชนะ 2 ใน 3 = แชมป์ · ออกกลางคัน = แพ้</p>
+      <div class="rl-b"><button class="rl-again" type="button">สุ่มเกมใหม่</button><button class="rl-go" type="button">เริ่มแข่ง!</button></div></div>`; };
+    const close=()=>{ box.hidden=true; };
+    box.addEventListener("click",e=>{ if(e.target===box) return close(); const t=e.target.closest("button"); if(!t) return;
+      if(t.classList.contains("rl-x")) return close();
+      if(t.dataset.sl!=null){ lv=+t.dataset.sl; try{ localStorage.setItem("party-series-lv",lv); }catch(x){} draw(); return; }
+      if(t.classList.contains("rl-again")){ list=srPick(); try{ if(typeof sfx==="function") sfx("tick"); }catch(x){} draw(); return; }
+      if(t.classList.contains("rl-go")){ close(); mxSeries(lv,list); } });
+    document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!box.hidden) close(); });
+    document.body.appendChild(box);
+    btn.addEventListener("click",()=>{ list=srPick(); draw(); box.hidden=false; try{ mxSnd("reveal"); }catch(e){} });
+  }catch(e){} })();
+
+  /* Party Highlight: in the games drawn on a canvas (ตีหมอน, ดวลคาวบอย, ตึกโยกเยก, โหมดคอมโบ) a ● button records the game screen.
+     The clip stays on this phone: the player saves it or shares it. Nothing is sent anywhere. No sound in the clip (the game's
+     sounds are not routed to the recorder). Phones without MediaRecorder do not show the button. */
+  const HL={rec:null,chunks:[],t0:0,raf:0,rc:null,src:null,poll:0,url:"",type:""};
+  const HL_MAX=20000, HL_GAMES="ตีหมอน · ดวลคาวบอย · ตึกโยกเยก · โหมดคอมโบ";
+  const hlOK=()=>{ try{ return !!(window.MediaRecorder&&HTMLCanvasElement.prototype.captureStream); }catch(e){ return false; } };
+  function hlSource(){ const on=e=>!!e&&!e.hidden;
+    try{ if(typeof CF!=="undefined"&&CF.on&&on($("cfg"))&&CF.ph!=="lobby"&&CF.ph!=="end") return {cv:CF.cv,name:"ตีหมอน · โหมดคอมโบ"};
+      if(DU.on&&on($("duel"))&&DU.ph!=="lobby"&&DU.ph!=="end") return {cv:DU.cv,name:"ดวลคาวบอย"};
+      if(TW.on&&on($("tower"))&&TW.ph!=="lobby"&&TW.ph!=="end") return {cv:TW.cv,name:"ตึกโยกเยก"};
+      const pt=$("ptable"); if(on($("game"))&&on(pt)&&$("pCanvas")) return {cv:$("pCanvas"),name:"ตีหมอน"}; }catch(e){}
+    return null; }
+  function hlBtn(){ let b=$("hlBtn"); if(b) return b;
+    b=document.createElement("button"); b.type="button"; b.id="hlBtn"; b.className="hl-btn"; b.hidden=true; b.setAttribute("aria-label","อัดคลิปไฮไลต์");
+    b.innerHTML='<i></i><span>อัด</span>'; document.body.appendChild(b);
+    const tip=document.createElement("div"); tip.id="hlTip"; tip.className="hl-tip"; tip.hidden=true; tip.setAttribute("role","note");
+    tip.innerHTML=`<b>อัดคลิปไฮไลต์</b>ยาวสุด 20 วินาที · ไม่มีเสียงเกม<br>อัดได้เฉพาะ ${HL_GAMES}<br>อัดเสร็จต้องกด “บันทึกลงเครื่อง” เอง`; document.body.appendChild(tip);
+    b.addEventListener("click",()=>{ if(HL.rec) hlStop(); else hlStart(); }); return b; }
+  function hlStart(){ const S=hlSource(); if(!S||!hlOK()) return;
+    const sw=S.cv.width, sh=S.cv.height, k=Math.min(1,1280/Math.max(sw,sh)), rc=document.createElement("canvas"); rc.width=Math.round(sw*k/2)*2; rc.height=Math.round(sh*k/2)*2;
+    const x=rc.getContext("2d"); HL.rc=rc; HL.src=S;
+    const paint=()=>{ if(!HL.rec) return; const cv=(hlSource()||{}).cv; if(!cv){ hlStop(); return; }
+      try{ x.drawImage(cv,0,0,rc.width,rc.height); }catch(e){}
+      const f=Math.round(rc.height*.045); x.font=`700 ${f}px Mitr, sans-serif`; x.textBaseline="bottom"; const t="PARTYGAME · "+S.name, w=x.measureText(t).width;
+      x.fillStyle="rgba(0,0,0,.45)"; x.fillRect(f*.5,rc.height-f*2.1,w+f,f*1.6); x.fillStyle="#fff"; x.fillText(t,f,rc.height-f*.75);
+      const left=Math.max(0,Math.ceil((HL_MAX-(Date.now()-HL.t0))/1000)); const b=$("hlBtn"); if(b) b.querySelector("span").textContent="หยุด "+left;
+      if(Date.now()-HL.t0>=HL_MAX){ hlStop(); return; } HL.raf=requestAnimationFrame(paint); };
+    const types=["video/mp4;codecs=avc1","video/mp4","video/webm;codecs=vp9","video/webm;codecs=vp8","video/webm"];
+    const type=types.find(t=>{ try{ return MediaRecorder.isTypeSupported(t); }catch(e){ return false; } })||"";
+    let rec; try{ rec=new MediaRecorder(rc.captureStream(30),type?{mimeType:type,videoBitsPerSecond:4e6}:{videoBitsPerSecond:4e6}); }catch(e){ try{ toast("เครื่องนี้อัดคลิปไม่ได้"); }catch(x){} return; }
+    HL.rec=rec; HL.chunks=[]; HL.type=(rec.mimeType||type||"video/webm").split(";")[0]; HL.t0=Date.now();
+    rec.ondataavailable=e=>{ if(e.data&&e.data.size) HL.chunks.push(e.data); };
+    rec.onstop=()=>{ const blob=new Blob(HL.chunks,{type:HL.type}); HL.chunks=[]; if(blob.size>0) hlShow(blob); };
+    rec.start(500); const b=hlBtn(); b.classList.add("on"); paint(); try{ beep(880,.06,"sine",.05); }catch(e){} }
+  function hlStop(){ const r=HL.rec; if(!r) return; HL.rec=null; cancelAnimationFrame(HL.raf); try{ r.stop(); }catch(e){}
+    const b=$("hlBtn"); if(b){ b.classList.remove("on"); b.querySelector("span").textContent="อัด"; } try{ beep(660,.06,"sine",.05); }catch(e){} }
+  const hlCanShare=()=>{ try{ return !!(navigator.canShare&&navigator.share&&navigator.canShare({files:[new File([HL.blob||new Blob()],"party-highlight."+(HL.ext||"mp4"),{type:HL.type||"video/mp4"})]})); }catch(e){ return false; } };
+  function hlShow(blob){ if(HL.url) URL.revokeObjectURL(HL.url); HL.url=URL.createObjectURL(blob); const ext=HL.type.includes("mp4")?"mp4":"webm";
+    let p=$("hlPop"); if(!p){ p=document.createElement("div"); p.id="hlPop"; p.className="hl-pop"; p.setAttribute("role","dialog"); p.setAttribute("aria-modal","true"); p.setAttribute("aria-label","คลิปไฮไลต์"); document.body.appendChild(p);
+      p.addEventListener("click",async e=>{ const t=e.target.closest("button"); if(!t) return;
+        const st=p.querySelector(".hl-st"), say=(m,cls)=>{ if(st){ st.textContent=m; st.className="hl-st "+(cls||""); } };
+        if(t.dataset.hl==="save"){   // the file goes to the phone (Downloads / Files): this is the one that counts as saved
+          try{ const a=document.createElement("a"); a.href=HL.url; a.download="party-highlight."+HL.ext; document.body.appendChild(a); a.click(); a.remove();
+            HL.saved=true; say("ส่งคำสั่งดาวน์โหลดแล้ว กรุณาตรวจสอบใน Downloads (หรือแอปไฟล์)","ok");
+            const c=p.querySelector('[data-hl="close"]'); if(c){ c.textContent="ปิด"; c.classList.remove("warn"); delete c.dataset.sure; }
+            const f=p.querySelector(".hl-lim li:first-child"); if(f){ f.className="ok"; f.textContent="↓ ส่งคำสั่งดาวน์โหลดแล้ว กรุณาตรวจสอบใน Downloads"; } }
+          catch(x){ say("บันทึกไม่สำเร็จ · คลิปยังไม่ได้บันทึก","warn"); } return; }
+        if(t.dataset.hl==="share"){ if(HL.sharing) return; let file=null; try{ file=new File([HL.blob],"party-highlight."+HL.ext,{type:HL.type}); }catch(x){}
+          HL.sharing=true; t.disabled=true; say("กำลังเปิดหน้าแชร์…");
+          try{ await navigator.share({files:[file],title:"PARTYGAME ไฮไลต์"}); HL.shared=true; say(HL.saved?"แชร์แล้ว":"แชร์แล้ว · แต่ยังไม่ได้บันทึกลงเครื่อง กด “บันทึกลงเครื่อง” ถ้าอยากเก็บไว้",HL.saved?"ok":"warn"); }
+          catch(x){ say(x&&x.name==="AbortError"?"ยกเลิกการแชร์แล้ว"+(HL.saved?"":" · คลิปยังไม่ได้บันทึก"):"แชร์ไม่สำเร็จ ลองอีกครั้ง","warn"); }
+          finally{ HL.sharing=false; t.disabled=false; } return; }
+        if(t.dataset.hl==="close"){ if(!HL.saved&&!t.dataset.sure){ t.dataset.sure="1"; t.textContent=HL.shared?"ปิดเลย (ยังไม่ได้บันทึกลงเครื่อง)":"ปิดเลย (คลิปจะหาย)"; t.classList.add("warn"); return; }
+          p.hidden=true; const v=p.querySelector("video"); try{ v.pause(); }catch(x){} } }); }
+    HL.blob=blob; HL.ext=ext; HL.saved=false; HL.shared=false;
+    p.innerHTML=`<div class="hl-card"><h2>คลิปไฮไลต์</h2><video src="${HL.url}" controls playsinline muted loop autoplay></video>
+      <ul class="hl-lim"><li><b>ยังไม่ได้บันทึก</b> กด “บันทึกลงเครื่อง” ก่อนปิด ไม่งั้นคลิปหาย (แชร์อย่างเดียวไม่นับว่าเก็บในเครื่อง)</li><li>คลิปไม่มีเสียงเกม · ยาวสุด 20 วินาที</li><li>อัดได้เฉพาะ ${HL_GAMES}</li><li>คลิปอยู่ในเครื่องนี้ ไม่ได้ส่งไปที่ไหน</li></ul><p class="hl-st" aria-live="polite"></p>
+      <div class="hl-b"><button type="button" class="go" data-hl="save">บันทึกลงเครื่อง</button>${hlCanShare()?`<button type="button" class="tool" data-hl="share">แชร์</button>`:""}<button type="button" class="tool" data-hl="close">ปิด</button></div></div>`;
+    p.hidden=false; }
+  // show the ● button only while a canvas game is on screen (checked twice a second)
+  if(hlOK()) HL.poll=setInterval(()=>{ try{ const S=hlSource(), b=hlBtn(), pop=$("hlPop"), mx=$("mxRes");
+      b.hidden=!(S||HL.rec)||!!(pop&&!pop.hidden)||!!(mx&&!mx.hidden); if(!S&&HL.rec) hlStop();
+      // the first 2 times the button shows on this phone: a short note of what it does and does not do (6 s)
+      if(!b.hidden&&!HL.tipShown){ HL.tipShown=true; let n=0; try{ n=+localStorage.getItem("party-hl-tip")||0; }catch(e){}
+        if(n<2){ try{ localStorage.setItem("party-hl-tip",n+1); }catch(e){} const t=$("hlTip"); if(t){ t.hidden=false; setTimeout(()=>{ t.hidden=true; },6000); } } }
+      if(b.hidden){ const t=$("hlTip"); if(t) t.hidden=true; } }catch(e){} },500);
+  window.__hl={start:hlStart,stop:hlStop,src:hlSource,get:()=>HL};   // for the self-test
   function cardTap(e){
     const c=e.target.closest(".card"); if(!c) return;
     if(c.dataset.grp){ const id=c.dataset.grp; wipe(()=>grpOpen(id)); return; }
@@ -6640,7 +6819,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     const pop=$("hvPop"), v=$("hvV"), g=GAMES.find(x=>x.id===id);
     HV={id,first:!!first,then:then||null,raf:0};
     $("hvT").textContent="วิธีเล่น "+(g?g.name:""); $("hvR").innerHTML=(HV_RULES[id]||[]).map(t=>`<li>${t}</li>`).join("");
-    $("hvX").hidden=!!first; $("hvBtns").hidden=true; $("hvTap").style.display="none";
+    $("hvX").hidden=!!first; $("hvSkip").hidden=!first; $("hvBtns").hidden=true; $("hvTap").style.display="none";
     $("hvGo").textContent=then?"เข้าเกมเลย!":"ปิด";
     try{ musStop(); }catch(e){}
     pop.hidden=false; v.src=hvBlob(id); v.muted=true;
@@ -6655,11 +6834,12 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
   }
   // the first time this name opens a game: the video first, then the game
   function hvGate(id,go){ if(!window.__hvOff&&hvHas(id)&&!hvSeen(id)) playHow(id,true,go); else go(); }
-  $("hvV").addEventListener("ended",()=>{ if(HV.first) hvMark(HV.id); $("hvX").hidden=false; $("hvBtns").hidden=false; $("hvBar").style.width="100%"; });
+  $("hvV").addEventListener("ended",()=>{ if(HV.first) hvMark(HV.id); $("hvSkip").hidden=true; $("hvX").hidden=false; $("hvBtns").hidden=false; $("hvBar").style.width="100%"; });
   $("hvTap").addEventListener("click",()=>{ $("hvTap").style.display="none"; $("hvV").play().catch(()=>{}); });
   $("hvAgain").addEventListener("click",()=>{ const v=$("hvV"); $("hvBtns").hidden=true; try{ v.currentTime=0; }catch(e){} v.play().catch(()=>{}); });
   $("hvGo").addEventListener("click",()=>hvClose(true));
   $("hvX").addEventListener("click",()=>hvClose(false));
+  $("hvSkip").addEventListener("click",()=>hvClose(true));   // the first time: skip the clip and go straight into the game (it counts as seen)
   // "ดูวิดีโอวิธีเล่น" buttons inside the game pages
   document.addEventListener("click",e=>{ const b=e.target.closest&&e.target.closest("[data-hv]"); if(b){ e.preventDefault(); playHow(b.dataset.hv,false,null); } });
   grid.addEventListener("click",cardTap);
@@ -7266,9 +7446,9 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       if(meWon){ try{ confetti(); }catch(e){} winSound(); } else loseSound(); }
     $("duHud").hidden=true; $("duPads").hidden=true;
     $("duPanel").hidden=false; $("duPanel").className="du-panel du-res";
-    $("duPanel").innerHTML=`<h2>${bot?(w===0?"เราชนะ!":"บอตชนะ ลองใหม่นะ!"):esc(N[w])+" ชนะ!"}</h2>
+    $("duPanel").innerHTML=`<h2>${bot?(w===0?"เราชนะ!":loseLine()):esc(N[w])+" ชนะ!"}</h2>
       <div class="du-score"><span style="--c:${duCol[0]}">${esc(N[0])}<b>${DU.sc[0]}</b><small>${duG()==="quick"?"ไวสุด ":""}${best(0)}</small></span><i>–</i><span style="--c:${duCol[1]}">${esc(N[1])}<b>${DU.sc[1]}</b><small>${duG()==="quick"?"ไวสุด ":""}${best(1)}</small></span></div>
-      <button type="button" class="go du-go" data-du="again">ดวลอีกครั้ง</button><button type="button" class="tool du-lb" data-du="lobby">เปลี่ยนตัวเลือก</button>`; }
+      <button type="button" class="go du-go" data-du="again">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-du="lobby">เปลี่ยนตัวเลือก</button>`; }
   function duOpen(){
     const d=duEl(); DU.on=true; d.hidden=false; document.body.style.overflow="hidden";
     window.__duOn=true; try{ musStop(); }catch(e){} duFit(); duLobby(); duLoad().then(()=>{ if(DU.on&&!DU.music) duMusic(true); });
@@ -7299,10 +7479,16 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     counter:{n:"สวนกลับ",a:.05,e:.16,d:.42,r:2.25,dmg:15,kb:6,st:.65,combo:1}};
   const CF_LIST=[["ตี ตี ตี","หมอนรัว"],["ตี ตี ตีแรง","หมุนตัวฟาด"],["▶▶ (แตะเดินหน้า 2 ที) แล้ว ตี","พุ่งฟาด"],["กระโดด แล้ว ตีแรง","ทุบลงพื้น"],["กันได้ แล้ว ตีแรง ทันที","สวนกลับ"]];
   const CF={on:false,ph:"lobby",opt:{lv:1},f:[],round:0,wins:[0,0],left:CF_TIME,timers:[],raf:0,last:0,cv:null,x:null,bg:null,W:0,H:0,dpr:1,s:40,gy:0,fx:[],shake:0,slowT:0,done:false,now:0};
-  try{ const o=JSON.parse(localStorage.getItem(CF_KEY)||"null"); if(o&&o.lv>=0&&o.lv<=2) CF.opt.lv=o.lv|0; }catch(e){}
-  const cfSave=()=>{ try{ localStorage.setItem(CF_KEY,JSON.stringify(CF.opt)); }catch(e){} };
+  try{ const o=JSON.parse(localStorage.getItem(CF_KEY)||"null"); if(o&&o.lv>=0&&o.lv<=2) CF.opt.lv=o.lv|0; if(o&&o.mode==="2p") CF.opt.mode="2p"; }catch(e){}
+  const cfSave=()=>{ try{ localStorage.setItem(CF_KEY,JSON.stringify({lv:CF.opt.lv,mode:CF.opt.mode==="2p"?"2p":"bot"})); }catch(e){} };
   const cfRM=()=>{ try{ return matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } };
-  const cfNames=()=>[myName()||"เรา","บอต"], CF_COL=["#FF3B5C","#3BA0FF"];
+  const CF_COL=["#FF3B5C","#3BA0FF"];
+  // bot = against the bot · 2p = two people on one phone · net = two phones (CF.net: host plays red, the friend plays blue)
+  const cfMode=()=>CF.net&&CF.net.on?"net":CF.opt.mode==="2p"?"2p":"bot";
+  const cfMe=()=>CF.net&&CF.net.on&&!CF.net.host?1:0;
+  const cfHuman=k=>cfMode()!=="bot"||k===0;
+  const cfGuest=()=>!!(CF.net&&CF.net.on&&!CF.net.host);
+  const cfNames=()=>{ const m=cfMode(); return m==="2p"?["ผู้เล่นแดง","ผู้เล่นฟ้า"]:m==="net"?CF.net.names:[myName()||"เรา","บอต"]; };
   const cfAt=(f,ms)=>{ const t=setTimeout(f,ms); CF.timers.push(t); return t; };
   const cfClear=()=>{ CF.timers.forEach(clearTimeout); CF.timers=[]; };
   function cfNew(k){ return {k,x:k?2.6:-2.6,y:0,vx:0,vy:0,dir:k?-1:1,hp:CF_HP,show:CF_HP,st:"idle",t:0,mv:null,hits:0,stun:0,blk:false,blkT:-9,blkHit:-9,
@@ -7310,13 +7496,14 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
   /* ---------- the moves ---------- */
   function cfBegin(F,id){ F.mv=id; F.st="atk"; F.t=0; F.hits=0; F.buf=null; const M=CF_MV[id];
     if(M.move) F.vx=F.dir*M.move;
-    if(F.k===0) sfx("k_jump",1,()=>beep(420,.05,"triangle",.03)); else beep(360,.04,"triangle",.02); }
+    if(cfHuman(F.k)) sfx("k_jump",1,()=>beep(420,.05,"triangle",.03)); else beep(360,.04,"triangle",.02);
+    if(CF.train&&F.k===0) cfTrainMove(id); }
   // what a button does now (ตี = A, ตีแรง = H)
   function cfAttack(F,key){
     if(F.st==="ko"||F.st==="hurt"||CF.ph!=="fight") return;
     if(F.st==="atk"){ const M=CF_MV[F.mv]; if(F.t<M.e){ F.buf=key; return; } if(F.t<M.d-.04&&!["jab","jab2"].includes(F.mv)) { F.buf=key; return; } }
     const now=CF.now;
-    if(F.air){ if(key==="H"&&!F.slam){ F.slam=true; F.vy=-17; F.mv="slam"; F.st="atk"; F.t=0; F.hits=0; } else if(key==="A"&&F.st!=="atk") cfBegin(F,"air"); return; }
+    if(F.air){ if(key==="H"&&!F.slam){ F.slam=true; F.vy=-17; F.mv="slam"; F.st="atk"; F.t=0; F.hits=0; if(CF.train&&F.k===0) cfTrainMove("slam"); } else if(key==="A"&&F.st!=="atk") cfBegin(F,"air"); return; }
     if(key==="H"&&now-F.blkHit<.45){ F.blk=false; F.chain=[]; return cfBegin(F,"counter"); }
     if(F.blk) return;
     if(key==="A"&&now-F.run<.55){ F.run=-9; F.chain=[]; return cfBegin(F,"dash"); }
@@ -7337,18 +7524,20 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     if(D.blk&&front&&!D.air&&D.st!=="atk"){
       D.hp-=Math.round(dmg*.15); D.vx=A.dir*kb*.35; D.blkHit=now; cfFx("block",cx,cy,A.k);
       sfx("k_thud",.9,()=>beep(180,.08,"square",.04)); return; }
-    D.hp-=dmg; D.st="hurt"; D.t=0; D.stun=st; D.mv=null; D.buf=null; D.chain=[]; D.blk=false; D.vx=A.dir*kb; if(kb>=5&&!D.air){ D.air=true; D.vy=4.5; }
+    if(CF.train){ D.hp=Math.max(40,D.hp-dmg); if(D.k===0) D.hp=CF_HP; }
+    else D.hp-=dmg;
+    D.st="hurt"; D.t=0; D.stun=st; D.mv=null; D.buf=null; D.chain=[]; D.blk=false; D.vx=A.dir*kb; if(kb>=5&&!D.air){ D.air=true; D.vy=4.5; }
     if(D.slam){ D.slam=false; }
     A.combo=now-A.comboT<1.1?A.combo+1:1; A.comboT=now; D.combo=0;
     cfFx("hit",cx,cy,A.k,dmg); CF.shake=Math.max(CF.shake,dmg>=15?.32:.14);
     sfx("smash",dmg>=15?1:.75,()=>beep(dmg>=15?110:160,.16,"sine",.08));
-    try{ if(D.k===0&&navigator.vibrate&&VIBE) navigator.vibrate(dmg>=15?70:35); }catch(e){}
+    try{ if((D.k===cfMe()||cfMode()==="2p")&&navigator.vibrate&&VIBE) navigator.vibrate(dmg>=15?70:35); }catch(e){}
     if(M.combo||A.combo>=2) cfCombo(A.k,M.combo?M.n:"",A.combo);
     if(D.hp<=0){ D.hp=0; D.st="ko"; D.t=0; D.air=true; D.vy=6; D.vx=A.dir*6; CF.slowT=now+.9; cfRoundEnd(A.k,"ko"); } }
   function cfStep(F,O,dt){
     const now=CF.now, M=F.mv&&CF_MV[F.mv];
     F.t+=dt;
-    if(F.k===0) F.blk=!!F.hold.B&&!F.air&&(F.st==="idle"||F.st==="walk");
+    if(cfHuman(F.k)) F.blk=!!F.hold.B&&!F.air&&(F.st==="idle"||F.st==="walk");
     if(F.st==="hurt"&&F.t>=F.stun&&!F.air){ F.st="idle"; F.t=0; }
     // walking
     const want=(F.hold.R?1:0)-(F.hold.L?1:0);
@@ -7382,6 +7571,9 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
   /* ---------- the bot ---------- */
   function cfBot(B,P,dt){
     const L=CF_LV[CF.opt.lv]||CF_LV[1], ai=B.ai, now=CF.now;
+    if(CF.train){ B.hold.L=B.hold.R=0; B.blk=false; if(CF.ph!=="fight"||B.st!=="idle"||B.air) return;
+      if(CF_TRAIN[CF.train.i]&&CF_TRAIN[CF.train.i].mv==="counter"&&Math.abs(P.x-B.x)<2.2&&now>ai.next){ ai.next=now+1.7; cfAttack(B,"A"); }
+      return; }
     if(CF.ph!=="fight"||B.st==="ko"){ B.hold.L=B.hold.R=0; B.blk=false; return; }
     while(ai.q.length&&ai.q[0].at<=now){ const a=ai.q.shift();
       if(a.k==="A"||a.k==="H") cfAttack(B,a.k); else if(a.k==="U") cfJump(B); else if(a.k==="tap") cfTap(B,B.dir); }
@@ -7408,15 +7600,38 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     else if(r<L.slam+L.cmb){ const end=Math.random()<.5?"A":"H"; ai.q.push({at:t,k:"A"},{at:t+.24,k:"A"},{at:t+.48,k:end}); }
     else ai.q.push({at:t,k:Math.random()<.65?"A":"H"});
     ai.next=t+L.gap+Math.random()*.3; }
+  /* ---------- ฝึกท่า: 5 steps, one move each. The bot stands still (it swings only in the last step, to guard against), nobody loses. ---------- */
+  const CF_TRAIN=[{mv:"rush",n:"หมอนรัว",k:["ตี","ตี","ตี"],pads:["A"]},{mv:"spin",n:"หมุนตัวฟาด",k:["ตี","ตี","ตีแรง"],pads:["A","H"]},
+    {mv:"dash",n:"พุ่งฟาด",k:["▶","▶","ตี"],pads:["R","A"],tip:"แตะเดินหน้าเร็ว ๆ 2 ที แล้วกด ตี"},{mv:"slam",n:"ทุบลงพื้น",k:["▲","ตีแรง"],pads:["U","H"],tip:"กระโดด แล้วกด ตีแรง ตอนลอยอยู่"},
+    {mv:"counter",n:"สวนกลับ",k:["กัน","ตีแรง"],pads:["B","H"],tip:"กด กัน ค้างไว้ตอนบอตตี กันได้แล้วกด ตีแรง ทันที"}];
+  const CF_TRK="party-cf-trained";
+  const cfTrained=()=>{ try{ return localStorage.getItem(CF_TRK)==="1"; }catch(e){ return false; } };
+  function cfTrainStart(){ cfClear(); CF.opt.mode="bot"; cfPadsBuild(); CF.train={i:0,ok:false}; CF.round=1; CF.wins=[0,0]; CF.f=[cfNew(0),cfNew(1)]; CF.f[1].x=1.4; CF.f[0].x=-.4; CF.fx=[]; CF.left=CF_TIME;
+    $("cfPanel").hidden=true; $("cfPads").hidden=false; $("cfHud").hidden=true; CF.ph="fight"; cfMsg(""); cfTrainShow(); }
+  function cfTrainShow(){ const T=CF_TRAIN[CF.train.i], e=$("cfTrain"); if(!e) return;
+    e.hidden=false; e.innerHTML=`<small>ฝึกท่า ${CF.train.i+1}/${CF_TRAIN.length}</small><b>${esc(T.n)}</b><span>${T.k.map(k=>`<kbd>${esc(k)}</kbd>`).join("<i>→</i>")}</span>${T.tip?`<em>${esc(T.tip)}</em>`:""}<button type="button" data-cf="skip">ข้ามการฝึก</button>`;
+    const fw=CF.f[1].x>CF.f[0].x?"R":"L";
+    document.querySelectorAll("#cfPads .cf-b").forEach(b=>b.classList.toggle("hint",T.pads.map(k=>k==="R"?fw:k).includes(b.dataset.k))); }
+  function cfTrainMove(id){ const T=CF.train&&CF_TRAIN[CF.train.i]; if(!T||CF.train.ok||id!==T.mv) return;
+    CF.train.ok=true; [784,988,1319].forEach((f,i)=>setTimeout(()=>beep(f,.1,"triangle",.06),i*90));
+    const e=$("cfTrain"); if(e) e.classList.add("done");
+    cfAt(()=>{ if(!CF.train) return; CF.train.i++; CF.train.ok=false; if(e) e.classList.remove("done");
+      if(CF.train.i>=CF_TRAIN.length) return cfTrainEnd(true);
+      const B=CF.f[1]; B.hp=CF_HP; if(Math.abs(B.x-CF.f[0].x)>3) B.x=CF.f[0].x+(B.x>CF.f[0].x?1.6:-1.6); cfTrainShow(); },1300); }
+  function cfTrainEnd(all){ cfClear(); CF.train=null; CF.ph="lobby"; const e=$("cfTrain"); if(e) e.hidden=true;
+    document.querySelectorAll("#cfPads .cf-b.hint").forEach(b=>b.classList.remove("hint"));
+    if(all){ try{ localStorage.setItem(CF_TRK,"1"); }catch(x){} cfMsg("<b>ครบ 5 ท่าแล้ว!</b><small>พร้อมสู้กับบอตจริงแล้ว</small>","win"); try{ winSound(); }catch(x){} cfAt(()=>{ cfMsg(""); cfLobby(); },1800); }
+    else cfLobby(); }
   /* ---------- rounds ---------- */
-  function cfMsg(h,cls=""){ const m=$("cfMsg"); if(!m) return; m.innerHTML=h; m.className="cf-msg "+cls; }
+  function cfMsg(h,cls=""){ const m=$("cfMsg"); if(!m) return; m.innerHTML=h; m.className="cf-msg "+cls; cfSend({t:"m",h,cls}); }
   function cfCombo(k,name,n){ const e=$("cfCombo"); if(!e) return; e.className="cf-combo k"+k; e.innerHTML=(name?`<b>${esc(name)}!</b>`:"")+(n>=2?`<small>${n} ฮิต</small>`:"");
     void e.offsetWidth; e.classList.add("in"); clearTimeout(cfCombo.t); cfCombo.t=setTimeout(()=>e.classList.remove("in"),900);
-    if(name&&k===0) [660,880,1175].forEach((f,i)=>setTimeout(()=>beep(f,.07,"triangle",.045),i*55)); }
+    cfSend({t:"c",k,name,n});
+    if(name&&(k===cfMe()||cfMode()==="2p")) [660,880,1175].forEach((f,i)=>setTimeout(()=>beep(f,.07,"triangle",.045),i*55)); }
   function cfHud(){ const h=$("cfHud"); if(!h) return; const N=cfNames(), F=CF.f;
     const bar=k=>`<div class="cf-side k${k}"><b>${esc(N[k])}</b><span class="cf-bar"><i class="tr" style="width:${Math.max(0,F[k]?F[k].show:100)}%"></i><i class="hp" style="width:${Math.max(0,F[k]?F[k].hp:100)}%"></i></span><em>${[0,1].map(i=>`<u class="${i<CF.wins[k]?"on":""}"></u>`).join("")}</em></div>`;
     h.innerHTML=`${bar(0)}<div class="cf-time">${Math.ceil(Math.max(0,CF.left))}<small>รอบ ${CF.round}</small></div>${bar(1)}`; }
-  function cfStart(){ cfClear(); CF.wins=[0,0]; CF.round=0; CF.done=false; $("cfPanel").hidden=true; $("cfPads").hidden=false; $("cfHud").hidden=false;
+  function cfStart(){ if(cfGuest()) return; cfClear(); CF.train=null; cfPadsBuild(); cfSend({t:"go",names:cfNames()}); { const te=$("cfTrain"); if(te) te.hidden=true; document.querySelectorAll("#cfPads .cf-b.hint").forEach(b=>b.classList.remove("hint")); } CF.wins=[0,0]; CF.round=0; CF.done=false; $("cfPanel").hidden=true; $("cfPads").hidden=false; $("cfHud").hidden=false;
     try{ pcHit("pillow"); }catch(e){} cfRound(); }
   function cfRound(){ cfClear(); CF.round++; CF.f=[cfNew(0),cfNew(1)]; CF.left=CF_TIME; CF.fx=[]; CF.ph="ready"; cfHud();
     cfMsg(`รอบที่ ${CF.round}`,"rd"); sfx("k_count",1,()=>beep(660,.08,"triangle",.05));
@@ -7424,23 +7639,40 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     cfAt(()=>{ if(CF.ph==="fight") cfMsg(""); },2100); }
   function cfRoundEnd(w,why){ if(CF.ph!=="fight") return; CF.ph="over"; const N=cfNames();
     if(w>=0) CF.wins[w]++;
-    cfAt(()=>{ cfMsg(w<0?"<b>เสมอรอบนี้!</b>":`<b>${w===0?"เราชนะรอบนี้!":"บอตชนะรอบนี้"}</b><small>${why==="ko"?"น็อก!":"หมดเวลา · หัวใจเหลือมากกว่า"}</small>`,w===0?"win":w===1?"lose":"rd");
-      if(w===0) beep(880,.1,"triangle",.05); cfHud(); },why==="ko"?700:150);
+    const m=cfMode(), who=w<0?"":m==="2p"?`${esc(N[w])} ชนะรอบนี้!`:w===0?"เราชนะรอบนี้!":m==="net"?`${esc(N[w])} ชนะรอบนี้`:"บอตชนะรอบนี้";
+    cfAt(()=>{ cfMsg(w<0?"<b>เสมอรอบนี้!</b>":`<b>${who}</b><small>${why==="ko"?"น็อก!":"หมดเวลา · หัวใจเหลือมากกว่า"}</small>`,w<0?"rd":m==="2p"||w===0?"win":"lose");
+      if(w===0||m==="2p") beep(880,.1,"triangle",.05); cfHud(); },why==="ko"?700:150);
     cfAt(()=>{ cfMsg(""); if(CF.wins[0]>=CF_WIN||CF.wins[1]>=CF_WIN||CF.round>=5) cfEnd(); else cfRound(); },why==="ko"?2900:2400); }
-  function cfEnd(){ cfClear(); CF.ph="end"; const w=CF.wins[0]>CF.wins[1]?0:CF.wins[1]>CF.wins[0]?1:-1, N=cfNames();
-    if(!CF.done){ CF.done=true; const nm=myName(); if(nm) try{ PartyScores.addPlay([{name:nm,won:w===0}],"pillow",false); }catch(e){}
-      if(w===0){ try{ confetti(); }catch(e){} winSound(); } else loseSound(); }
+  function cfEnd(){ cfClear(); CF.ph="end"; const w=CF.wins[0]>CF.wins[1]?0:CF.wins[1]>CF.wins[0]?1:-1, N=cfNames(), m=cfMode(), me=cfMe();
+    cfSend({t:"end",wins:CF.wins});
+    if(!CF.done){ CF.done=true; const nm=myName(); if(nm) try{ PartyScores.addPlay([{name:nm,won:m==="2p"?false:w===me}],"pillow",m==="net"); }catch(e){}
+      if(m==="2p"||w===me){ try{ confetti(); }catch(e){} winSound(); } else loseSound(); }
     $("cfPads").hidden=true;
     const P=$("cfPanel"); P.hidden=false; P.className="du-panel du-res cf-panel";
-    P.innerHTML=`<h2>${w===0?"เราชนะ!":w===1?"บอตชนะ ลองใหม่นะ!":"เสมอ!"}</h2>
+    const head=w<0?"เสมอ!":m==="2p"?`${esc(N[w])} ชนะ!`:w===me?"เราชนะ!":m==="net"?`${esc(N[w])} ชนะ!`:loseLine();
+    const btns=m==="net"?(CF.net.host?`<button type="button" class="go du-go" data-cf="go">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-cf="leave">ออกจากห้อง</button>`
+        :`<p class="du-sub">รอเจ้าของห้องกด "สู้อีกครั้ง"…</p><button type="button" class="tool du-lb" data-cf="leave">ออกจากห้อง</button>`)
+      :`<button type="button" class="go du-go" data-cf="go">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-cf="lobby">เปลี่ยนตัวเลือก</button>`;
+    P.innerHTML=`<h2>${head}</h2>
       <div class="du-score"><span style="--c:${CF_COL[0]}">${esc(N[0])}<b>${CF.wins[0]}</b><small>รอบที่ชนะ</small></span><i>–</i><span style="--c:${CF_COL[1]}">${esc(N[1])}<b>${CF.wins[1]}</b><small>รอบที่ชนะ</small></span></div>
-      <button type="button" class="go du-go" data-cf="go">สู้อีกครั้ง</button><button type="button" class="tool du-lb" data-cf="lobby">เปลี่ยนระดับ / ดูท่า</button>`; }
-  function cfLobby(){ cfClear(); CF.ph="lobby"; CF.f=[cfNew(0),cfNew(1)]; CF.wins=[0,0]; CF.round=0; $("cfPads").hidden=true; $("cfHud").hidden=true; cfMsg("");
-    const o=CF.opt, P=$("cfPanel"); P.hidden=false; P.className="du-panel du-lob cf-panel";
-    P.innerHTML=`<h2>ตีหมอน · โหมดคอมโบ</h2><p class="du-sub">สู้ตัวต่อตัวกับบอตแบบเงา · ชนะ 2 ใน 3 รอบ · กดปุ่มต่อกันเป็นท่าพิเศษ</p>
+      ${btns}`; }
+  function cfLobby(err){ cfClear(); cfNetClose(); CF.ph="lobby"; CF.f=[cfNew(0),cfNew(1)]; CF.wins=[0,0]; CF.round=0; $("cfPads").hidden=true; $("cfHud").hidden=true; cfMsg("");
+    const o=CF.opt, P=$("cfPanel"), md=o.mode||"bot"; P.hidden=false; P.className="du-panel du-lob cf-panel";
+    const seg=`<p class="s-opt-k">เล่นกับ</p><div class="s-seg du-seg">${[["bot","บอต"],["2p","2 คน 1 เครื่อง"],["on","ออนไลน์"]].map(([v,n])=>`<button type="button" class="s-segb ${v===md?"on":""}" data-cf="mode" data-v="${v}">${n}</button>`).join("")}</div>`;
+    const list=`<p class="s-opt-k">ท่าคอมโบ</p><ul class="cf-list">${CF_LIST.map(([k,n])=>`<li><span>${k.split(" ").map(x=>x==="แล้ว"?"<i>→</i>":/^(ตี|ตีแรง|กัน|กระโดด|กันได้)$/.test(x)?`<kbd>${x}</kbd>`:esc(x)).join(" ")}</span><b>${n}</b></li>`).join("")}</ul>`;
+    const er=err?`<p class="net-err" role="alert">${esc(err)}</p>`:"";
+    if(md==="2p"){ P.innerHTML=`<h2>ตีหมอน · โหมดคอมโบ</h2>${seg}<p class="s-desc">ถือมือถือแนวนอน คนซ้ายเป็น<b style="color:${CF_COL[0]}">แดง</b> ใช้ปุ่มฝั่งซ้าย · คนขวาเป็น<b style="color:${CF_COL[1]}">ฟ้า</b> ใช้ปุ่มฝั่งขวา</p>
+      <button type="button" class="go du-go" data-cf="go">เริ่มสู้!</button>${list}`; return; }
+    if(md==="on"){ P.innerHTML=`<h2>ตีหมอน · โหมดคอมโบ</h2>${seg}${er}
+      ${IN_CLAUDE?`<div class="net-note" role="note"><b>ตอนนี้เปิดอยู่ใน claude.ai</b>ที่นี่เล่นข้ามเครื่องไม่ได้ เปิดเกมจากเว็บจริงแทนนะ</div>`
+      :`<p class="s-desc">คนหนึ่งสร้างห้อง แล้วบอกรหัส 4 ตัวให้เพื่อน · เจ้าของห้องเป็นสีแดง เพื่อนเป็นสีฟ้า</p>
+      <div class="cf-net"><button type="button" class="go du-go" data-cf="mk">สร้างห้อง</button>
+        <div class="cf-join"><input id="cfCode" class="code-in" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="รหัส 4 ตัว" aria-label="รหัสห้อง ตัวเลข 4 ตัว"><button type="button" class="go alt du-go" data-cf="join">เข้าห้อง</button></div></div>`}`; return; }
+    P.innerHTML=`<h2>ตีหมอน · โหมดคอมโบ</h2>${seg}
       <p class="s-opt-k">ระดับบอต</p><div class="s-seg du-seg">${CF_LV.map((l,i)=>`<button type="button" class="s-segb ${i===o.lv?"on":""}" data-cf="lv" data-v="${i}">${l.n}</button>`).join("")}</div><p class="s-desc">${CF_LV[o.lv].d}</p>
-      <p class="s-opt-k">ท่าคอมโบ</p><ul class="cf-list">${CF_LIST.map(([k,n])=>`<li><span>${k.split(" ").map(x=>x==="แล้ว"?"<i>→</i>":/^(ตี|ตีแรง|กัน|กระโดด|กันได้)$/.test(x)?`<kbd>${x}</kbd>`:esc(x)).join(" ")}</span><b>${n}</b></li>`).join("")}</ul>
-      <button type="button" class="go du-go" data-cf="go">เริ่มสู้!</button>`; }
+      ${list}
+      ${cfTrained()?`<div class="cf-go2"><button type="button" class="tool du-lb" data-cf="train">ฝึกท่าอีกรอบ</button><button type="button" class="go du-go" data-cf="go">เริ่มสู้!</button></div>`
+        :`<div class="cf-go2"><button type="button" class="go du-go" data-cf="train">ฝึกท่าก่อน (1 นาที)</button><button type="button" class="tool du-lb" data-cf="go">ข้าม เริ่มสู้เลย</button></div>`}`; }
   /* ---------- the picture ---------- */
   function cfFit(){ const cv=CF.cv; if(!cv) return; const z=ZM(), dpr=Math.min(2,devicePixelRatio||1)*(LITE?.75:1)*z, W=innerWidth/z, H=innerHeight/z;
     CF.W=W; CF.H=H; CF.dpr=dpr; cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); cv.style.width=W+"px"; cv.style.height=H+"px";
@@ -7513,16 +7745,19 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     x.fillStyle="#FFF4D6"; if(stun||ko){ x.strokeStyle="#FFF4D6"; x.lineWidth=1.6; x.beginPath(); x.moveTo(gx+f*3,gy-1.5); x.lineTo(gx+f*7,gy+2.5); x.moveTo(gx+f*7,gy-1.5); x.lineTo(gx+f*3,gy+2.5); x.stroke(); }
     else { x.beginPath(); x.ellipse(gx+f*4.5,gy+.5,1.5,2.4,0,0,7); x.fill(); }
     x.restore(); }
-  function cfFx(kind,ux,uy,k,dmg){ if(cfRM()&&kind!=="hit") return; const now=CF.now, n=kind==="hit"?(dmg>=15?16:9):kind==="dust"?10:5;
+  function cfFx(kind,ux,uy,k,dmg){ cfSend({t:"fx",kind,x:ux,y:uy,k,dmg:dmg||0}); if(cfRM()&&kind!=="hit") return; const now=CF.now, n=kind==="hit"?(dmg>=15?16:9):kind==="dust"?10:5;
     for(let i=0;i<n;i++){ const a=Math.random()*Math.PI*2, v=kind==="dust"?2+Math.random()*3:3+Math.random()*5;
       CF.fx.push({kind,x:ux,y:uy,vx:Math.cos(a)*v,vy:kind==="dust"?Math.abs(Math.sin(a))*v*.5:Math.sin(a)*v+2,r:Math.random()*6,start:now,end:now+.6+Math.random()*.6,k}); }
     if(kind!=="dust") CF.fx.push({kind:"ring",x:ux,y:uy,start:now,end:now+.28,k,big:dmg>=15}); }
   function cfFrame(ms){ CF.raf=0; if(!CF.on) return; CF.raf=requestAnimationFrame(cfFrame);
     const real=Math.min(.05,CF.last?(ms-CF.last)/1000:0); CF.last=ms; const slow=CF.now<CF.slowT?.35:1, dt=real*slow; CF.now+=dt;
     if(CF.f.length===2&&(CF.ph==="fight"||CF.ph==="over"||CF.ph==="ready")){
-      const [P,B]=CF.f; cfBot(B,P,dt);
+      const [P,B]=CF.f;
+      if(cfGuest()){ CF.f.forEach(F=>{ F.x=Math.max(-CF_EDGE,Math.min(CF_EDGE,F.x+F.vx*dt)); if(F.air) F.y=Math.max(0,F.y+F.vy*dt); F.t+=dt; if(F.st==="walk") F.walk+=dt*1.2*Math.abs(F.vx)/4.3; F.show+=(F.hp-F.show)*Math.min(1,dt*3); }); }
+      else { if(cfMode()==="bot"||CF.train) cfBot(B,P,dt);
       const step=1/120; let left=dt; while(left>0){ const h=Math.min(step,left); left-=h; cfStep(P,B,h); cfStep(B,P,h); cfPush(); }
-      if(CF.ph==="fight"){ CF.left-=dt; if(CF.left<=0){ CF.left=0; cfRoundEnd(P.hp>B.hp?0:B.hp>P.hp?1:-1,"time"); } }
+      if(CF.net&&CF.net.on&&CF.net.host&&(!CF.net.st||ms-CF.net.st>=50)){ CF.net.st=ms; cfSend({t:"s",ph:CF.ph,r:CF.round,l:Math.round(CF.left*10)/10,w:CF.wins,f:CF.f.map(F=>[+F.x.toFixed(3),+F.y.toFixed(3),+F.vx.toFixed(2),+F.vy.toFixed(2),F.dir,F.hp,F.st,+F.t.toFixed(3),F.mv||"",F.blk?1:0,F.air?1:0,F.slam?1:0,+F.walk.toFixed(2)])}); } }
+      if(CF.ph==="fight"&&!CF.train&&!cfGuest()){ CF.left-=dt; if(CF.left<=0){ CF.left=0; cfRoundEnd(P.hp>B.hp?0:B.hp>P.hp?1:-1,"time"); } }
       if(!cfFrame.h||ms-cfFrame.h>100){ cfFrame.h=ms; cfHud(); } }
     const x=CF.x, W=CF.W, H=CF.H; if(!x) return;
     { const lim=Math.max(0,CF_EDGE+.8-CF.view/2), mid=CF.f.length===2?(CF.f[0].x+CF.f[1].x)/2:0, want=Math.max(-lim,Math.min(lim,mid)); CF.cam+=(want-CF.cam)*Math.min(1,real*5); }
@@ -7544,36 +7779,106 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     d.innerHTML=`<canvas class="du-cv" aria-label="ตีหมอน โหมดคอมโบ"></canvas>
       <button class="gexit du-exit" type="button" data-cf="exit">ออก</button>
       <div class="cf-hud" id="cfHud" hidden></div><div class="cf-combo" id="cfCombo" aria-live="polite"></div>
-      <div class="du-msg cf-msg" id="cfMsg" aria-live="assertive"></div>
-      <div class="cf-pads" id="cfPads" hidden><div class="cf-l">${pb("U","▲","up")}${pb("L","◀","lf")}${pb("R","▶","rt")}</div><div class="cf-r">${pb("H","ตีแรง","hv")}${pb("B","กัน","blk")}${pb("A","ตี","at")}</div></div>
+      <div class="du-msg cf-msg" id="cfMsg" aria-live="assertive"></div><div class="cf-train" id="cfTrain" hidden aria-live="polite"></div>
+      <div class="cf-pads" id="cfPads" hidden></div>
       <div class="du-panel" id="cfPanel"></div>`;
     document.body.appendChild(d);
     CF.cv=d.querySelector("canvas"); CF.x=CF.cv.getContext("2d");
     d.addEventListener("click",e=>{ const b=e.target.closest("[data-cf]"); if(!b) return; const a=b.dataset.cf;
       if(a==="exit") return cfClose();
       if(a==="lv"){ CF.opt.lv=+b.dataset.v; cfSave(); cfLobby(); beep(720,.04,"triangle",.03); }
+      if(a==="mode"){ CF.opt.mode=b.dataset.v; cfSave(); cfLobby(); beep(720,.04,"triangle",.03); }
+      if(a==="mk") cfNetCreate();
+      if(a==="join") cfNetJoin();
+      if(a==="leave"){ cfNetClose(true); cfLobby(); }
       if(a==="go") cfStart();
+      if(a==="train") cfTrainStart();
+      if(a==="skip") cfTrainEnd(false);
       if(a==="lobby") cfLobby(); });
-    // the pads: hold ◀ ▶ กัน, tap ▲ ตี ตีแรง
-    const press=(k,on)=>{ const P=CF.f[0]; if(!P||CF.ph!=="fight") return;
-      if(k==="L"||k==="R"){ if(on&&!P.hold[k]) cfTap(P,k==="R"?1:-1); P.hold[k]=on?1:0; }
-      else if(k==="B"){ P.blk=on&&!P.air&&P.st!=="atk"&&P.st!=="hurt"; P.hold.B=on?1:0; }
-      else if(on&&k==="U") cfJump(P);
-      else if(on&&(k==="A"||k==="H")) cfAttack(P,k); };
+    const press=(p,k,on)=>cfPress(p,k,on);
     const ptr=new Map();
-    d.querySelector("#cfPads").addEventListener("pointerdown",e=>{ const b=e.target.closest(".cf-b"); if(!b) return; e.preventDefault(); try{ b.setPointerCapture(e.pointerId); }catch(x){} ptr.set(e.pointerId,b); b.classList.add("on"); press(b.dataset.k,true); });
-    const up=e=>{ const b=ptr.get(e.pointerId); if(!b) return; ptr.delete(e.pointerId); b.classList.remove("on"); press(b.dataset.k,false); };
+    d.querySelector("#cfPads").addEventListener("pointerdown",e=>{ const b=e.target.closest(".cf-b"); if(!b) return; e.preventDefault(); try{ b.setPointerCapture(e.pointerId); }catch(x){} ptr.set(e.pointerId,b); b.classList.add("on"); press(+b.dataset.p||0,b.dataset.k,true); });
+    const up=e=>{ const b=ptr.get(e.pointerId); if(!b) return; ptr.delete(e.pointerId); b.classList.remove("on"); press(+b.dataset.p||0,b.dataset.k,false); };
     ["pointerup","pointercancel","lostpointercapture"].forEach(t=>d.querySelector("#cfPads").addEventListener(t,up));
     d.querySelector("#cfPads").addEventListener("contextmenu",e=>e.preventDefault());
+    // keys: one player = arrows/WASD + J ตี, K ตีแรง, L กัน · two players: red A D W S + F ตี, G ตีแรง · blue ← → ↑ ↓ + K ตี, L ตีแรง
     const KEYS={ArrowLeft:"L",KeyA:"L",ArrowRight:"R",KeyD:"R",ArrowUp:"U",KeyW:"U",Space:"U",KeyJ:"A",KeyK:"H",KeyL:"B",KeyS:"B",ArrowDown:"B"};
-    addEventListener("keydown",e=>{ if(!CF.on) return; if(e.key==="Escape") return cfClose(); const k=KEYS[e.code]; if(!k) return; e.preventDefault(); if(e.repeat) return; press(k,true); });
-    addEventListener("keyup",e=>{ if(!CF.on) return; const k=KEYS[e.code]; if(k) press(k,false); });
+    const K2={KeyA:[0,"L"],KeyD:[0,"R"],KeyW:[0,"U"],KeyS:[0,"B"],KeyF:[0,"A"],KeyG:[0,"H"],ArrowLeft:[1,"L"],ArrowRight:[1,"R"],ArrowUp:[1,"U"],ArrowDown:[1,"B"],KeyK:[1,"A"],KeyL:[1,"H"]};
+    const keyOf=e=>{ if(e.target&&e.target.matches&&e.target.matches("input")) return null; if(cfMode()==="2p") return K2[e.code]||null; const k=KEYS[e.code]; return k?[cfMe(),k]:null; };
+    addEventListener("keydown",e=>{ if(!CF.on) return; if(e.key==="Escape") return cfClose(); const m=keyOf(e); if(!m) return; e.preventDefault(); if(e.repeat) return; press(m[0],m[1],true); });
+    addEventListener("keyup",e=>{ if(!CF.on) return; const m=keyOf(e); if(m) press(m[0],m[1],false); });
     addEventListener("resize",()=>{ if(CF.on) cfFit(); });
     return d; }
+  // a button for player p (from this phone's pads/keys, or from the friend's phone)
+  function cfPress(p,k,on){
+    if(cfGuest()){ if(p===1) cfSend({t:"p",k,on:!!on},true); return; }
+    const P=CF.f[p]; if(!P||CF.ph!=="fight"||!cfHuman(p)) return;
+    if(k==="L"||k==="R"){ if(on&&!P.hold[k]) cfTap(P,k==="R"?1:-1); P.hold[k]=on?1:0; }
+    else if(k==="B"){ P.blk=on&&!P.air&&P.st!=="atk"&&P.st!=="hurt"; P.hold.B=on?1:0; }
+    else if(on&&k==="U") cfJump(P);
+    else if(on&&(k==="A"||k==="H")) cfAttack(P,k); }
+  // one set of pads for us, or two sets (red on the left, blue on the right) for two people on one phone
+  function cfPadsBuild(){ const E=$("cfPads"); if(!E) return; const pb=(p,k,t,cls)=>`<button type="button" class="cf-b ${cls||""}" data-p="${p}" data-k="${k}" aria-label="${t}">${t}</button>`;
+    if(cfMode()==="2p"){ E.className="cf-pads two"; E.innerHTML=[0,1].map(p=>`<div class="cf-g p${p}" style="--pc:${CF_COL[p]}">${pb(p,"L","◀","lf")}${pb(p,"R","▶","rt")}${pb(p,"U","▲","up")}${pb(p,"B","กัน","blk")}${pb(p,"H","ตีแรง","hv")}${pb(p,"A","ตี","at")}</div>`).join(""); return; }
+    const p=cfMe(); E.className="cf-pads"; E.innerHTML=`<div class="cf-l">${pb(p,"U","▲","up")}${pb(p,"L","◀","lf")}${pb(p,"R","▶","rt")}</div><div class="cf-r">${pb(p,"H","ตีแรง","hv")}${pb(p,"B","กัน","blk")}${pb(p,"A","ตี","at")}</div>`; }
+  /* ---------- two phones: the host's phone runs the fight; the friend's phone sends its buttons and shows what the host sends ---------- */
+  const CF_PEER="party-studio-combo-26-";
+  const cfNote=k=>{ try{ window.PartyGuardian&&window.PartyGuardian.note(k); }catch(e){} };
+  function cfSend(m,force){ const n=CF.net; if(!n||!n.on||!n.conn||(!n.host&&!force)) return; try{ n.conn.send(m); }catch(e){} }
+  function cfNetClose(bye){ const n=CF.net; if(!n) return; CF.net=null; clearTimeout(n.give); clearInterval(n.poll); try{ if(bye&&n.conn) n.conn.send({t:"bye"}); }catch(e){} setTimeout(()=>{ try{ n.conn&&n.conn.close(); n.peer&&n.peer.destroy(); }catch(e){} },bye?250:0); }
+  function cfNetWait(h){ const P=$("cfPanel"); P.hidden=false; P.className="du-panel du-lob cf-panel"; P.innerHTML=h+`<button type="button" class="tool du-lb" data-cf="leave">ยกเลิก</button>`; }
+  function cfNetFail(why,note){ if(note) cfNote(note); cfNetClose(); CF.opt.mode="on"; cfLobby(why); }
+  async function cfNetCreate(){ if(IN_CLAUDE) return; const me=myName()||"เจ้าของห้อง";
+    cfNetWait(`<h2>กำลังสร้างห้อง…</h2>`);
+    try{ await loadPeer(); }catch(e){ return cfNetFail(netMsg("script"),"netload"); }
+    const code=Array.from({length:4},()=>"0123456789"[Math.floor(Math.random()*10)]).join(""), peer=mkPeer(CF_PEER+code);
+    const n=CF.net={host:true,on:false,peer,conn:null,code,names:[me,"เพื่อน"]};
+    n.give=setTimeout(()=>{ if(CF.net===n&&!n.open) cfNetFail(netMsg(),"nettime"); },12000);
+    peer.on("open",()=>{ if(CF.net!==n) return; n.open=true; clearTimeout(n.give);
+      cfNetWait(`<h2>ห้อง ${code}</h2><p class="du-sub">บอกรหัสนี้ให้เพื่อน แล้วให้เพื่อนกด "เข้าห้อง" ในโหมดคอมโบ</p><p class="cf-code">${code}</p><p class="s-desc"><span class="dots" aria-hidden="true"></span> รอเพื่อนเข้ามา…</p>`); });
+    peer.on("connection",conn=>{ if(CF.net!==n) return;
+      if(n.conn){ conn.on("open",()=>{ try{ conn.send({t:"busy"}); }catch(e){} setTimeout(()=>conn.close(),300); }); return; }
+      n.conn=conn; conn.on("data",d=>cfNetGot(n,d)); conn.on("close",()=>cfNetLost(n)); conn.on("error",()=>cfNetLost(n)); });
+    peer.on("error",e=>{ if(CF.net!==n) return; if(e&&e.type==="unavailable-id"&&!n.open){ cfNetClose(); return cfNetCreate(); } if(e&&e.type==="peer-unavailable") return; cfNetFail(netMsg(e&&e.type),n.on?"netdrop":"netload"); }); }
+  async function cfNetJoin(){ if(IN_CLAUDE) return; const inp=$("cfCode"), code=thDigits(inp&&inp.value||"").replace(/[^0-9]/g,"");
+    if(code.length!==4){ if(inp) inp.focus(); return toast("รหัสห้องเป็นตัวเลข 4 ตัว"); }
+    cfNetWait(`<h2>กำลังเข้าห้อง ${code}…</h2><p class="s-desc"><span class="dots" aria-hidden="true"></span> กำลังเชื่อมต่อ</p>`);
+    try{ await loadPeer(); }catch(e){ return cfNetFail(netMsg("script"),"netload"); }
+    const peer=mkPeer(), n=CF.net={host:false,on:false,peer,conn:null,code,names:["เจ้าของห้อง",myName()||"เรา"]};
+    // three states: no room (the server says "peer-unavailable") · asked, no answer yet · the room answered but the two phones never linked
+    n.poll=setInterval(()=>{ if(CF.net!==n||n.on){ clearInterval(n.poll); return; } const st=netState(n.conn);
+      if(st!=="waiting"&&!n.found){ n.found=true; cfNetWait(`<h2>เจอห้อง ${code} แล้ว</h2><p class="s-desc"><span class="dots" aria-hidden="true"></span> กำลังต่อเข้าเครื่องเพื่อน</p>`); }
+      if(st==="failed"){ clearInterval(n.poll); cfNetFail(netStuckMsg(code),"netp2p"); } },500);
+    n.give=setTimeout(()=>{ if(CF.net===n&&!n.on) cfNetFail(netState(n.conn)==="waiting"?netNoAnswerMsg(code):netStuckMsg(code),"nettime"); },16000);
+    peer.on("open",()=>{ if(CF.net!==n) return; const conn=peer.connect(CF_PEER+code,{reliable:true}); n.conn=conn;
+      conn.on("open",()=>{ try{ conn.send({t:"hi",name:myName()||"เพื่อน"}); }catch(e){} });
+      conn.on("data",d=>cfNetGot(n,d)); conn.on("close",()=>cfNetLost(n)); conn.on("error",()=>cfNetLost(n)); });
+    peer.on("error",e=>{ if(CF.net!==n) return; cfNetFail(e&&e.type==="peer-unavailable"?`ไม่เจอห้อง ${code} · ตรวจรหัสอีกครั้ง`:netMsg(e&&e.type),e&&e.type==="peer-unavailable"?"":"netp2p"); }); }
+  function cfNetLost(n){ if(CF.net!==n) return; const was=n.on; cfNetFail(was?(n.host?"เพื่อนออกจากห้องแล้ว":"การเชื่อมต่อหลุด หรือเจ้าของห้องออกไปแล้ว"):netMsg(),was?"netdrop":"netp2p"); }
+  const CF_ST=["idle","walk","jump","atk","hurt","ko"], CF_KEYS=["L","R","U","B","A","H"];
+  function cfNetGot(n,d){ if(CF.net!==n||!d||typeof d!=="object") return;
+    if(d.t==="bye") return cfNetLost(n);
+    if(n.host){
+      if(d.t==="hi"&&!n.on){ let nm=String(d.name||"").trim().slice(0,20); if(!nm) nm="เพื่อน"; n.names=[n.names[0],nm]; n.on=true; clearTimeout(n.give); beep(880,.1,"triangle",.06); cfStart(); return; }
+      if(d.t==="p"&&n.on&&CF_KEYS.includes(d.k)) cfPress(1,d.k,!!d.on);
+      return; }
+    // the friend's phone
+    if(d.t==="busy") return cfNetFail("ห้องนี้มีคนเล่นอยู่แล้ว ลองสร้างห้องใหม่");
+    if(d.t==="go"&&Array.isArray(d.names)){ n.on=true; clearTimeout(n.give); n.names=[String(d.names[0]||"เจ้าของห้อง").slice(0,20),String(d.names[1]||"เรา").slice(0,20)];
+      cfClear(); CF.train=null; CF.done=false; CF.wins=[0,0]; CF.round=1; CF.f=[cfNew(0),cfNew(1)]; CF.fx=[]; CF.ph="ready";
+      $("cfPanel").hidden=true; cfPadsBuild(); $("cfPads").hidden=false; $("cfHud").hidden=false; try{ pcHit("pillow"); }catch(e){} cfHud(); return; }
+    if(!n.on) return;
+    if(d.t==="s"&&Array.isArray(d.f)&&d.f.length===2){ CF.ph=["ready","fight","over","end"].includes(d.ph)?d.ph:CF.ph; CF.round=+d.r||CF.round; CF.left=+d.l||0; if(Array.isArray(d.w)) CF.wins=[+d.w[0]||0,+d.w[1]||0];
+      d.f.forEach((a,k)=>{ const F=CF.f[k]; if(!Array.isArray(a)) return; F.x=+a[0]||0; F.y=Math.max(0,+a[1]||0); F.vx=+a[2]||0; F.vy=+a[3]||0; F.dir=a[4]<0?-1:1; F.hp=Math.max(0,Math.min(CF_HP,+a[5]||0));
+        F.st=CF_ST.includes(a[6])?a[6]:"idle"; F.t=+a[7]||0; F.mv=CF_MV[a[8]]?a[8]:null; F.blk=!!a[9]; F.air=!!a[10]; F.slam=!!a[11]; F.walk=+a[12]||0; }); return; }
+    if(d.t==="m"){ const m=$("cfMsg"); if(m){ m.innerHTML=String(d.h||"").replace(/<(?!\/?(b|small)>)[^>]*>/g,""); m.className="cf-msg "+String(d.cls||"").replace(/[^a-z ]/g,""); } return; }
+    if(d.t==="c"){ cfCombo(+d.k===1?1:0,typeof d.name==="string"&&Object.values(CF_MV).some(M=>M.n===d.name)?d.name:"",+d.n|0); return; }
+    if(d.t==="fx"&&["hit","block","dust"].includes(d.kind)){ cfFx(d.kind,+d.x||0,+d.y||0,+d.k===1?1:0,+d.dmg||0); if(d.kind==="hit"){ CF.shake=Math.max(CF.shake,+d.dmg>=15?.32:.14); sfx("smash",+d.dmg>=15?1:.75,()=>beep(160,.16,"sine",.08)); } return; }
+    if(d.t==="end"&&Array.isArray(d.wins)){ CF.wins=[+d.wins[0]||0,+d.wins[1]||0]; cfEnd(); return; } }
   function cfOpen(){ const d=cfEl(); CF.on=true; d.hidden=false; document.body.style.overflow="hidden"; cfFit(); cfLobby(); CF.last=0; if(!CF.raf) CF.raf=requestAnimationFrame(cfFrame); }
-  function cfClose(){ cfClear(); CF.on=false; CF.ph="lobby";
+  function cfClose(){ cfNetClose(true); cfClear(); CF.on=false; CF.ph="lobby"; CF.train=null; const te=$("cfTrain"); if(te) te.hidden=true;
     wipe(()=>{ const d=$("cfg"); if(d) d.hidden=true; document.body.style.overflow=$("game")&&!$("game").hidden||$("grp")&&!$("grp").hidden?"hidden":""; }); }
-  window.__cf={get:()=>CF, open:cfOpen, attack:(k,key)=>cfAttack(CF.f[k],key), lv:CF_LV, mv:CF_MV};   // for the self-test
+  window.__cf={get:()=>CF, open:cfOpen, train:cfTrainStart, attack:(k,key)=>cfAttack(CF.f[k],key), lv:CF_LV, mv:CF_MV};   // for the self-test
 
   /* =========================================================
      ตึกโยกเยก — falling blocks (4 squares each) that land and become real physics: build your tower up to the finish line
@@ -7747,14 +8052,27 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
   // a block lands: from now on it's real physics
   function twLand(S){ const B=S.piece; B.kin=false; B.vx=0; B.w=0; B.vy=-Math.min(-B.vy,3.5); S.piece=null; S.ctrl.D=TW.opt.mode==="bot"&&S.k===1||TW.auto?0:S.ctrl.D;
     S.spawnT=.45; if(S.k===0||TW.opt.mode==="2p") sfx("k_thud",1,()=>beep(150,.12,"triangle",.07)); try{ if(navigator.vibrate&&VIBE&&S.k===0) navigator.vibrate(12); }catch(e){} }
+  // a person really controlling the block (◀ ▶ หมุน ▼), not a tap on the empty screen
+  function twActive(S){ if(!S) return; S.act=performance.now(); S.ctl=(S.ctl||0)+1; if(S.warned){ S.warned=false; const m=$("twMsg"); if(m&&/ไม่ได้จ้างมานั่งเฝ้า/.test(m.textContent)) twMsg(""); } }
+  const TW_AFK_WARN=10000, TW_AFK_OUT=20000;
+  function twAfkReset(){ const now=performance.now(); (TW.sides||[]).forEach(S=>{ if(!S) return; S.act=now; S.seen=now; if(S.warned){ S.warned=false; try{ twMsg(""); }catch(e){} } }); }
+  ["visibilitychange","pageshow","focus"].forEach(ev=>(ev==="visibilitychange"?document:window).addEventListener(ev,twAfkReset));
+  function twAfk(S){ if(TW.ph!=="play"||S.out||TW.auto||TW.opt.mode==="bot"&&S.k===1) return;
+    // the phone pauses the game while another app is open: the time away (or any long freeze) never counts as idle
+    const now=performance.now(), gap=now-(S.seen||now); S.seen=now;
+    if(document.visibilityState!=="visible"||!S.act||gap>1500){ S.act=now; if(S.warned){ S.warned=false; twMsg(""); } return; }
+    const idle=now-S.act, who=TW.opt.mode==="2p"?esc(twNames()[S.k])+": ":"";
+    if(idle>=TW_AFK_OUT){ S.out=true; twEnd(1-S.k,"afk"); return; }
+    if(idle>=TW_AFK_WARN&&!S.warned){ S.warned=true; twMsg(`<b>${who}พี่ครับ ตึกไม่ได้จ้างมานั่งเฝ้านะ</b><small>ขยับหรือหมุนบล็อก ไม่งั้นอีก 10 วินาทีแพ้</small>`,"rd"); try{ sfx("k_wrong",1,()=>beep(300,.15,"square",.04)); }catch(e){} } }
   function twStep(S,dt){
+    twAfk(S);
     if(TW.ph==="play"&&!S.out){
       if(!S.piece){ S.spawnT-=dt; if(S.spawnT<=0) twSpawn(S); }
       const B=S.piece;
       if(B&&B.kin){
         if(TW.opt.mode==="bot"&&S.k===1||TW.auto) twBot(S,dt);
         // holding left/right repeats the move
-        const dir=(S.ctrl.R?1:0)-(S.ctrl.L?1:0); if(dir){ S.rep-=dt; if(S.rep<=0){ twMove(S,dir*.5); S.rep=.11; } } else S.rep=0;
+        const dir=(S.ctrl.R?1:0)-(S.ctrl.L?1:0); if(dir){ S.rep-=dt; if(S.rep<=0){ if(twMove(S,dir*.5)&&!(TW.opt.mode==="bot"&&S.k===1)&&!TW.auto) twActive(S); S.rep=.11; } } else S.rep=0;
         // fall in small steps so it lands gently
         let dy=(S.ctrl.D?TW_FAST:TW_FALL)*dt; B.vy=-(S.ctrl.D?TW_FAST:TW_FALL);
         while(dy>0){ const st=Math.min(dy,.08); dy-=st; B.y-=st; if(twOverlap(S,B)<=0){ twLand(S); break; } }
@@ -7769,7 +8087,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     let top=0, calm=true; for(const O of S.W.bodies){ if(!O.im||O.kin) continue; const sp=Math.abs(O.vx)+Math.abs(O.vy)+Math.abs(O.w); if(sp>.5) calm=false; if(Math.abs(O.vy)>2) continue;
       for(const b of O.boxes){ const w=TPH.wbox(O,b); top=Math.max(top,w.y+Math.abs(w.s)*w.hx+Math.abs(w.c)*w.hy); } }
     S.top=top; S.calm=calm;
-    if(TW.ph==="play"&&!S.out){ if(top>=TW.opt.goal-.05&&calm){ S.hold+=dt; if(S.hold>=1.5) twEnd(S.k,"goal"); } else S.hold=Math.max(0,S.hold-dt*2); }
+    if(TW.ph==="play"&&!S.out){ if(top>=TW.opt.goal-.05&&calm){ S.hold+=dt; if(S.hold>=1.5&&(S.ctl>0||TW.auto||TW.opt.mode==="bot"&&S.k===1)) twEnd(S.k,"goal"); } else S.hold=Math.max(0,S.hold-dt*2); }
     S.flash=Math.max(0,S.flash-dt*1.5);
   }
   /* ---------- the picture ---------- */
@@ -7843,14 +8161,14 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       if(a==="lobby") twLobby(); });
     // the buttons: press to move/turn, hold ◀ ▶ to keep moving, hold ▼ to drop fast
     const press=(btn,on)=>{ const s=+btn.closest(".tw-pad").dataset.s, S=TW.sides[s], k=btn.dataset.k; if(!S||TW.ph!=="play") return; btn.classList.toggle("on",on);
-      if(k==="U"){ if(on) twTurn(S); return; } if(k==="D"){ S.ctrl.D=on?1:0; return; }
-      S.ctrl[k]=on?1:0; if(on){ twMove(S,k==="R"?.5:-.5); S.rep=.24; } };
+      if(k==="U"){ if(on&&twTurn(S)) twActive(S); return; } if(k==="D"){ S.ctrl.D=on?1:0; if(on&&S.piece&&S.piece.kin) twActive(S); return; }
+      S.ctrl[k]=on?1:0; if(on){ if(twMove(S,k==="R"?.5:-.5)) twActive(S); S.rep=.24; } };
     d.addEventListener("pointerdown",e=>{ const b=e.target.closest(".tw-b"); if(!b) return; e.preventDefault(); try{ b.setPointerCapture(e.pointerId); }catch(er){} press(b,true); });
     ["pointerup","pointercancel","lostpointercapture"].forEach(t=>d.addEventListener(t,e=>{ const b=e.target.closest&&e.target.closest(".tw-b"); if(b&&b.classList.contains("on")) press(b,false); }));
     const KEYS={a:[0,"L"],A:[0,"L"],"ฟ":[0,"L"],d:[0,"R"],D:[0,"R"],"ก":[0,"R"],w:[0,"U"],W:[0,"U"],"ไ":[0,"U"],s:[0,"D"],S:[0,"D"],"ห":[0,"D"],ArrowLeft:[1,"L"],ArrowRight:[1,"R"],ArrowUp:[1,"U"],ArrowDown:[1,"D"]};
     const key=(e,on)=>{ if(!TW.on) return; if(on&&e.key==="Escape") return twClose(); let m=KEYS[e.key]; if(!m||TW.ph!=="play") return;
       if(TW.opt.mode==="bot") m=[0,m[1]]; const S=TW.sides[m[0]], k=m[1]; e.preventDefault();
-      if(k==="U"){ if(on&&!e.repeat) twTurn(S); return; } if(k==="D"){ S.ctrl.D=on?1:0; return; } if(on&&e.repeat) return; S.ctrl[k]=on?1:0; if(on){ twMove(S,k==="R"?.5:-.5); S.rep=.24; } };
+      if(k==="U"){ if(on&&!e.repeat&&twTurn(S)) twActive(S); return; } if(k==="D"){ S.ctrl.D=on?1:0; if(on&&S.piece&&S.piece.kin) twActive(S); return; } if(on&&e.repeat) return; S.ctrl[k]=on?1:0; if(on){ if(twMove(S,k==="R"?.5:-.5)) twActive(S); S.rep=.24; } };
     addEventListener("keydown",e=>key(e,true)); addEventListener("keyup",e=>key(e,false));
     addEventListener("resize",()=>{ if(TW.on) twFit(); });
     return d; }
@@ -7868,17 +8186,17 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     $("twPanel").hidden=true; const P=$("twPads"); P.hidden=false; P.classList.toggle("bot",TW.opt.mode==="bot");
     try{ pcHit("tower"); }catch(e){}
     TW.ph="count"; [["3",0],["2",700],["1",1400]].forEach(([t,ms])=>twAt(()=>{ twMsg(t,"rd"); sfx("k_count",1,()=>beep(660,.08,"triangle",.05)); },ms));
-    twAt(()=>{ twMsg("เริ่ม!","rd"); sfx("k_go",1,()=>beep(990,.12,"triangle",.06)); TW.ph="play"; TW.sides.forEach(S=>S.spawnT=0); },2100);
+    twAt(()=>{ twMsg("เริ่ม!","rd"); sfx("k_go",1,()=>beep(990,.12,"triangle",.06)); TW.ph="play"; TW.sides.forEach(S=>{ S.spawnT=0; S.act=performance.now(); S.seen=0; S.warned=false; S.ctl=0; }); },2100);
     twAt(()=>twMsg(""),2900); }
   function twEnd(w,why){ if(TW.ph!=="play") return; TW.ph="end"; TW.winner=w; twClear(); $("twPads").hidden=true;
     TW.sides.forEach(S=>{ if(S.piece&&S.piece.kin){ TPH.remove(S.W,S.piece); S.piece=null; } });
     const N=twNames(), bot=TW.opt.mode==="bot", meWon=!bot||w===0;
-    twMsg(why==="goal"?`<b>${esc(N[w])} ถึงเส้นชัย!</b>`:`<b>${esc(N[1-w])} หัวใจหมด!</b>`,"win"+w);
+    twMsg(why==="goal"?`<b>${esc(N[w])} ถึงเส้นชัย!</b>`:why==="afk"?`<b>${esc(N[1-w])} ไม่ได้เล่น 20 วินาที</b><small>ปล่อยบล็อกตกเองไม่นับนะ</small>`:`<b>${esc(N[1-w])} หัวใจหมด!</b>`,"win"+w);
     if(!TW.done){ TW.done=true; const nm=myName(); if(nm) try{ PartyScores.addPlay([{name:nm,won:bot?w===0:false}],"tower",false); }catch(e){} if(bot) mxEv("tower","end",w===0,why);
       if(meWon){ try{ confetti(); }catch(e){} winSound(); } else loseSound(); }
     twAt(()=>{ twMsg(""); const S=TW.sides;
       $("twPanel").hidden=false; $("twPanel").className="du-panel du-res";
-      $("twPanel").innerHTML=`<h2>${bot?(w===0?"เราชนะ!":"บอตชนะ ลองใหม่นะ!"):esc(N[w])+" ชนะ!"}</h2>
+      $("twPanel").innerHTML=`<h2>${bot?(w===0?"เราชนะ!":loseLine()):esc(N[w])+" ชนะ!"}</h2>
         <div class="du-score"><span style="--c:${twCol[0]}">${esc(N[0])}<b>${Math.min(TW.opt.goal,Math.floor(S[0].top+.1))}</b><small>ชั้น · ❤ ${S[0].hearts}</small></span><i>–</i><span style="--c:${twCol[1]}">${esc(N[1])}<b>${Math.min(TW.opt.goal,Math.floor(S[1].top+.1))}</b><small>ชั้น · ❤ ${S[1].hearts}</small></span></div>
         <button type="button" class="go du-go" data-tw="again">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-tw="lobby">เปลี่ยนตัวเลือก</button>`; },1800); }
   function twOpen(){ const d=twEl(); TW.on=true; d.hidden=false; document.body.style.overflow="hidden"; twFit(); twLobby(); TW.last=0; if(!TW.raf) TW.raf=requestAnimationFrame(twFrame); }
@@ -8048,7 +8366,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     const why2=why==="stuck"?"ไม่มีใครชนะกันได้แล้ว นับการ์ดที่เหลือ":why==="ties"?"เสมอกัน 6 รอบติด จบเกม นับการ์ดที่เหลือ":why==="long"?"เล่นครบ "+PK_MAXR+" รอบ นับการ์ดที่เหลือ":(w>=0?esc(N[1-w])+" การ์ดหมด":"");
     pkMsg("");
     $("pkPanel").hidden=false; $("pkPanel").className="du-panel du-res pk-res";
-    $("pkPanel").innerHTML=`<h2>${w<0?"เสมอ!":bot?(w===0?"เราชนะ!":"บอตชนะ ลองใหม่นะ!"):esc(N[w])+" ชนะ!"}</h2><p class="du-sub">${why2}</p>
+    $("pkPanel").innerHTML=`<h2>${w<0?"เสมอ!":bot?(w===0?"เราชนะ!":loseLine()):esc(N[w])+" ชนะ!"}</h2><p class="du-sub">${why2}</p>
       <div class="du-score"><span style="--c:#E8305E">${esc(N[0])}<b>${PK.h[0].length}</b><small>ใบที่เหลือ</small></span><i>–</i><span style="--c:#3B7BF0">${esc(N[1])}<b>${PK.h[1].length}</b><small>ใบที่เหลือ</small></span></div>
       <button type="button" class="go du-go" data-pk="again">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-pk="lobby">เปลี่ยนตัวเลือก</button>`; }
   function pkOpen(){ const d=pkEl(); PK.on=true; d.hidden=false; document.body.style.overflow="hidden"; pkLobby(); }
@@ -8369,7 +8687,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     $("kqPanel").hidden=false; $("kqPanel").className="du-panel du-res kq-lob";
     $("kqPanel").innerHTML=`<h2>${w<0?"รู้ใจกันพอๆ กัน!":`${esc(N[w])} รู้ใจกว่า!`}</h2><p class="du-sub">${line}</p>
       <div class="du-score"><span style="--c:#FF5C8A">${esc(N[0])}<b>${s0}</b><small>ทายถูก จาก ${each}</small></span><i>–</i><span style="--c:#3D8BFF">${esc(N[1])}<b>${s1}</b><small>ทายถูก จาก ${each}</small></span></div>
-      <button type="button" class="go du-go" data-kq="again">เล่นอีก ${KQ_DN} ข้อ</button><button type="button" class="tool du-lb" data-kq="lobby">เปลี่ยนแบบเล่น</button>`; }
+      <button type="button" class="go du-go" data-kq="again">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-kq="lobby">เปลี่ยนตัวเลือก</button>`; }
   // after 20 questions: the end of the game
   function kqEnd(){ KQ.ph="end"; kqClear();
     if(!KQ.done){ KQ.done=true; const nm=myName(); if(nm) try{ PartyScores.addPlay([{name:nm,won:false}],"kuan",false); }catch(e){} mxEv("kuan","end"); try{ confetti(); }catch(e){} winSound(); }
@@ -8378,7 +8696,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     $("kqPanel").hidden=false; $("kqPanel").className="du-panel du-res kq-lob";
     $("kqPanel").innerHTML=`<h2>ครบ ${KQ_N} ข้อแล้ว!</h2><p class="du-sub">ตอบไป ${KQ.picked} ข้อ จาก ${KQ_N} ข้อ · ไม่มีแพ้ไม่มีชนะ ขอบคุณที่มาฮาด้วยกัน</p>
       <p class="s-desc">เกมหน้าจะเจอคำถามใหม่ที่ยังไม่เคยเห็นก่อน</p>
-      <button type="button" class="go du-go" data-kq="again">เล่นอีก ${KQ_N} ข้อ</button><button type="button" class="tool du-lb" data-kq="exit">ออก</button>`; }
+      <button type="button" class="go du-go" data-kq="again">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-kq="lobby">เปลี่ยนตัวเลือก</button>`; }
   function kqOpen(){ const d=kqEl(); KQ.on=true; d.hidden=false; document.body.style.overflow="hidden"; kqLobby(); }
   function kqClose(){ mxQuit("kuan"); kqClear(); KQ.on=false; KQ.ph="lobby"; KQ.passGo=null; const kp=$("kqPass"); if(kp) kp.hidden=true;
     wipe(()=>{ const d=$("kqg"); if(d) d.hidden=true; if($("grp")&&!$("grp").hidden) document.body.style.overflow="hidden"; else document.body.style.overflow=""; }); }
@@ -8501,7 +8819,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       if(meWon){ try{ confetti(); }catch(e){} winSound(); } else loseSound(); }
     $("xog").classList.add("lob"); xoMsg("");
     $("xoPanel").hidden=false; $("xoPanel").className="du-panel du-res xo-lob";
-    $("xoPanel").innerHTML=`<h2>${bot?(w==="X"?"เราชนะ!":"บอตชนะ ลองใหม่นะ!"):`${esc(N[w])} ชนะ!`}</h2>
+    $("xoPanel").innerHTML=`<h2>${bot?(w==="X"?"เราชนะ!":loseLine()):`${esc(N[w])} ชนะ!`}</h2>
       <div class="du-score"><span style="--c:#E8305E">${esc(N.X)}<b>${XO.sc.X}</b></span><i>–</i><span style="--c:#3D8BFF">${esc(N.O)}<b>${XO.sc.O}</b></span></div>
       <p class="du-sub">เสมอ ${XO.sc.D} ตา</p>
       <button type="button" class="go du-go" data-xo="again">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-xo="lobby">เปลี่ยนตัวเลือก</button>`; }
@@ -8777,7 +9095,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     $("qzPanel").hidden=false; $("qzPanel").className="du-panel du-res qz-lob";
     $("qzPanel").innerHTML=`<h2>${race?(first?"เราชนะ!":`ได้ที่ ${order.indexOf(0)+1}`):`ได้ ${QZ.ok} จาก ${QZ_N} ข้อ`}</h2>${race?`<p class="du-sub">ตอบถูก ${QZ.ok} จาก ${QZ_N} ข้อ</p>${board}`:`<p class="qz-stars" aria-label="${st} ดาว">${[0,1,2].map(k=>`<i class="${k<st?"on":""}">★</i>`).join("")}</p><p class="du-sub">${msg}</p>`}
       ${miss?`<p class="s-opt-k">ข้อที่พลาด${QZ.miss.length>3?` (3 ข้อแรก จาก ${QZ.miss.length})`:""}</p><ul class="qz-miss">${miss}</ul>`:""}
-      <button type="button" class="go du-go" data-qz="again">เล่นอีก ${QZ_N} ข้อ</button><button type="button" class="tool du-lb" data-qz="lobby">เปลี่ยนวิชา / ระดับ</button>`; }
+      <button type="button" class="go du-go" data-qz="again">เล่นอีกครั้ง</button><button type="button" class="tool du-lb" data-qz="lobby">เปลี่ยนตัวเลือก</button>`; }
   function qzOpen(){ const d=qzEl(); QZ.on=true; d.hidden=false; document.body.style.overflow="hidden"; qzLobby(); }
   function qzClose(){ mxQuit("quiz"); qzClear(); QZ.on=false; QZ.ph="lobby";
     wipe(()=>{ const d=$("qzg"); if(d) d.hidden=true; if($("grp")&&!$("grp").hidden) document.body.style.overflow="hidden"; else document.body.style.overflow=""; }); }
@@ -10658,10 +10976,10 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     const rk=!N.demo&&(botWon||(!N.local&&v.winner!==v.me))?"lose":"win";
     resShow(rk,`
       <div class="res-top">${resArt(rk)}
-      <h2>${rk==="lose"?RES_LOSE:esc(v.names[v.winner])+" ชนะ!"}</h2>
+      <h2>${rk==="lose"?esc(loseLine(GAME+":"+v.round)):esc(v.names[v.winner])+" ชนะ!"}</h2>
       <p class="gp-note">${rk==="lose"?`${esc(v.names[v.winner])} ชนะรอบนี้ · ลองใหม่อีกที!`:`${esc(v.log)} · ${N.demo?"จบการสาธิต (ไม่นับคะแนน)":"บันทึกลงตารางอันดับแล้ว"}`}</p>
       </div><div class="res-card"><ol class="gp-rank">${rank.map((r,i)=>`<li class="${r.k===v.winner?"first":""}"><span class="gr-n">${i+1}</span>${v.bots&&v.bots[r.k]?`<span class="row-badge is-bot">${BOT_AVATAR}</span>`:`<span class="row-badge" style="background:${colorOf(r.nm)}">${esc(initialOf(r.nm))}</span>`}<b>${esc(r.nm)}${r.k===v.me?" (เรา)":""}</b><span class="gr-d">${r.gone?"ออกแล้ว":r.c===0?"หมดมือ":`เหลือ ${r.c} ใบ`}</span></li>`).join("")}</ol>
-      <div class="gp-actions">${N.demo?`<button class="go" id="oDemo">สาธิตอีกรอบ</button>`:N.host?`<button class="go" id="oNext">เล่นอีกรอบ</button>`:`<p class="waiting"><span class="dots" aria-hidden="true"></span> รอเจ้าของห้องเริ่มรอบใหม่</p>`}${N.local?`<button class="tool" id="oBack">กลับหน้าเข้าเกม</button>`:`<button class="tool" id="rMenu">ออกจากห้อง</button>`}</div></div>`);
+      <div class="gp-actions">${N.demo?`<button class="go" id="oDemo">สาธิตอีกรอบ</button>`:N.host?`<button class="go" id="oNext">เล่นอีกครั้ง</button>`:`<p class="waiting"><span class="dots" aria-hidden="true"></span> รอเจ้าของห้องเริ่มรอบใหม่</p>`}${N.local?`<button class="tool" id="oBack">เปลี่ยนตัวเลือก</button>`:`<button class="tool" id="rMenu">ออกจากห้อง</button>`}</div></div>`);
   }
   const RULE_ITEMS=`<li class="rs"><span class="rs-ic">${cardHTML({c:"r",v:"5"},{cls:"mini"})}</span><span class="rs-tx"><b>ลงทีละ 1 ใบ</b>ถึงจะมีเลขเดียวกันหลายใบ ก็ลงพร้อมกันไม่ได้</span></li><li class="rs"><span class="rs-ic"><span class="rs-two">${cardHTML({c:"r",v:"5"},{cls:"mini"})}${cardHTML({c:"r",v:"2"},{cls:"mini"})}</span></span><span class="rs-tx"><b>สีเดียวกัน หรือ เลขเดียวกัน</b>ใบที่ลงต้องตรงกับใบบนกอง · <b>ไพ่ดำ</b> ลงได้ทุกเมื่อ</span></li><li class="rs"><span class="rs-ic">${backHTML("mini")}</span><span class="rs-tx"><b>ไม่มีใบลงได้ แตะกองจั่ว</b>จั่ว 1 ใบ ลงได้ก็ลงเลย ถ้าไม่ได้ ตาจะผ่านไปเอง</span></li><li class="sp"><span>ไพ่พิเศษ (มีชื่อเขียนบนไพ่)</span>
         <div class="sp-row">${cardHTML({c:"b",v:"skip"},{cls:"mini"})}<p><b>ข้าม</b>คนถัดไปไม่ได้เล่น 1 ตา</p></div>
@@ -10703,6 +11021,11 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       document.head.appendChild(s);
     });
   }
+  function netState(conn){ try{ const pc=conn&&conn.peerConnection; if(!pc) return "waiting";
+      const ice=pc.iceConnectionState||"", cs=pc.connectionState||""; if(ice==="failed"||cs==="failed") return "failed";
+      return pc.remoteDescription?"answered":"waiting"; }catch(e){ return "waiting"; } }
+  function netNoAnswerMsg(code){ return `ส่งคำขอเข้าห้อง ${code} แล้ว แต่ห้องยังไม่ตอบกลับ · ตรวจรหัส และให้เจ้าของห้องเปิดหน้าห้องค้างไว้ (อย่าปิดจอ) แล้วลองใหม่`; }
+  function netStuckMsg(code){ return `เจอห้อง ${code} แล้ว แต่ต่อเข้าเครื่องเพื่อนไม่ติด · บางเครือข่ายกันการต่อตรงระหว่างมือถือไว้ ให้ทั้งสองเครื่องต่อ Wi-Fi เดียวกัน หรือให้เครื่องหนึ่งเปิดฮอตสปอตแล้วอีกเครื่องต่อ แล้วลองใหม่`; }
   const netMsg=type=>({
     "peer-unavailable":"ไม่เจอห้องนี้ ตรวจรหัสห้องอีกครั้ง หรือถามเพื่อนว่าห้องยังเปิดอยู่ไหม",
     "browser-incompatible":"เบราว์เซอร์นี้เล่นข้ามเครื่องไม่ได้ ลองเปิดด้วย Chrome หรือ Safari",
@@ -10710,7 +11033,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
   }[type]||"เชื่อมต่อไม่สำเร็จ ตรวจอินเทอร์เน็ต ถ้าต่อ Wi-Fi โรงเรียนอยู่ อาจถูกบล็อก ลองใช้เน็ตมือถือแทน");
 
   function leaveRoom(){
-    clearTimeout(N.timer); clearTimeout(N.autoTick); clearTimeout(hostClock); rulesDone=null;
+    clearTimeout(N.timer); clearInterval(N.netPoll); clearTimeout(N.autoTick); clearTimeout(hostClock); rulesDone=null;
     try{ N.conns.forEach(c=>c.close()); N.hostConn?.close(); N.peer?.destroy(); N.gpeer?.destroy(); }catch(e){}
     Object.assign(N,{peer:null,gpeer:null,host:false,quick:false,conns:new Map(),hostConn:null,code:"",roster:[],names:[],ready:[],me:0,phase:"idle"});
     D.online=false; G=null; TV=null; PV=null; lastTurn=-2; N.local=false; N.demo=false; demoStop(); N.tut=false; tutStop(); clearTimeout(botTimer); clearTimeout(botCatchTimer);
@@ -10879,7 +11202,7 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     joinAsGuest(pref()+code,name,code,
       why=>{ leaveRoom(); showOnlineEntry(why||"เข้าห้องไม่ได้"); },
       ()=>{ leaveRoom(); D.openFriend=true; showOnlineEntry(`ไม่เจอห้อง ${code} · ตรวจรหัสอีกครั้ง และให้เจ้าของห้องเปิดหน้าห้องค้างไว้ (อย่าปิดจอ) · ถ้ายังไม่ได้ ให้ทั้งสองเครื่องรีเฟรชหน้าเว็บแล้วลองใหม่`); },
-      ()=>{ leaveRoom(); D.openFriend=true; showOnlineEntry(`เจอห้อง ${code} แล้ว แต่ต่อเข้าเครื่องเพื่อนไม่ติด · ให้ทั้งสองเครื่องต่อ Wi-Fi เดียวกัน หรือให้เครื่องหนึ่งเปิดฮอตสปอตแล้วอีกเครื่องต่อ แล้วลองใหม่`); });
+      found=>{ leaveRoom(); D.openFriend=true; showOnlineEntry(found?netStuckMsg(code):netNoAnswerMsg(code)); });
   }
 
   /* host */
@@ -11001,7 +11324,9 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
       conn.on("data",guestGot);
       conn.on("close",()=>{ if(N.hostConn===conn&&N.phase!=="searching"&&!gEl.hidden){ leaveRoom(); showOnlineEntry("อีกฝั่งออกจากห้องไปแล้ว หรือการเชื่อมต่อหลุด"); } });
       clearTimeout(N.timer);
-      N.timer=setTimeout(()=>{ if(N.hostConn===conn&&!conn.open){ try{conn.close();}catch(e){} N.hostConn=null; (onStuck||onMissing)(); } },onStuck?16000:9000);
+      const give=found=>{ clearInterval(N.netPoll); if(N.hostConn===conn&&!conn.open){ clearTimeout(N.timer); try{conn.close();}catch(e){} N.hostConn=null; onStuck?onStuck(found):onMissing(); } };
+      clearInterval(N.netPoll); N.netPoll=setInterval(()=>{ if(N.hostConn!==conn||conn.open){ clearInterval(N.netPoll); return; } if(onStuck&&netState(conn)==="failed") give(true); },500);
+      N.timer=setTimeout(()=>give(netState(conn)!=="waiting"),onStuck?16000:9000);
     };
     N.code=code; N.host=false;
     if(N.gpeer&&!N.gpeer.destroyed&&N.gpeer.open) return go();
@@ -11585,10 +11910,10 @@ ${Array.from({length:22},(_,i)=>{ const x=(i*53)%320+((i*17)%11), y=(i*37)%120, 
     const rk=botWon||(!N.local&&v.winner!==v.me)?"lose":"win";
     resShow(rk,`
       <div class="res-top">${resArt(rk)}
-      <h2>${rk==="lose"?RES_LOSE:esc(v.names[v.winner])+" ชนะ!"}</h2>
+      <h2>${rk==="lose"?esc(loseLine(GAME+":"+v.round)):esc(v.names[v.winner])+" ชนะ!"}</h2>
       <p class="gp-note">${v.how==="time"?"หมดเวลา คนที่ไปไกลที่สุดชนะ · ":""}${rk==="lose"?`${esc(v.names[v.winner])} ชนะรอบนี้ · ลองใหม่อีกที!`:"บันทึกลงตารางอันดับแล้ว"}</p>
       </div><div class="res-card"><ol class="gp-rank">${rank.map((k,i)=>`<li class="${k===v.winner?"first":""}"><span class="gr-n">${i+1}</span>${v.bots[k]?`<span class="row-badge is-bot">${BOT_AVATAR}</span>`:`<span class="row-badge" style="background:${colorOf(v.names[k])}">${esc(initialOf(v.names[k]))}</span>`}<b>${esc(v.names[k])}${k===v.me?" (เรา)":""}</b><span class="gr-d">${why(k)} · ล้าง ${v.lines[k]} แถว</span></li>`).join("")}</ol>
-      <div class="gp-actions">${N.host?`<button class="go" id="oNext">เล่นอีกรอบ</button>`:`<p class="waiting"><span class="dots" aria-hidden="true"></span> รอเจ้าของห้องเริ่มรอบใหม่</p>`}${N.local?`<button class="tool" id="oBack">กลับหน้าเข้าเกม</button>`:`<button class="tool" id="rMenu">ออกจากห้อง</button>`}</div></div>`);
+      <div class="gp-actions">${N.host?`<button class="go" id="oNext">เล่นอีกครั้ง</button>`:`<p class="waiting"><span class="dots" aria-hidden="true"></span> รอเจ้าของห้องเริ่มรอบใหม่</p>`}${N.local?`<button class="tool" id="oBack">เปลี่ยนตัวเลือก</button>`:`<button class="tool" id="rMenu">ออกจากห้อง</button>`}</div></div>`);
   }
 
   /* =========================================================
@@ -15220,10 +15545,10 @@ function pwMake(){
     const rk=!draw&&(botWon||(!N.local&&!mine.includes(v.winner)))?"lose":"win";
     resShow(rk,`
       <div class="res-top">${resArt(rk)}
-      <h2>${draw?"เสมอ!":rk==="lose"?RES_LOSE:esc(v.names[v.winner])+" ชนะ!"}</h2>
+      <h2>${draw?"เสมอ!":rk==="lose"?esc(loseLine(GAME+":"+v.round)):esc(v.names[v.winner])+" ชนะ!"}</h2>
       <p class="gp-note">${draw?"หมดเวลา รอดจากบอสได้จนจบ · ":v.how==="time"?"หมดเวลา คนที่เหลือหัวใจมากที่สุดชนะ · ":""}${rk==="lose"?`${esc(v.names[v.winner])} ชนะรอบนี้ · ลองใหม่อีกที!`:friendWon?"เพื่อนชนะรอบนี้!":"บันทึกลงตารางอันดับแล้ว"}</p>
       </div><div class="res-card"><ol class="gp-rank">${rank.map((k,i)=>`<li class="${k===v.winner?"first":""}"><span class="gr-n">${i+1}</span>${v.bots[k]?`<span class="row-badge is-bot">${BOT_AVATAR}</span>`:`<span class="row-badge" style="background:${pCol(k)}">${esc(initialOf(v.names[k]))}</span>`}<b>${esc(v.names[k])}${mine.includes(k)&&mine.length===1?" (เรา)":""}</b><span class="gr-d">${why(k)} · ตีโดน ${v.f[k][6]} ครั้ง</span></li>`).join("")}</ol>
-      <div class="gp-actions">${N.host?`<button class="go" id="oNext">เล่นอีกรอบ</button>`:`<p class="waiting"><span class="dots" aria-hidden="true"></span> รอเจ้าของห้องเริ่มรอบใหม่</p>`}${N.local?`<button class="tool" id="oBack">กลับหน้าเข้าเกม</button>`:`<button class="tool" id="rMenu">ออกจากห้อง</button>`}</div></div>`);
+      <div class="gp-actions">${N.host?`<button class="go" id="oNext">เล่นอีกครั้ง</button>`:`<p class="waiting"><span class="dots" aria-hidden="true"></span> รอเจ้าของห้องเริ่มรอบใหม่</p>`}${N.local?`<button class="tool" id="oBack">เปลี่ยนตัวเลือก</button>`:`<button class="tool" id="rMenu">ออกจากห้อง</button>`}</div></div>`);
   }
   // give up: with two kids on one phone, both give up
   function pGiveUp(){ if(N.host&&N.local) pMine(PLV).forEach(k=>pAct(k,{a:"surrender"})); else pSend({a:"surrender"}); }
@@ -16166,11 +16491,11 @@ function pwMake(){
     const rk=(v.local?humanWins.length:v.winners.includes(v.me))?"win":"lose";
     resShow(rk,`
       <div class="res-top"><div class="s-card spy small"><svg viewBox="-30 -30 60 64" class="s-spy-big" aria-hidden="true"><circle cx="0" cy="3" r="29" fill="#8E6BF2"/>${D_SPY}</svg><b>${esc(sp)}</b></div>
-      <h2>${rk==="lose"?RES_LOSE:head}</h2>
+      <h2>${rk==="lose"?esc(loseLine(GAME+":"+v.round)):head}</h2>
       <p class="gp-note">สปายคือ <b>${esc(sp)}</b> · คำลับคือ <b>${esc(v.word)}</b><br>${why}${humanWins.length?" · บันทึกลงตารางอันดับแล้ว":""}</p>
       </div><div class="res-card"><div class="d-pic" id="dPicBox"></div>${dLegend(v)}
       <ol class="gp-rank s-count">${v.names.map((_,k)=>k).sort((a,b)=>(k=>k===v.spy?-1:0)(a)-(k=>k===v.spy?-1:0)(b)||(v.count[b]||0)-(v.count[a]||0)).map(k=>`<li class="${v.winners.includes(k)?"first":""}">${dAv(v,k)}<b>${esc(v.names[k])}${k===v.spy?` <span class="s-tag">สปาย</span>`:""}${!v.local&&k===v.me?" (เรา)":""}</b><span class="gr-d">${v.count[k]||0} โหวต${v.votes[k]>=0?` · โหวต ${esc(v.names[v.votes[k]])}`:""}</span></li>`).join("")}</ol>
-      <div class="gp-actions">${N.host?`<button class="go" id="oNext">เล่นอีกรอบ</button>`:`<p class="waiting"><span class="dots" aria-hidden="true"></span> รอเจ้าของห้องเริ่มรอบใหม่</p>`}${N.local?`<button class="tool" id="oBack">กลับหน้าเข้าเกม</button>`:`<button class="tool" id="rMenu">ออกจากห้อง</button>`}</div></div>`);
+      <div class="gp-actions">${N.host?`<button class="go" id="oNext">เล่นอีกครั้ง</button>`:`<p class="waiting"><span class="dots" aria-hidden="true"></span> รอเจ้าของห้องเริ่มรอบใหม่</p>`}${N.local?`<button class="tool" id="oBack">เปลี่ยนตัวเลือก</button>`:`<button class="tool" id="rMenu">ออกจากห้อง</button>`}</div></div>`);
     $("dPicBox").appendChild(dPic(dLines(v),dPicW()));
   }
   /* ---------- one phone: who is playing ---------- */
@@ -17311,7 +17636,7 @@ function pwMake(){
         check(GAMES.filter(g=>MENU.includes(g)).every(g=>hvHas(g.id)),"ทุกเกมในเมนูมีวิดีโอวิธีเล่น");
         localStorage.removeItem(HV_KEY);
         gCard("cards").click(); await sleep(400);
-        check(visible($("hvPop"))&&$("hvX").hidden&&!visible($("game"))&&!visible($("askPop")),"เข้าเกมครั้งแรก เล่นวิดีโอก่อน ไม่มีปุ่มข้าม ไม่มีป๊อปอัปถาม");
+        check(visible($("hvPop"))&&$("hvX").hidden&&!$("hvSkip").hidden&&!visible($("game"))&&!visible($("askPop")),"เข้าเกมครั้งแรก เล่นวิดีโอก่อน มีปุ่มข้ามวิดีโอ ไม่มีป๊อปอัปถาม");
         const v=$("hvV"); await waitFor(()=>v.readyState>=1,6000);
         check(v.duration>13&&v.duration<17,"วิดีโอยาวประมาณ 15 วินาที",`${(v.duration||0).toFixed(1)} วิ`);
         v.dispatchEvent(new Event("ended")); await sleep(150);

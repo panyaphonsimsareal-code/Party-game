@@ -29,12 +29,12 @@ h1{margin:0;font:800 clamp(28px,8vw,40px)/1.1 system-ui,sans-serif;text-shadow:0
   <div class="bar"><div class="fill" id="fill"></div></div>
   <div class="pct" id="pct">0%</div>
 </div>
-<noscript><meta http-equiv="refresh" content="0; url=play-1113.html"></noscript>
+<noscript><meta http-equiv="refresh" content="0; url=play-1121.html"></noscript>
 <script>
 /* loading page: downloads the game file (big) with a progress bar, then opens it (the browser reuses the downloaded copy).
    Keeps ?t=… (tester link) and #…. If anything goes wrong it just opens the game. */
 (function(){
-  var GAME="play-1113.html", SIZE=7084319, go=GAME+location.search+location.hash, done=false;
+  var GAME="play-1121.html", SIZE=7132771, go=GAME+location.search+location.hash, done=false;
   var fill=document.getElementById("fill"), pct=document.getElementById("pct"), pb=document.getElementById("pb"), msg=document.getElementById("msg");
   function show(p){ p=Math.max(0,Math.min(100,Math.round(p))); fill.style.width=p+"%"; pct.textContent=p+"%"; pb.setAttribute("aria-valuenow",p); }
   function open(){ if(done) return; done=true; show(100); msg.textContent="พร้อมแล้ว!"; setTimeout(function(){ location.replace(go); },250); }
